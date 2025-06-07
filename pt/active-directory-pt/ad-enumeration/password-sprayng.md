@@ -127,9 +127,11 @@ Invoke-SprayEmptyPassword
 
 #### CrackMapExec
 
-```bash
-crackmapexec smb $IP -u users.txt -p passwords.txt
-```
+<pre class="language-bash"><code class="lang-bash">crackmapexec smb &#x3C;IP> -u users.txt -p passwords.txt
+
+# all the subnet
+<strong>crackmapexec smb &#x3C;IP>/&#x3C;CIDR> -u users.txt -p passwords.txt
+</strong></code></pre>
 
 
 

