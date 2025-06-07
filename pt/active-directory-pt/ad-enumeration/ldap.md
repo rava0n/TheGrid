@@ -107,8 +107,8 @@ ldapsearch -H ldap://$DC_IP -D "user@domain.com" -w $PASSWORD -b "dc=domain,dc=c
 
 All the user in the output may be vulnerable to **AS-REP Reasting**.
 
-{% content-ref url="../ad-privilege-escalation/as-rep-roasting.md" %}
-[as-rep-roasting.md](../ad-privilege-escalation/as-rep-roasting.md)
+{% content-ref url="../ad-post-compromise-attacks/as-rep-roasting.md" %}
+[as-rep-roasting.md](../ad-post-compromise-attacks/as-rep-roasting.md)
 {% endcontent-ref %}
 
 

@@ -51,8 +51,8 @@ We can use Pass-the-Hash, crack password hash or find plain-text password.
 [password-sprayng.md](../ad-enumeration/password-sprayng.md)
 {% endcontent-ref %}
 
-{% content-ref url="../ad-privilege-escalation/kerberoasting.md" %}
-[kerberoasting.md](../ad-privilege-escalation/kerberoasting.md)
+{% content-ref url="../ad-post-compromise-attacks/kerberoasting.md" %}
+[kerberoasting.md](../ad-post-compromise-attacks/kerberoasting.md)
 {% endcontent-ref %}
 
 

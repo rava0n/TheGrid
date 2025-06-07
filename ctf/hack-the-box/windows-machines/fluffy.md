@@ -330,8 +330,8 @@ Making a grep command to the output and check if there is some ESC misconfig
 
 The CA is vulnerable for the ESC16. Follow the guide to exploit this.
 
-{% content-ref url="../../../pt/active-directory-pt/ad-privilege-escalation/ad-cs/esc16.md" %}
-[esc16.md](../../../pt/active-directory-pt/ad-privilege-escalation/ad-cs/esc16.md)
+{% content-ref url="../../../pt/active-directory-pt/ad-post-compromise-attacks/ad-cs/esc16.md" %}
+[esc16.md](../../../pt/active-directory-pt/ad-post-compromise-attacks/ad-cs/esc16.md)
 {% endcontent-ref %}
 
 ### ESC16 exploitation
