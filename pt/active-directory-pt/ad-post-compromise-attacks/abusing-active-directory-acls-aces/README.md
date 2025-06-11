@@ -42,11 +42,9 @@ Get-DomainObjectAcl -Identity 'ca_svc' | Where-Object { $_.ActiveDirectoryRights
 
 ### Reset Password
 
-```powershell
-$NewPassword = ConvertTo-SecureString 'Password9999' -AsPlainText -Force
-
-Set-DomainUserPassword -Identity 'ca_svc' -AccountPassword $NewPassword
-```
+{% content-ref url="forcechangepassword-rights.md" %}
+[forcechangepassword-rights.md](forcechangepassword-rights.md)
+{% endcontent-ref %}
 
 
 

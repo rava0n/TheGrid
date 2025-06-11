@@ -115,6 +115,7 @@
       * [Enabling a AD user](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/enabling-a-ad-user.md)
       * ['AddSelf' to a group](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/addself-to-a-group.md)
       * [ReadGMSAPassword](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/readgmsapassword.md)
+      * [ForceChangePassword rights](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/forcechangepassword-rights.md)
   * [AD Lateral Movement](pt/active-directory-pt/ad-lateral-movement/README.md)
     * [Dumping credentials](pt/active-directory-pt/ad-lateral-movement/dumping-credentials.md)
     * [DCSync](pt/active-directory-pt/ad-lateral-movement/dcsync.md)

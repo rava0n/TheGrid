@@ -38,6 +38,7 @@ enum4linux-ng -u USER -p PASS IP
 
 * WinPeas
 * Privs (whoami /priv)
+* Check All AD user (deleted, disable, active)
 * Mimikatz&#x20;
 * Certipy (more if there is a CA\_SVC user)
 
