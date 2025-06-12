@@ -113,6 +113,20 @@ All the user in the output may be vulnerable to **AS-REP Reasting**.
 
 
 
+### Get Objs from AD Recycle Bin
+
+Using this commands we can get (if is enable) the deleted obj from AD recycle bin.
+
+
+
+{% code title="ldapsearch" overflow="wrap" %}
+```bash
+ldapsearch -x -H ldap://yourdomaincontroller.example.com -b 'CN=Deleted Objects,DC=yourdomain,DC=com' -s sub '(objectClass=user)(name=YourUserName)' distinguishedName
+```
+{% endcode %}
+
+
+
 ### Group Membership Enumeration
 
 Identify group memberships and privileged users.

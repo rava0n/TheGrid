@@ -104,6 +104,7 @@
     * [PowerView](pt/active-directory-pt/ad-enumeration/powerview.md)
     * [Password Sprayng](pt/active-directory-pt/ad-enumeration/password-sprayng.md)
     * [LAPS](pt/active-directory-pt/ad-enumeration/laps.md)
+    * [AD Recycle Bin](pt/active-directory-pt/ad-enumeration/ad-recycle-bin.md)
   * [AD Post-Compromise Attacks](pt/active-directory-pt/ad-post-compromise-attacks/README.md)
     * [AS-REP Roasting](pt/active-directory-pt/ad-post-compromise-attacks/as-rep-roasting.md)
     * [Kerberoasting](pt/active-directory-pt/ad-post-compromise-attacks/kerberoasting.md)
