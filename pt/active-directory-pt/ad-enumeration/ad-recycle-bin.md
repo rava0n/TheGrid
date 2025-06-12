@@ -4,11 +4,33 @@ The **Active Directory (AD) Recycle Bin** is a feature that allows administrator
 
 
 
+## Check if AD Recycle bin is enabled
+
+{% code title="PowerView.ps1" %}
+```powershell
+. .\PowerView.ps1
+
+Get-ADOptionalFeature -Filter * | ? {$_.Name -match "Recycle Bin"}
+```
+{% endcode %}
+
+
+
 ## Get ADObject from Recycle Bin with Powershell
+
+```powershell
+Get-ADObject -IncludeDeletedObjects -Filter {Isdeleted -eq $true}
+```
 
 {% code overflow="wrap" %}
 ```powershell
 Get-ADObject -Filter "isDeleted -eq $true" -IncludeDeletedObjects -Property * | Format-List Name,ObjectGUID,Deleted,DistinguishedName
+```
+{% endcode %}
+
+{% code title="PowerView.ps1" overflow="wrap" %}
+```powershell
+Get-DomainObject -SearchBase "CN=Recycle Bin Feature,CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=tombwatcher,DC=htb" -Properties *
 ```
 {% endcode %}
 
@@ -19,3 +41,4 @@ Get-ADObject -Filter "isDeleted -eq $true" -IncludeDeletedObjects -Property * | 
 ```powershell
 Restore-ADObject -Identity <ObjectGUID>
 ```
+

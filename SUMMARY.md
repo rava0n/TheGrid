@@ -110,6 +110,7 @@
     * [Kerberoasting](pt/active-directory-pt/ad-post-compromise-attacks/kerberoasting.md)
     * [AD CS](pt/active-directory-pt/ad-post-compromise-attacks/ad-cs/README.md)
       * [ESC4](pt/active-directory-pt/ad-post-compromise-attacks/ad-cs/esc4.md)
+      * [ESC15](pt/active-directory-pt/ad-post-compromise-attacks/ad-cs/esc15.md)
       * [ESC16](pt/active-directory-pt/ad-post-compromise-attacks/ad-cs/esc16.md)
     * [Abusing Active Directory ACLs/ACEs](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/README.md)
       * ["GenericAll" Privilege](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/genericall-privilege.md)

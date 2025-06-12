@@ -121,7 +121,7 @@ Using this commands we can get (if is enable) the deleted obj from AD recycle bi
 
 {% code title="ldapsearch" overflow="wrap" %}
 ```bash
-ldapsearch -x -H ldap://yourdomaincontroller.example.com -b 'CN=Deleted Objects,DC=yourdomain,DC=com' -s sub '(objectClass=user)(name=YourUserName)' distinguishedName
+ldapsearch -x -H ldap://yourdomaincontroller.example.com -b 'CN=Deleted Objects,DC=yourdomain,DC=com' -s sub '(objectClass=user)(name=YourUserName)' distinguishedName -D '$USER' -w '$PASSWORD'
 ```
 {% endcode %}
 

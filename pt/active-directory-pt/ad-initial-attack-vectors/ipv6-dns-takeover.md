@@ -55,7 +55,7 @@ sudo mitm6 -d DOMAIN
 
 If the attack will successfull we would have our loot directory with all data.
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
