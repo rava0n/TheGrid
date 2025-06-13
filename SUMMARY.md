@@ -32,6 +32,7 @@
   * [Google Dorking](bug-hunting/osint/google-dorking.md)
   * [Email Discovery](bug-hunting/osint/email-discovery.md)
   * [Passwords Leaked](bug-hunting/osint/passwords-leaked.md)
+  * [Personal Data](bug-hunting/osint/personal-data.md)
 
 ## pt
 
