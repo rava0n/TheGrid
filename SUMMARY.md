@@ -150,6 +150,7 @@
 
 ***
 
+* [Wireless Hacking](wireless-hacking.md)
 * [Social Engineering](social-engineering/README.md)
   * [QRCode Attack vector](social-engineering/qrcode-attack-vector.md)
 * [Boosting Red Team Ops with AI](boosting-red-team-ops-with-ai.md)

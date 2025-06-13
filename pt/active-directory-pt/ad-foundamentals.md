@@ -22,6 +22,8 @@ Kerberos is the primary authentication protocol used by Active Directory for use
 
 <figure><img src="../../.gitbook/assets/image (164).png" alt="" width="375"><figcaption></figcaption></figure>
 
+<figure><img src="../../.gitbook/assets/image (269).png" alt=""><figcaption></figcaption></figure>
+
 #### Features
 
 * **Mutual authentication**: Both the client and server verify each other's identities.
@@ -60,7 +62,15 @@ _**Domain Admins** = primaryGroupToken **512**_\
 &#xNAN;_**Protected Users =** primaryGroupToken **525**_\
 
 
+## Privileged Groups
 
+| Privileged Groups                    | Privileges                                                                    |
+| ------------------------------------ | ----------------------------------------------------------------------------- |
+| Domain Admins (DA)                   | Have administrative access to all the resources in a domain                   |
+| Enterprise Admins (DA)               | Exists only in the forest root, already added to Domain Admins of every child |
+| BUILTIN\Administrators (Local Group) | Local administrator on a Domain Controller                                    |
+| Server Operators                     | Have the capability to administer domain server                               |
+| Account Operators                    | Manage any user not in a privileged group                                     |
 
 
 
