@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Boosting Red Team Ops with AI
 
 

