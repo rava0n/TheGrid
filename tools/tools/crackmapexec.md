@@ -10,7 +10,14 @@ CrackMapExec (CME) is a powersful open-source pentration testing tool.
 * **Privilege Escalation**: CME can attempt to escalate privleges on remote systems, providing deeper access to resourcfes.
 * **Remote Command Execution**: CME can execute commands on remote systems over SMB, WMI, or other protocols, allowing for flexible remote management.
 
+## CME DB
 
+This db allows us to obtain all the information obtained in previous attacks with crackmapexec.
+
+```bash
+cmedb
+> help # to get the commands list
+```
 
 ## CME Modules
 

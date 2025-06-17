@@ -73,6 +73,7 @@
         * [whoami /priv](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/whoami-priv.md)
         * [winpeas.ps1](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/winpeas.ps1.md)
         * [DPAPI](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/dpapi.md)
+        * [Access Token Impersionation](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/access-token-impersionation.md)
       * [Windows - Persistence](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-persistence.md)
       * [Windows - Dump/Crack Hashes](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-dump-crack-hashes.md)
       * [Windows - Cleaning Tracks](pt/executive-pt/post-exploitation/windows-post-exploitation/windows-cleaning-tracks.md)

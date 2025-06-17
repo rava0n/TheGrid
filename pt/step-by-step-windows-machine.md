@@ -38,7 +38,26 @@ enum4linux-ng -u USER -p PASS IP
 
 * WinPeas
 * Privs (whoami /priv)
+  * Access Token Impersonation
 * Check All AD user (deleted, disable, active)
 * Mimikatz&#x20;
 * Certipy (more if there is a CA\_SVC user)
+
+
+
+## Dump
+
+* impacket-secretsdump
+* Mimikatz
+
+When we have a hash we can:
+
+* Do Pass-The-Hash
+* Use `Hash-Identify` to get the type and crack it
+
+
+
+## Crack Hash
+
+* Hashcat & John
 

