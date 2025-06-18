@@ -46,6 +46,8 @@
   * [Enumeration - Exploitation](pt/executive-pt/enumeration-exploitation/README.md)
     * [WEB](pt/executive-pt/enumeration-exploitation/web/README.md)
       * [Web Enumeration](pt/executive-pt/enumeration-exploitation/web/web-enumeration.md)
+      * [Web Services](pt/executive-pt/enumeration-exploitation/web/web-services.md)
+      * [Web Exploitations](pt/executive-pt/enumeration-exploitation/web/web-exploitations.md)
       * [LFI](pt/executive-pt/enumeration-exploitation/web/lfi.md)
       * [CMS](pt/executive-pt/enumeration-exploitation/web/cms.md)
       * [Vuln Scan](pt/executive-pt/enumeration-exploitation/web/vuln-scan.md)
