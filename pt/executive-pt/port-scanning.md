@@ -1,5 +1,7 @@
 # Port Scanning
 
+## Nmap Port Scanning
+
 {% code title="Main scan" %}
 ```bash
 # TCP
@@ -45,3 +47,12 @@ nmap -T2 IP
 # -T4: Agressive
 # -T5: Insane
 ```
+
+## Powershell Port Scanning
+
+<pre class="language-powershell" data-overflow="wrap"><code class="lang-powershell"># scanning open TCP ports from a PowerShell query
+<strong>C:\Users> 1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("10.0.0.100",$_)) "Port $_ is open!"} 2>$null
+</strong>
+# scan IP addresses 10.10.10.1-5 and some specific common TCP ports
+C:\Users> 1..20 | % { $a = $_; write-host "------"; write-host "10.0.0.$a"; 22,53,80,445 | % {echo ((new-object Net.Sockets.TcpClient).Connect("10.1.1.$a",$_)) "Port $_ is open!"} 2>$null} 
+</code></pre>

@@ -34,7 +34,7 @@ docker run --rm -it --network internal_net --ip 192.168.100.100 --name target_bo
 
 If everythings is going well, we would see this page to the `http://192.168.100.100` URL from Pivot Machine:
 
-<figure><img src="../../../.gitbook/assets/image (201).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (201).png" alt=""><figcaption></figcaption></figure>
 
 ## Run the Payload to Pivot machine.
 
@@ -47,13 +47,13 @@ sudo ligolo-mp
 
 Create a Pivot payload and run it into pivot machine
 
-[#craft-the-payload](ligolo-mp.md#craft-the-payload "mention")
+[#craft-the-payload](./#craft-the-payload "mention")
 
 
 
 Start the Relay from the ligolo dashboard and view the onther interfaces.
 
-<figure><img src="../../../.gitbook/assets/image (203).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (203).png" alt=""><figcaption></figcaption></figure>
 
 We are in the eth0 network and we want reach the network 192.168.100.1/24
 
@@ -61,11 +61,11 @@ We are in the eth0 network and we want reach the network 192.168.100.1/24
 
 Create the Route to reach the other network.
 
-<figure><img src="../../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 Now we can ping the target machine from Kali1 machine.
 
-<figure><img src="../../../.gitbook/assets/image (206).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (206).png" alt=""><figcaption></figcaption></figure>
 
 
 

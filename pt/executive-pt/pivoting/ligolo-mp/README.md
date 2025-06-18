@@ -44,27 +44,27 @@ sudo systemctl start ligolo-mp.service
 
 The page bellow is the first page named "Credentials". This page has all access to ligolo servers where you have access.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (210).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (210).png" alt=""><figcaption></figcaption></figure>
 
 ### Add new Server Connection
 
 Press `CTRL + N`:
 
-<figure><img src="../../../.gitbook/assets/image (211).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (211).png" alt=""><figcaption></figcaption></figure>
 
-Select the cred file and press `ENTER`. (How to create cred file --> [#create-creds-for-new-operator](ligolo-mp.md#create-creds-for-new-operator "mention"))
+Select the cred file and press `ENTER`. (How to create cred file --> [#create-creds-for-new-operator](./#create-creds-for-new-operator "mention"))
 
 ## Dashboard Page
 
 Once we are connected to a server, we will see this screen:
 
-<figure><img src="../../../.gitbook/assets/image (212).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (212).png" alt=""><figcaption></figcaption></figure>
 
 ### Craft the payload
 
 Press `CTRL+N` to open the "Generate agent" window.
 
-<figure><img src="../../../.gitbook/assets/image (216).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (216).png" alt=""><figcaption></figcaption></figure>
 
 There are several options that you can tweak for your implant:
 
@@ -75,11 +75,11 @@ Once we have created the payload, transfer it on the target machine, and execute
 
 When the binary will be executed, a session will appear in the Dashboard.
 
-<figure><img src="../../../.gitbook/assets/image (207).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (207).png" alt=""><figcaption></figcaption></figure>
 
 Then, Start the Relay to view all machine interfaces.
 
-<figure><img src="../../../.gitbook/assets/image (202).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (202).png" alt=""><figcaption></figcaption></figure>
 
 ### Create a Route
 
@@ -87,11 +87,11 @@ If machine with active session has 2 or more interface we can create a route to 
 
 To create it, we have to select the session and then press `ENTER`. Once the windows will appear select the "Add route" section.
 
-<figure><img src="../../../.gitbook/assets/image (208).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (208).png" alt=""><figcaption></figcaption></figure>
 
 Then, insert the new network of other interface and press SUBMIT button
 
-<figure><img src="../../../.gitbook/assets/image (209).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (209).png" alt=""><figcaption></figcaption></figure>
 
 Now the new network is reachable.
 
@@ -111,17 +111,17 @@ TODO:
 
 Press `CTRL+N` to open the window
 
-<figure><img src="../../../.gitbook/assets/image (213).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (213).png" alt=""><figcaption></figcaption></figure>
 
 Insert the _Name_, _Server_ with _IP:PORT_ of ligolo-mp Server, and chose if the operator will be a admin.
 
 To save the connection file, press ENTER on the new operator and Select the "EXPORT".
 
-<figure><img src="../../../.gitbook/assets/image (214).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (214).png" alt=""><figcaption></figcaption></figure>
 
 Then write the path where the file will saves.
 
-<figure><img src="../../../.gitbook/assets/image (215).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (215).png" alt=""><figcaption></figcaption></figure>
 
 ## Official wiki
 

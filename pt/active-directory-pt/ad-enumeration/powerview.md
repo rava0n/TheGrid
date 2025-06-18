@@ -22,6 +22,17 @@ Get-Domain
 Get-Domain -Domain $DOMAIN.local # for a specific domain
 Get-DomainSID
 
+# Get current domain
+Get-NetDomain
+Get-NetDomain -Domain $DOMAIN
+# current SID and DC
+Get-NetDomainController -Domain $DOMAIN 
+Get-DomainSID
+
+# list of users
+Get-NetUser
+Get-NetUser -UserName $USERNAME
+
 # Get Domain Policy
 Get-DomainPolicy
 (Get-DomainPolicy)."SystemAccess"
@@ -39,15 +50,20 @@ Get-DomainUser -Identity $SAMACCOUNTNAME # info for specific user
 </strong>
 # Get Domain Computers info
 Get-NetComputer
+Get-NetComputer -FullData
+Get-NetComputer -OperatingSystem "Windows Server 2016 Standard"
 Get-NetComputer | Select name # show only computer names
 Get-NetComputer | Select name, cn, operatingsystem
 Get-NetComputer -Domain $DOMAIN.local | select cn, operatingsystem # computer in a specific domain
 
 # Get Domain Groups info
 Get-NetGroup
+Get-NetGroup -FullData
+Get-NetGroup -Domain $DOMAIN
 Get-NetGroup 'Domain Admins'
 Get-NetGroupMember "Domain Admins" | select MemberName 
 Get-NetGroup -Username "$NAME" | Select name # all user memberships
+Get-NetLocalGroup -ComputerName $COMPUTER_NAME -ListGroups
 
 # Get Domain Share info
 Find-DomainShare -ComputerName $COMPUTER_NAME -verbose
@@ -79,6 +95,6 @@ Get-NetUser -sPN | select samaccountname, serviceprincipalname
 Get-NetUser -PreauthNotRequired | Select samaccountname, useraccountcontrol
 
 # Local Admin rights in a domain computer
-Find-LocalAdminAccess
+Find-LocalAdminAccess -Verbose
 </code></pre>
 

