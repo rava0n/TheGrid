@@ -125,6 +125,7 @@
       * [ReadGMSAPassword](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/readgmsapassword.md)
       * [ForceChangePassword rights](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/forcechangepassword-rights.md)
     * [LNK File Attacks](pt/active-directory-pt/ad-post-compromise-attacks/lnk-file-attacks.md)
+    * [PrintNightmare (CVE-2021-1675)](pt/active-directory-pt/ad-post-compromise-attacks/printnightmare-cve-2021-1675.md)
   * [AD Lateral Movement](pt/active-directory-pt/ad-lateral-movement/README.md)
     * [DCSync](pt/active-directory-pt/ad-lateral-movement/dcsync.md)
     * [Pass-the-Hash](pt/active-directory-pt/ad-lateral-movement/pass-the-hash.md)
@@ -132,6 +133,7 @@
     * [WMI](pt/active-directory-pt/ad-lateral-movement/wmi.md)
     * [PSSession](pt/active-directory-pt/ad-lateral-movement/pssession.md)
   * [AD Persistence](pt/active-directory-pt/ad-persistence/README.md)
+    * [Dumping the NTDS.dit](pt/active-directory-pt/ad-persistence/dumping-the-ntds.dit.md)
     * [Silver Ticket](pt/active-directory-pt/ad-persistence/silver-ticket.md)
     * [Golden Ticket](pt/active-directory-pt/ad-persistence/golden-ticket.md)
 

@@ -19,8 +19,10 @@ enum4linux-ng -u USER -p PASS IP
 ```
 
 * SMB Shares
-* Bloodhound ( or Find Kerberostable, AS-Roastable accounts)
+* Bloodhound ( or Find **Kerberostable**, **AS-Roastable** accounts)
   * Check the information from "Node Info" of initial user.
+* Impacket-secretsdump
+  * Pass-the-Hash / Pass-the-Password
 * WinRM connection
   * evil-winrm
   * Create persistence shell&#x20;
