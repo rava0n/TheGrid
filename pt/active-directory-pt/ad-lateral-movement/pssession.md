@@ -1,5 +1,16 @@
 # PSSession
 
+## Create and use Enter-PSSession from Powershell Windows
+
+<pre class="language-powershell"><code class="lang-powershell"><strong>$session = New-PSSession –Computername $COMPUTER_NAME
+</strong><strong>
+</strong>Invoke-Command –Session $session –ScriptBlock {Whoami;hostname}
+
+Enter-Pssession –Session $session -verbose
+</code></pre>
+
+
+
 ## Create and use Enter-PSSession from Linux
 
 Kali has already installed the tool `PWSH` that emulate a PowerShell shell.

