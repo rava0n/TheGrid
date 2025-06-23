@@ -14,6 +14,7 @@
     * [Nocturnal](ctf/hack-the-box/linux-machines/nocturnal.md)
     * [Lame](ctf/hack-the-box/linux-machines/lame.md)
     * [Planning](ctf/hack-the-box/linux-machines/planning.md)
+    * [Artificial](ctf/hack-the-box/linux-machines/artificial.md)
   * [Windows machines](ctf/hack-the-box/windows-machines/README.md)
     * [Forest](ctf/hack-the-box/windows-machines/forest.md)
     * [EscapeTwo](ctf/hack-the-box/windows-machines/escapetwo.md)
