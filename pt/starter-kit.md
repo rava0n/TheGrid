@@ -16,7 +16,11 @@ pipx install git+https://github.com/brightio/penelope
 ```
 {% endcode %}
 
+## Wordlists
 
+<pre class="language-bash"><code class="lang-bash"><strong>cd /usr/share/wordlists
+</strong><strong>git clone https://github.com/danielmiessler/SecLists.git
+</strong></code></pre>
 
 ## PrivEsc
 

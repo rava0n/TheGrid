@@ -57,6 +57,18 @@ show hosts
 shodan domain example.com
 ```
 
+
+
+### Google Dorks
+
+The command bellow will find through search engine all subdomain except the `www.domain.com`
+
+```
+site:*.domain.com -site:www.domain.com
+```
+
+
+
 ## Certificate Transparency
 
 Certificate Transparency (CT) is an Internet security standard and open-source framework for monitoring and auditing digital certificates. It creates a system of public logs to record all certificates issued by publicly trusted CAs, allowing efficient identification of mistakenly or maliciously issued certificates.
@@ -103,6 +115,56 @@ dig AXFR @$IP_NAME_SERVER example.com
 ```
 
 
+
+## Virtual Host (vhost) Enumeration
+
+In order to choose what website to show for what domain, many use what is called "virtual hosting". Virtual hosting can be based on a name, an IP, or a port ([read more](https://en.wikipedia.org/wiki/Virtual_hosting#Name-based)).
+
+* HTTP: the use of the `Host` request header. The client uses the `directive to connect to the domain name of the server. Optionally, it can use the` directive to specify a TCP port number on which the server is listening.
+* HTTPS: the use of the Server Name Indication (SNI) extension with TLS. The client indicates the hostname it wants to connect to at the start of the handshake process.
+
+{% code title="WFuzz" overflow="wrap" %}
+```bash
+wfuzz -H "Host: FUZZ.something.com" --hc 404,403 -H "User-Agent: PENTEST" -c -z file,"/path/to/wordlist.txt" $URL
+
+# Hide response with specific
+# --hc/hl/hw/hh : code/lines/words/chars
+
+# Show response with specific
+# --sc/sl/sw/sh : code/lines/words/chars
+```
+{% endcode %}
+
+{% code title="Gobuster" %}
+```bash
+gobuster vhost --useragent "PENTEST" --wordlist "/path/to/wordlist.txt" --url $URL
+```
+{% endcode %}
+
+{% code title="fuff" overflow="wrap" %}
+```bash
+ffuf -H "Host: FUZZ.$DOMAIN" -H "User-Agent: PENTEST" -c -w "/path/to/wordlist.txt" -u $URL -fs $SIZE_OF_REQUEST_TO_EXCLUDE
+```
+{% endcode %}
+
+
+
+Wordlists:
+
+```
+/usr/share/dnsrecon/dnsrecon/data/subdomains-top1mil.txt
+/usr/share/dnsrecon/dnsrecon/data/subdomains-top1mil-5000.txt
+/usr/share/dnsrecon/dnsrecon/data/subdomains-top1mil-20000.txt
+/usr/share/metasploit-framework/data/wordlists/lync_subdomains.txt
+/usr/share/metasploit-framework/modules/auxiliary/gather/searchengine_subdomains_collector.rb
+/usr/share/amass/wordlists/bitquark_subdomains_top100K.txt
+/usr/share/amass/wordlists/subdomains-top1mil-5000.txt
+/usr/share/amass/wordlists/subdomains-top1mil-110000.txt
+/usr/share/amass/wordlists/subdomains.lst
+/usr/share/amass/wordlists/subdomains-top1mil-20000.txt
+/usr/share/spiderfoot/spiderfoot/dicts/subdomains.txt
+/usr/share/spiderfoot/spiderfoot/dicts/subdomains-10000.txt
+```
 
 
 
