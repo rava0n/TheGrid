@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # ligolo-mp
 
 > Ligolo-mp is a **pivoting solution** that tunnels traffic using a TUN interface, enabling seamless access to the target network, as if you are directly connected to it. Is has both simple single-user environment and can also be a collaborative platform for the whole redteam. It allows multiple remote operators to handle unlimited concurrent pivots while automatically managing shared TUNs required for seamless networking. It also provides a dashboard that allows to assess the current networking status at a glance and helps onboarding new operators to the environment.

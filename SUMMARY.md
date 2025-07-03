@@ -50,7 +50,7 @@
       * [Web Services](pt/executive-pt/enumeration-exploitation/web/web-services.md)
       * [Web Exploitations](pt/executive-pt/enumeration-exploitation/web/web-exploitations.md)
       * [IDOR](pt/executive-pt/enumeration-exploitation/web/idor.md)
-      * [LFI](pt/executive-pt/enumeration-exploitation/web/lfi.md)
+      * [File Inclusion](pt/executive-pt/enumeration-exploitation/web/file-inclusion.md)
       * [CMS](pt/executive-pt/enumeration-exploitation/web/cms.md)
       * [Vuln Scan](pt/executive-pt/enumeration-exploitation/web/vuln-scan.md)
       * [File Upload Bypass](pt/executive-pt/enumeration-exploitation/web/file-upload-bypass/README.md)
