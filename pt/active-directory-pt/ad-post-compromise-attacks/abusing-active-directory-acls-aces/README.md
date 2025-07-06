@@ -86,9 +86,12 @@ To do this we can use the `ntpdate`tool:
 sudo apt install ntpsec-ntpdate
 ```
 
-```bash
-sudo ntpdate 10.10.11.42
-```
+<pre class="language-bash"><code class="lang-bash"><strong>sudo su
+</strong><strong>
+</strong><strong>timedatectl set-ntp off
+</strong>
+ntpdate 10.10.11.42
+</code></pre>
 
 {% hint style="danger" %}
 If we are in kali linux we also disable the auto ntp-sync with this command:
