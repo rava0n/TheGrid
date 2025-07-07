@@ -202,4 +202,5 @@
 
 * [Training/Certifications](train-certs/training-certifications.md)
 * [Roadmap](train-certs/roadmap.md)
-* [CRTA](train-certs/crta.md)
+* [CRTA Lab](train-certs/crta-lab/README.md)
+  * [CRTA Guide](train-certs/crta-lab/crta-guide.md)

@@ -1,4 +1,4 @@
-# CRTA
+# CRTA Lab
 
 {% hint style="danger" %}
 USE THE TOOLS  PROVIDED BY THE COURSE
@@ -34,7 +34,7 @@ Intercept the request with Burp Suite to try get some injection
 
 ### SSRF
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```bash
@@ -348,7 +348,7 @@ proxychains nmap -sn 192.168.98.15/24
 nmap -sT 192.168.98.30
 ```
 
-<figure><img src="../.gitbook/assets/image (275).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (275).png" alt=""><figcaption></figcaption></figure>
 
 ### Credentials logon trying
 
@@ -434,11 +434,11 @@ net user /dom
 
 and view if there are another DC.
 
-<figure><img src="../.gitbook/assets/image (276).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (276).png" alt=""><figcaption></figcaption></figure>
 
 Try to ping that and we have just discover another machine.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Check the domain groups
 
