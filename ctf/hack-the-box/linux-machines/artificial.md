@@ -262,7 +262,7 @@ backrest_root:!@#$%^
 
 We login into Backrest portal
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now we can try to set up Backrest and run commands to escalate the privileges
 
