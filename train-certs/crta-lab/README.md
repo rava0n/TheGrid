@@ -32,7 +32,7 @@ nmap -sC -sV 192.168.80.10
 
 Intercept the request with Burp Suite to try get some injection
 
-### SSRF
+### Command Injection
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
