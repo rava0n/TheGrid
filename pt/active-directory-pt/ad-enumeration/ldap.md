@@ -61,11 +61,11 @@ Get general data from LDAP service without and within credentials
 ```bash
 # get domain name
 ldapsearch -H ldap://company.com -x -s base namingcontexts
-ldapsearch -H $DC_IP -D '$USER' -w '$PASSWORD' -s base namingcontexts
+ldapsearch -H $DC_IP -D '$USER@DOMAIN.COM' -w '$PASSWORD' -s base namingcontexts
 
 # enumerate from domain
 ldapsearch -H ldap://company.com -x -b "DC=htb,DC=local"
-ldapsearch -H $DC_IP -D '$USER' -w '$PASSWORD' -b "DC=htb"
+ldapsearch -H $DC_IP -D '$USER@DOMAIN.COM' -w '$PASSWORD' -b "DC=htb"
 
 ```
 {% endcode %}
@@ -121,7 +121,7 @@ Using this commands we can get (if is enable) the deleted obj from AD recycle bi
 
 {% code title="ldapsearch" overflow="wrap" %}
 ```bash
-ldapsearch -x -H ldap://yourdomaincontroller.example.com -b 'CN=Deleted Objects,DC=yourdomain,DC=com' -s sub '(objectClass=user)(name=YourUserName)' distinguishedName -D '$USER' -w '$PASSWORD'
+ldapsearch -x -H ldap://yourdomaincontroller.example.com -b 'CN=Deleted Objects,DC=yourdomain,DC=com' -s sub '(objectClass=user)(name=YourUserName)' distinguishedName -D '$USER@domain.com' -w '$PASSWORD'
 ```
 {% endcode %}
 

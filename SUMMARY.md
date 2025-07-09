@@ -24,6 +24,7 @@
     * [Puppy](ctf/hack-the-box/windows-machines/puppy.md)
     * [Fluffy](ctf/hack-the-box/windows-machines/fluffy.md)
     * [TombWatcher](ctf/hack-the-box/windows-machines/tombwatcher.md)
+    * [Voleur](ctf/hack-the-box/windows-machines/voleur.md)
   * [Sherlocks](ctf/hack-the-box/sherlocks.md)
 
 ## Bug Hunting
