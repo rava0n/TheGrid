@@ -53,6 +53,7 @@
       * [IDOR](pt/executive-pt/enumeration-exploitation/web/idor.md)
       * [File Inclusion](pt/executive-pt/enumeration-exploitation/web/file-inclusion.md)
       * [SSRF](pt/executive-pt/enumeration-exploitation/web/ssrf.md)
+      * [XSS](pt/executive-pt/enumeration-exploitation/web/xss.md)
       * [CMS](pt/executive-pt/enumeration-exploitation/web/cms.md)
       * [Vuln Scan](pt/executive-pt/enumeration-exploitation/web/vuln-scan.md)
       * [File Upload Bypass](pt/executive-pt/enumeration-exploitation/web/file-upload-bypass/README.md)
