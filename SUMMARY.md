@@ -106,6 +106,7 @@
   * [AD Foundamentals](pt/active-directory-pt/ad-foundamentals.md)
   * [AD Penetration Testing](pt/active-directory-pt/ad-penetration-testing.md)
   * [AD Initial Attack Vectors](pt/active-directory-pt/ad-initial-attack-vectors/README.md)
+    * [NTLM Theft](pt/active-directory-pt/ad-initial-attack-vectors/ntlm-theft.md)
     * [LLMNR Poisoning](pt/active-directory-pt/ad-initial-attack-vectors/llmnr-poisoning.md)
     * [SMB Relay](pt/active-directory-pt/ad-initial-attack-vectors/smb-relay.md)
     * [IPv6 DNS Takeover](pt/active-directory-pt/ad-initial-attack-vectors/ipv6-dns-takeover.md)
