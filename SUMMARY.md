@@ -55,6 +55,7 @@
         * [File Inclusion](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/file-inclusion.md)
         * [SSRF](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/ssrf.md)
         * [XSS](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/xss.md)
+        * [Race Condition](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/race-condition.md)
       * [CMS](pt/executive-pt/enumeration-exploitation/web/cms.md)
       * [Vuln Scan](pt/executive-pt/enumeration-exploitation/web/vuln-scan.md)
       * [File Upload Bypass](pt/executive-pt/enumeration-exploitation/web/file-upload-bypass/README.md)
