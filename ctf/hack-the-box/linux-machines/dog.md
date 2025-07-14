@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Dog
 
 ## Machine Informations
