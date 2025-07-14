@@ -185,7 +185,7 @@ Get-ADOptionalFeature -Filter * | ? {$_.Name -match "Recycle Bin"}
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As we can see the Recycle Bin is enabled.
 
@@ -196,7 +196,7 @@ Get-ADObject -IncludeDeletedObjects -Filter {Isdeleted -eq $true}
 
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Yes, there is a `cert_admin` account that probably manages the AD CA.
 
