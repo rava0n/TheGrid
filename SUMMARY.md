@@ -27,6 +27,12 @@
     * [Voleur](ctf/hack-the-box/windows-machines/voleur.md)
   * [Sherlocks](ctf/hack-the-box/sherlocks.md)
 
+***
+
+* [TryHackMe](tryhackme/README.md)
+  * [Active Directory](tryhackme/active-directory/README.md)
+    * [Attacktive Directory](tryhackme/active-directory/attacktive-directory.md)
+
 ## Bug Hunting
 
 * [OSINT](bug-hunting/osint/README.md)
@@ -114,6 +120,7 @@
     * [SMB Relay](pt/active-directory-pt/ad-initial-attack-vectors/smb-relay.md)
     * [IPv6 DNS Takeover](pt/active-directory-pt/ad-initial-attack-vectors/ipv6-dns-takeover.md)
     * [Pass-Back Attack (MFP LDAP Credential Harvesting)](pt/active-directory-pt/ad-initial-attack-vectors/pass-back-attack-mfp-ldap-credential-harvesting.md)
+    * [Kerbrute](pt/active-directory-pt/ad-initial-attack-vectors/kerbrute.md)
   * [AD Enumeration](pt/active-directory-pt/ad-enumeration/README.md)
     * [BloodHound](pt/active-directory-pt/ad-enumeration/bloodhound.md)
     * [LDAP](pt/active-directory-pt/ad-enumeration/ldap.md)
@@ -210,5 +217,9 @@
 * [Training/Certifications](train-certs/training-certifications.md)
 * [Roadmap](train-certs/roadmap.md)
 * [CRTA Lab](train-certs/crta-lab/README.md)
-  * [CRTA Guide](train-certs/crta-lab/crta-guide.md)
+  * [CRTA Guide](train-certs/crta-lab/crta-guide/README.md)
+    * [Temp1](train-certs/crta-lab/crta-guide/temp1.md)
   * [Preparation Lab](train-certs/crta-lab/preparation-lab.md)
+  * [CRTA Exam](train-certs/crta-lab/crta-exam/README.md)
+    * [192.168.X.X/24](train-certs/crta-lab/crta-exam/192.168.x.x-24.md)
+    * [192.168.X.X/24](train-certs/crta-lab/crta-exam/192.168.x.x-24-1.md)

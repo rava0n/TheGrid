@@ -2,9 +2,37 @@
 
 ## Without Credential
 
+* Enum4Linux&#x20;
+
+```bash
+enum4linux-ng IP
+```
+
 * SMB anonymous login
 * LDAP anonymous informations
 * Web Page&#x20;
+
+### Anonymous allowing
+
+* Enum AD with Kerbrute
+
+{% content-ref url="active-directory-pt/ad-initial-attack-vectors/kerbrute.md" %}
+[kerbrute.md](active-directory-pt/ad-initial-attack-vectors/kerbrute.md)
+{% endcontent-ref %}
+
+* Try get Kerberostable and ASREP Roastable users
+
+{% content-ref url="active-directory-pt/ad-post-compromise-attacks/kerberoasting.md" %}
+[kerberoasting.md](active-directory-pt/ad-post-compromise-attacks/kerberoasting.md)
+{% endcontent-ref %}
+
+{% content-ref url="active-directory-pt/ad-post-compromise-attacks/as-rep-roasting.md" %}
+[as-rep-roasting.md](active-directory-pt/ad-post-compromise-attacks/as-rep-roasting.md)
+{% endcontent-ref %}
+
+
+
+
 
 
 
