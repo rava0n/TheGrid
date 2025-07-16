@@ -12,7 +12,18 @@ To find the hashcat code for a specific hash type search in this link :
 
 {% embed url="https://hashcat.net/wiki/doku.php?id=example_hashes" %}
 
-## Crack NTLMv2
+## Crack NTLM
+
+### NTLM
+
+Copy the NTLM inside a file and crack it with hashcat.
+
+```bash
+# crack NTML
+hashcat -a 3 -m 1000 file.txt /PATH/TO/rockyou.txt
+```
+
+### NTLMv2
 
 Copy the NTLMv2 inside a file
 

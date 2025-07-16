@@ -2,7 +2,7 @@
 
 A Pass-the-Hash (PtH) attack is a credential theft technique primarily targeting Windows-based systems. In this attack, an attacker obtains the hashed password of a user and uses it to authenticate as that user, bypassing the need for the actual plain-text password.
 
-[#pass-the-hash-attack](../../executive-pt/post-exploitation/windows-post-exploitation/windows-dump-crack-hashes.md#pass-the-hash-attack "mention")
+[Broken link](broken-reference "mention")
 
 ## Authentication through the stolen password hash
 

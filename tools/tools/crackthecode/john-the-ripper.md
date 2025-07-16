@@ -4,7 +4,11 @@ John the Ripper is a fast **password cracker**, currently available for many fla
 
 
 
-##
+## NTLM
+
+```bash
+john --format=NT file.txt --wordlist=/PATH/TO/rockyou.txt
+```
 
 ## zip2john
 

