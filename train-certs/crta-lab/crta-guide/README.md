@@ -385,8 +385,11 @@ sudo nano /etc/hosts
 
 #### Get Domain infomation
 
-```bash
-impacket-GetADDomain CHILD_DOMAIN/user:pass -dc-ip <child_dc_ip>
+Get a shell with evil-winrm and run this commands on a Windows Machine:
+
+```powershell
+nltest /trusted_domains
+nltest /dclist:parent.com
 ```
 
 #### Get KRBTGT Hash

