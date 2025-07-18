@@ -383,6 +383,12 @@ sudo nano /etc/hosts
 
 ### Craft a Golden Ticket
 
+#### Get Domain infomation
+
+```bash
+impacket-GetADDomain CHILD_DOMAIN/user:pass -dc-ip <child_dc_ip>
+```
+
 #### Get KRBTGT Hash
 
 We are local administrator in the Child Domain Controller. Let's extract the&#x20;hash of “**krbtgt**” account using `impacket-secretsdump` tool. We will forge&#x20;a golden ticket to compromise the Parent Domain Controller.
