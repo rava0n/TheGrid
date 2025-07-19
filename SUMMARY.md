@@ -223,5 +223,6 @@
     * [Temp1](train-certs/crta-lab/crta-guide/temp1.md)
   * [Preparation Lab](train-certs/crta-lab/preparation-lab.md)
   * [CRTA Exam](train-certs/crta-lab/crta-exam/README.md)
+    * [A](train-certs/crta-lab/crta-exam/a.md)
     * [192.168.X.X/24](train-certs/crta-lab/crta-exam/192.168.x.x-24.md)
     * [192.168.X.X/24](train-certs/crta-lab/crta-exam/192.168.x.x-24-1.md)
