@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # CRTA Exam
 
 ## Information
