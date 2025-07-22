@@ -52,17 +52,13 @@ gobuster dir -u http://172.26.10.11:8091/ -w /usr/share/wordlists/SecLists/Disco
 ```
 {% endcode %}
 
-Login brute force with 401 error code
 
-{% code overflow="wrap" %}
-```bash
-hydra -l user -p pass 192.168.0.107 -s 3000 http-post-form "/rest/user/login:email=^USER^&password=^PASS^:F=Invalid" -V
-```
-{% endcode %}
 
 
 
 ### Credentials discovery
+
+<figure><img src="../../../.gitbook/assets/image (299).png" alt=""><figcaption></figcaption></figure>
 
 ```
 http://172.26.10.11:23100/fetch?url=file:///hostfs/etc/passwd
