@@ -72,7 +72,7 @@ bloodhound-python -c all -ns 10.10.11.72 -dc tombwatcher.htb -d tombwatcher.htb 
 
 As we can see bellow, there is a kerberoastable user.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```bash
@@ -185,7 +185,7 @@ Get-ADOptionalFeature -Filter * | ? {$_.Name -match "Recycle Bin"}
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As we can see the Recycle Bin is enabled.
 
@@ -196,7 +196,7 @@ Get-ADObject -IncludeDeletedObjects -Filter {Isdeleted -eq $true}
 
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Yes, there is a `cert_admin` account that probably manages the AD CA.
 
@@ -218,7 +218,7 @@ bloodhound-python -c all -ns 10.10.11.72 -dc tombwatcher.htb -d tombwatcher.htb 
 
 Uploading update datas into bloodhound we can see that `John` has `GenericAll` rights to `CERT_ADMIN` account.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Force the password change with John user
 

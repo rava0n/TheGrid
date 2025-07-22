@@ -180,7 +180,7 @@ ssh -L 9898:10.10.11.74:9898 gael@10.10.11.74
 
 Now we can view the local hosted port 8989 in our machine
 
-<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Backrest 1.7.2 - Backup Solution
 
@@ -262,13 +262,13 @@ backrest_root:!@#$%^
 
 We login into Backrest portal
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now we can try to set up Backrest and run commands to escalate the privileges
 
 Create a Backrest Repository
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 And now create a Plan with `root` directory.
 

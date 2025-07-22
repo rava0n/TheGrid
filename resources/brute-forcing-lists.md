@@ -18,6 +18,7 @@ sudo wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Disco
 **For Directory:**
 
 ```
+/usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt
 /usr/share/wordlists/dirb/common.txt
 /usr/share/wordlists/dirb/big.txt
 /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
@@ -25,10 +26,11 @@ sudo wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Disco
 
 **For File:**
 
-```
-/usr/share/wordlists/SecLists/raft-large-files.txt
-/usr/share/wordlists/dirb/common.txt
-```
+<pre><code>/usr/share/wordlists/SecLists/Discovery/Web-Content/raft-large-files.txt
+<strong>/usr/share/wordlists/SecLists/raft-large-files.txt
+</strong>/usr/share/wordlists/dirb/common.txt
+/usr/share/wordlists/SecLists/Discovery/Web-Content/versioning_metafiles.txt
+</code></pre>
 
 ### Subdomain
 
