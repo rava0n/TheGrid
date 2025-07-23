@@ -64,6 +64,12 @@ Check all input inside the web app, possible vulnerability:
 [command-injection.md](executive-pt/enumeration-exploitation/web/common-web-vuln/command-injection.md)
 {% endcontent-ref %}
 
+* SSTI
+
+{% content-ref url="executive-pt/enumeration-exploitation/web/common-web-vuln/ssti.md" %}
+[ssti.md](executive-pt/enumeration-exploitation/web/common-web-vuln/ssti.md)
+{% endcontent-ref %}
+
 
 
 ## Web Enumeration
