@@ -237,5 +237,6 @@
     * [Billing](train-certs/pt1/web/billing.md)
     * [Rabbit Store](train-certs/pt1/web/rabbit-store.md)
     * [Silver Platter](train-certs/pt1/web/silver-platter.md)
+    * [AVenger](train-certs/pt1/web/avenger.md)
   * [Network](train-certs/pt1/network.md)
   * [AD](train-certs/pt1/ad.md)
