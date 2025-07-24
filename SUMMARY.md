@@ -236,5 +236,6 @@
     * [Pickle Rick](train-certs/pt1/web/pickle-rick.md)
     * [Billing](train-certs/pt1/web/billing.md)
     * [Rabbit Store](train-certs/pt1/web/rabbit-store.md)
+    * [Silver Platter](train-certs/pt1/web/silver-platter.md)
   * [Network](train-certs/pt1/network.md)
   * [AD](train-certs/pt1/ad.md)

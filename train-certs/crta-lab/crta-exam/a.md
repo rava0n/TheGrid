@@ -18,6 +18,9 @@ ps aux | grep
 cd /var/log
 grep -rEo '([0-9]{1,3}\.){3}[0-9]{1,3}' . | sort | uniq
 
+# find password into log
+cat /var/log/auth* | grep -i --text "pass"
+
 # Check if the user connected out to another machine:
 cat ~/.ssh/known_hosts
 cat ~/.ssh/config
@@ -35,13 +38,13 @@ grep -rEo '([0-9]{1,3}\.){3}[0-9]{1,3}' /etc/*
 
 
 
-<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
-<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

