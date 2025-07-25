@@ -45,7 +45,7 @@
 ## pt
 
 * [Starter Kit](pt/starter-kit.md)
-* [Step-by-Step Windows Machine](pt/step-by-step-windows-machine.md)
+* [Step-by-Step AD/Windows Machine](pt/step-by-step-ad-windows-machine.md)
 * [Step-by-Step Linux Machine](pt/step-by-step-linux-machine.md)
 * [Step-by-Step Web Site](pt/step-by-step-web-site.md)
 * [Executive PT](pt/executive-pt/README.md)
@@ -82,7 +82,8 @@
     * [Linux - Enum/Exploitation](pt/executive-pt/enumeration-exploitation/linux-enum-exploitation.md)
   * [Post Exploitation](pt/executive-pt/post-exploitation/README.md)
     * [Payload Development](pt/executive-pt/post-exploitation/payload-development.md)
-    * [Shells](pt/executive-pt/post-exploitation/shells.md)
+    * [Shells](pt/executive-pt/post-exploitation/shells/README.md)
+      * [Shells for AV Bypass](pt/executive-pt/post-exploitation/shells/shells-for-av-bypass.md)
     * [Trasferring Files](pt/executive-pt/post-exploitation/trasferring-files.md)
     * [Upgrading Non-Interactive Shells](pt/executive-pt/post-exploitation/upgrading-non-interactive-shells.md)
     * [Zip Cracking](pt/executive-pt/post-exploitation/zip-cracking.md)

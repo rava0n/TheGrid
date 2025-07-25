@@ -121,8 +121,8 @@ Enter-PSSession $DC_NAME
 
 Or create a bind/rev shell into domain controller with NC.
 
-{% content-ref url="../../executive-pt/post-exploitation/shells.md" %}
-[shells.md](../../executive-pt/post-exploitation/shells.md)
+{% content-ref url="../../executive-pt/post-exploitation/shells/" %}
+[shells](../../executive-pt/post-exploitation/shells/)
 {% endcontent-ref %}
 
 #### Futher info of stolen account

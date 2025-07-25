@@ -1,6 +1,8 @@
-# Step-by-Step Windows Machine
+# Step-by-Step AD/Windows Machine
 
-## Without Credential
+## Initial Access
+
+### Without Credential
 
 * Enum4Linux&#x20;
 
@@ -34,9 +36,7 @@ enum4linux-ng IP
 
 
 
-
-
-## With Credentials
+### With Credentials
 
 Enumeration:
 
@@ -64,7 +64,15 @@ enum4linux-ng -u USER -p PASS IP
 
 
 
+
+
 ## PrivEsc:
+
+* Local Enumeration
+
+{% content-ref url="executive-pt/post-exploitation/windows-post-exploitation/windows-local-enumeration.md" %}
+[windows-local-enumeration.md](executive-pt/post-exploitation/windows-post-exploitation/windows-local-enumeration.md)
+{% endcontent-ref %}
 
 * WinPeas
 * Privs (whoami /priv)
