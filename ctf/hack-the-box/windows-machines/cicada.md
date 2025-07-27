@@ -236,7 +236,7 @@ whoami /priv
 
 ### Exploit SeBackupPrivilege
 
-[#sebackupprivilege](../../../pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/whoami-priv.md#sebackupprivilege "mention")
+[#sebackupprivilege](../../../pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/abuse-privilege.md#sebackupprivilege "mention")
 
 The <kbd>SeBackupPrivilege</kbd> allow us to read all system files.
 

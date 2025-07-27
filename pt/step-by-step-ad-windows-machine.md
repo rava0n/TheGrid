@@ -68,7 +68,7 @@ enum4linux-ng -u USER -p PASS IP
 
 ## PrivEsc:
 
-* Local Enumeration
+* Local Enumeration ( Get all possible informations)
 
 {% content-ref url="executive-pt/post-exploitation/windows-post-exploitation/windows-local-enumeration.md" %}
 [windows-local-enumeration.md](executive-pt/post-exploitation/windows-post-exploitation/windows-local-enumeration.md)

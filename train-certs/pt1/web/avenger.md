@@ -172,8 +172,8 @@ Reading this article, we have a method to bypass the AV.
 
 {% embed url="https://systemweakness.com/evade-windows-defender-reverse-shell-detection-6fa9f5eee1d1" %}
 
-{% content-ref url="../../../pt/executive-pt/post-exploitation/shells/shells-for-av-bypass.md" %}
-[shells-for-av-bypass.md](../../../pt/executive-pt/post-exploitation/shells/shells-for-av-bypass.md)
+{% content-ref url="../../../pt/executive-pt/post-exploitation/shells/av-bypass-shell.md" %}
+[av-bypass-shell.md](../../../pt/executive-pt/post-exploitation/shells/av-bypass-shell.md)
 {% endcontent-ref %}
 
 Follow the above pages we obtained the reverse shell bypassing Windows Defender.
@@ -245,7 +245,9 @@ evil-winrm -i 10.10.15.209 -u 'hugo' -p 'SurpriseMF123!'
 
 Bypass UAC to run program with Administrator privilege.
 
-{% embed url="https://0xb0b.gitbook.io/writeups/tryhackme/2023/avenger" %}
+Follow this page:
 
-{% embed url="https://momrulhasan.medium.com/avenger-tryhackme-walkthrough-bypassing-antivirus-and-gaining-full-system-access-01e705b4da92" %}
+{% content-ref url="../../../pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/uac-bypass.md" %}
+[uac-bypass.md](../../../pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/uac-bypass.md)
+{% endcontent-ref %}
 

@@ -73,6 +73,16 @@ type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr
 
 </details>
 
+<details>
+
+<summary>Auto Logon Credentials</summary>
+
+```powershell
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"
+```
+
+</details>
+
 ### Retrive from Softwares
 
 <details>
