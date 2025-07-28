@@ -11,8 +11,20 @@ enum4linux-ng IP
 ```
 
 * SMB anonymous login
+
+```bash
+smbclient -L //10.10.178.64 -N
+smbclient -N //10.10.178.64/Data
+```
+
 * LDAP anonymous informations
 * Web Page&#x20;
+
+If all of these techniques doens't work we have to try to catch some NTLM hash credentials or some like this.
+
+{% content-ref url="active-directory-pt/ad-initial-attack-vectors/" %}
+[ad-initial-attack-vectors](active-directory-pt/ad-initial-attack-vectors/)
+{% endcontent-ref %}
 
 ### Anonymous allowing
 

