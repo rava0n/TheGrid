@@ -1,10 +1,5 @@
 # AS-REP Roasting
 
-The AS-REP Roasting technique enables attackers to acquire password hashes of user accounts that have **deactivated** Kerberos pre-authentication. This method entails transmitting an Authentication Server Request (AS-REQ) message to the domain controller (DC). If pre-authentication is disabled, the DC will return an AS-REP message containing encrypted data, including a segment encrypted with the user's password hash. Subsequently, the attacker can utilize this information to attempt cracking the user's password offline.
-
-**AS-REP Roasting** is a technique used to exploit a weakness in the Kerberos authentication procotol.\
-In the Kerberos protocol, when a user wants to authenticate to a service, they send an **Authentication Service request (AS-REQ)**  to the **Key Authentication Service reply (AS-REP)**, which includes a **ticket-granting ticket (TGT)**. The TGT is encrypted using the user's password hash.
-
 AS-REP Roasting takes advantage of the fact that some user accounts in AD may have the "**Do not require Kerberos preauthentication**" option **enabled**. This option allows the AS-REP to be requested without the need for the user's password.
 
 #### AS-REP Roasting Method:
@@ -40,6 +35,12 @@ Get-DomainUser -PreauthNotRequired -verbose
 .\Rubeus.exe asreproast
 ```
 
+### Detect with Impacket (linux)
+
+```bash
+impacket-GetNPUUsers.py $DOMAIN/ -dc-ip $DC_IP 
+```
+
 
 
 ## AS-REP Attack
@@ -67,15 +68,7 @@ The **GetNPUsers.py** script from Impacket can be used to request a TGT ticket a
 
 {% embed url="https://github.com/fortra/impacket/blob/master/examples/GetNPUsers.py" %}
 
-Clone the script in your kali machine and use it with opportune flags.
-
-```bash
-git clone https://github.com/fortra/impacket/blob/master/examples/GetNPUsers.py
-```
-
-```bash
-GetNPUsers.py $DOMAIN_NAME.local/$USER -dc-ip $DC_IP -no-pass
-```
+With the users found in the previous part, run this command.
 
 ```bash
 impacket-GetNPUsers $DOMAIN/$USER -dc-ip $DC_IP -dc-host $DOMAIN -no-pass

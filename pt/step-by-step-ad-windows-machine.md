@@ -18,15 +18,19 @@ smbclient -N //10.10.178.64/Data
 ```
 
 * LDAP anonymous informations
-* Web Page&#x20;
 
-If all of these techniques doens't work we have to try to catch some NTLM hash credentials or some like this.
+```
+# query for Name and Description (sometimes we can find passowrds)
 
-{% content-ref url="active-directory-pt/ad-initial-attack-vectors/" %}
-[ad-initial-attack-vectors](active-directory-pt/ad-initial-attack-vectors/)
+```
+
+{% content-ref url="active-directory-pt/ad-enumeration/ldap.md" %}
+[ldap.md](active-directory-pt/ad-enumeration/ldap.md)
 {% endcontent-ref %}
 
-### Anonymous allowing
+* Web Page&#x20;
+
+#### Anonymous allowing
 
 * Enum AD with Kerbrute
 
@@ -34,17 +38,35 @@ If all of these techniques doens't work we have to try to catch some NTLM hash c
 [kerbrute.md](active-directory-pt/ad-initial-attack-vectors/kerbrute.md)
 {% endcontent-ref %}
 
-* Try get Kerberostable and ASREP Roastable users
+* Try get Kerberostable users
+
+{% code overflow="wrap" %}
+```bash
+impacket-GetUserSPNs -request -dc-ip $DC_IP $DOMAIN.local/ -outputfile hashes.kerberoast
+```
+{% endcode %}
 
 {% content-ref url="active-directory-pt/ad-post-compromise-attacks/kerberoasting.md" %}
 [kerberoasting.md](active-directory-pt/ad-post-compromise-attacks/kerberoasting.md)
 {% endcontent-ref %}
+
+* Try to get ASREP Roastable users
+
+```bash
+impacket-GetNPUUsers.py $DOMAIN/ -dc-ip $DC_IP 
+```
 
 {% content-ref url="active-directory-pt/ad-post-compromise-attacks/as-rep-roasting.md" %}
 [as-rep-roasting.md](active-directory-pt/ad-post-compromise-attacks/as-rep-roasting.md)
 {% endcontent-ref %}
 
 
+
+If all of these techniques doens't work we have to try to catch some NTLM hash credentials or some like this.
+
+{% content-ref url="active-directory-pt/ad-initial-attack-vectors/" %}
+[ad-initial-attack-vectors](active-directory-pt/ad-initial-attack-vectors/)
+{% endcontent-ref %}
 
 
 
@@ -61,6 +83,14 @@ enum4linux-ng -u USER -p PASS IP
 * SMB Shares
 * Bloodhound ( or Find **Kerberostable**, **AS-Roastable** accounts)
   * Check the information from "Node Info" of initial user.
+* AD CS vuln template
+
+```bash
+certipy find -u 'billy@foobar.com' -p <password> -dc-ip <DC_IP> -vulnerable -enabled
+
+cat *_Certipy.txt | grep ESC
+```
+
 * Impacket-secretsdump
   * Pass-the-Hash / Pass-the-Password
 * WinRM connection

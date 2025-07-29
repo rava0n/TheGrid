@@ -123,6 +123,10 @@ Follow the page below to use this technique to get administrator access to the D
 
 
 
+## AD CS common errors
+
+{% embed url="https://sensepost.com/blog/2025/diving-into-ad-cs-exploring-some-common-error-messages/" %}
+
 
 
 

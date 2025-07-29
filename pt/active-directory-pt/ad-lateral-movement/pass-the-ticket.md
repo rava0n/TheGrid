@@ -75,7 +75,9 @@ This is the output files:
 
 The kerberos ticket is the file within "_krgtgt_" in the name.&#x20;
 
-### Reusing the ticket
+## Reusing the ticket
+
+### Mimikatz
 
 In this step, the attacker employs the **Mimikatz** command `kerberos::ptt` to insert the obtained TGT into their own session, resulting in their session taking on the **identity** and **permissions** of the stolen TGT for future access to resources **without knowing the plaintext credentials**.
 
@@ -100,7 +102,11 @@ mimikatz.exe "kerberos::list"
 klist
 ```
 
-### Discovering privileges of the stolen ticket
+
+
+
+
+## Discovering privileges of the stolen ticket
 
 #### Domain Controller access check
 
