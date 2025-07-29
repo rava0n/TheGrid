@@ -48,6 +48,14 @@ While you can't see the actual passwords, if you notice any credentials worth tr
 runas /savecred /user:admin cmd.exe
 ```
 
+***
+
+This directory contain all credentials saved by Windows
+
+```
+cd C:\Windows\System32\config
+```
+
 </details>
 
 <details>

@@ -192,5 +192,7 @@ more flag2.txt
 
 flag3? _This flag can be found in an excellent location to loot. After all, Administrators usually have pretty interesting things saved._&#x20;
 
-```
+```powershell
+cd C:\Users\Jon\Documents
+more flag3.txt
 ```
