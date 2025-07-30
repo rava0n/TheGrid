@@ -12,3 +12,4 @@
 
 {% embed url="https://tryhackme.com/room/avenger" %}
 
+{% embed url="https://tryhackme.com/room/owaspjuiceshop" %}

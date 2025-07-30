@@ -112,7 +112,7 @@ cat *_Certipy.txt | grep ESC
 
 #### Kerberos User enumeration
 
-* Verify users in the domain
+* Verify users exist in the domain
 
 ```bash
 ./kerbrute_linux_amd64 userenum users.txt --domain DOMAIN.local --dc <IP>

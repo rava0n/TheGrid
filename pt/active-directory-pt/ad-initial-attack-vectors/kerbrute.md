@@ -2,6 +2,10 @@
 
 Kerberos is a key authentication service within Active Directory. With this port open, we can use a tool called [Kerbrute](https://github.com/ropnop/kerbrute/releases) to brute force discovery of users, passwords and even password spray!
 
+Unlike traditional brute force attacks that flood login portals and generate excessive failed login attempts, Kerbrute operates directly against the Kerberos service (KDC), often bypassing basic account lockout policies and avoiding detection by traditional security controls.
+
+
+
 
 
 ## Installation

