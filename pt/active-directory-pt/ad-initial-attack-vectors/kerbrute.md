@@ -27,3 +27,11 @@ chmod +x kerbrute_linux_amd64
 
 
 
+### UserCheck
+
+Verify a list of possible AD user into domain.
+
+```bash
+./kerbrute_linux_amd64 userenum users.txt --domain DOMAIN.local --dc <IP>
+```
+

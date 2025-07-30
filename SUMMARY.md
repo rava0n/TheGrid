@@ -254,5 +254,7 @@
   * [AD](train-certs/pt1/ad/README.md)
     * [Reset](train-certs/pt1/ad/reset.md)
     * [Ledger](train-certs/pt1/ad/ledger.md)
+    * [K2](train-certs/pt1/ad/k2/README.md)
+      * [Base Camp](train-certs/pt1/ad/k2/base-camp.md)
   * [Network](train-certs/pt1/network/README.md)
     * [Blue](train-certs/pt1/network/blue.md)

@@ -19,10 +19,12 @@ smbclient -N //10.10.178.64/Data
 
 * LDAP anonymous informations
 
+{% code overflow="wrap" %}
 ```
 # query for Name and Description (sometimes we can find passowrds)
-
+ldapsearch -x -H ldap://<TARGET_IP> -b "dc=example,dc=com" "(objectClass=user)" cn description
 ```
+{% endcode %}
 
 {% content-ref url="active-directory-pt/ad-enumeration/ldap.md" %}
 [ldap.md](active-directory-pt/ad-enumeration/ldap.md)
@@ -103,6 +105,22 @@ cat *_Certipy.txt | grep ESC
 
 * FTP connection
 * SSH connection
+
+
+
+## AD Enum
+
+#### Kerberos User enumeration
+
+* Verify users in the domain
+
+```bash
+./kerbrute_linux_amd64 userenum users.txt --domain DOMAIN.local --dc <IP>
+```
+
+{% content-ref url="active-directory-pt/ad-initial-attack-vectors/kerbrute.md" %}
+[kerbrute.md](active-directory-pt/ad-initial-attack-vectors/kerbrute.md)
+{% endcontent-ref %}
 
 
 
