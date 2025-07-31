@@ -55,7 +55,7 @@ sudo mitm6 -d DOMAIN
 
 If the attack will successfull we would have our loot directory with all data.
 
-<figure><img src="../../../.gitbook/assets/image (7) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -65,7 +65,7 @@ When a victim user login into his machine, the tool `mitm6` will try to create a
 
 For the information check the output of the tool when a user loggins.
 
-<figure><img src="../../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

@@ -136,7 +136,7 @@ Lastly upload the file into SMB share from SMB share session.
 put meeting.lnk
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now  that we have AUTOMATE hash, we can try to crack it.
 
@@ -170,7 +170,7 @@ bloodhound-python -c all -ns 10.10.184.120 -dc HayStack.thm.corp -d thm.corp --z
 
 Get the AS-REP reastable user from Bloodhound query:
 
-<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Get the TGT of these users with impacket:
 
@@ -197,13 +197,13 @@ Set this user as Owned in the Bloodhound graph
 
 Try to create a pathfinding from `TABATHA_BRITT` to `ADMINISTRATORS` we obtain this from the query.
 
-<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
 ### GenericAll to SHAWNA\_BRAY user
 
-<figure><img src="../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 With these rights we can force the SHAWNA\_BRAY's password.
 
@@ -218,7 +218,7 @@ setuserinfo2 SHAWNA_BRAY 23 'Password123!'
 
 ### ForceChangePassword to CRUZ\_HALL user
 
-<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 We can change the CRUZ\_HALL's password
 
@@ -233,7 +233,7 @@ setuserinfo2 CRUZ_HALL 23 'Password123!'
 
 ### ForceChangePassword to DARLA\_WINTERS user
 
-<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```
 rpcclient -U THM/CRUZ_HALL 10.10.184.120
