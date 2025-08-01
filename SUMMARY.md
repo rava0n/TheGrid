@@ -158,6 +158,7 @@
       * [ForceChangePassword rights](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/forcechangepassword-rights.md)
       * [AllowedToDelegate](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/allowedtodelegate.md)
       * [AddMember](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/addmember.md)
+      * [Resource-Based Constrained Delegation](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/resource-based-constrained-delegation.md)
     * [LNK File Attacks](pt/active-directory-pt/ad-post-compromise-attacks/lnk-file-attacks.md)
     * [PrintNightmare (CVE-2021-1675)](pt/active-directory-pt/ad-post-compromise-attacks/printnightmare-cve-2021-1675.md)
   * [AD Lateral Movement](pt/active-directory-pt/ad-lateral-movement/README.md)
@@ -262,3 +263,4 @@
       * [Summit](train-certs/pt1/ad/k2/summit.md)
   * [Network](train-certs/pt1/network/README.md)
     * [Blue](train-certs/pt1/network/blue.md)
+    * [Lookback](train-certs/pt1/network/lookback.md)

