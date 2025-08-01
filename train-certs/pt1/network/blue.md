@@ -111,7 +111,7 @@ service postgresql start && msfconsole
 search ms17-010
 ```
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Use the first module which we found.
 

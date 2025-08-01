@@ -79,6 +79,7 @@
       * [Port 1433 - MSSQL](pt/executive-pt/enumeration-exploitation/windows-enum-exploitation/port-1433-mssql.md)
       * [Port 3389 - RDP](pt/executive-pt/enumeration-exploitation/windows-enum-exploitation/port-3389-rdp.md)
       * [Port 5985-5986 - WinRM](pt/executive-pt/enumeration-exploitation/windows-enum-exploitation/port-5985-5986-winrm.md)
+      * [MS Exchange](pt/executive-pt/enumeration-exploitation/windows-enum-exploitation/ms-exchange.md)
     * [Linux - Enum/Exploitation](pt/executive-pt/enumeration-exploitation/linux-enum-exploitation.md)
   * [Post Exploitation](pt/executive-pt/post-exploitation/README.md)
     * [Payload Development](pt/executive-pt/post-exploitation/payload-development.md)

