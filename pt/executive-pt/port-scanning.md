@@ -12,6 +12,15 @@ nmap -A -sU --script=*enum* -oN udp_top_1000.txt IP
 ```
 {% endcode %}
 
+{% code title="" %}
+```bash
+nmap -sN IP
+# -sN: Null scan 
+
+
+```
+{% endcode %}
+
 ```bash
 ## Generic Scan
 nmap -Pn -F -sV -sC -p- IP -O -oA output.txt

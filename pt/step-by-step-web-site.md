@@ -2,10 +2,15 @@
 
 
 
-## Dir/File fuzzing
+## Sensitive Data Exposure
 
-{% content-ref url="executive-pt/enumeration-exploitation/web/" %}
-[web](executive-pt/enumeration-exploitation/web/)
+* Fuzzing
+* Manual searching&#x20;
+
+### Dir/File fuzzing
+
+{% content-ref url="executive-pt/enumeration-exploitation/web/web-enumeration.md" %}
+[web-enumeration.md](executive-pt/enumeration-exploitation/web/web-enumeration.md)
 {% endcontent-ref %}
 
 
@@ -46,6 +51,10 @@ Now we can see if there are some juicy request for LFI or IDOR vulnerability.
 
 Check all input inside the web app, possible vulnerability:
 
+The imput type could be: Login Page, Search bar,&#x20;
+
+
+
 * SQL Injection
 
 {% content-ref url="executive-pt/enumeration-exploitation/web/common-web-vuln/sql-injection.md" %}
@@ -69,6 +78,18 @@ Check all input inside the web app, possible vulnerability:
 {% content-ref url="executive-pt/enumeration-exploitation/web/common-web-vuln/ssti.md" %}
 [ssti.md](executive-pt/enumeration-exploitation/web/common-web-vuln/ssti.md)
 {% endcontent-ref %}
+
+
+
+## Broken Authentication
+
+For this vulnerability we have to look these:
+
+* **Password's reset method** (If easy like a trivial question we can try to guess it)
+* Allow us to **perform brute-force**
+*
+
+{% embed url="https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication.html" %}
 
 
 

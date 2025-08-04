@@ -65,9 +65,11 @@ sudo wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Disco
 
 ```bash
 # kali
-/usr/share/metasploit-framework/data/wordlists/unix_passwords.txtù
+/usr/share/wordlists/rockyou.txt
+/usr/share/metasploit-framework/data/wordlists/unix_passwords.txt
 /usr/share/wordlists/metasploit/root_userpass.txt
 /usr/share/nmap/nselib/data/passwords.lst
+/usr/share/wordlists/SecLists/Passwords/Common-Credentials/best1050.txt
 ```
 
 ### Password Generator Tools
