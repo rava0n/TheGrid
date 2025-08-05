@@ -240,7 +240,7 @@ Now that we have a LDAP-SHELL we can use the function `change_password` to chang
 change_password BRADLEY_ORTIZ Password123!
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## RDP as administrator user
 
@@ -250,4 +250,4 @@ xfreerdp3 /v:10.10.102.159 /u:BRADLEY_ORTIZ /p:Password123!
 
 Run as Powershell as administrator and print the user and root flag.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>

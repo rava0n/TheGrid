@@ -130,8 +130,8 @@ cat *_Certipy.txt | grep ESC
 
 * Local Enumeration ( Get all possible informations)
 
-{% content-ref url="executive-pt/post-exploitation/windows-post-exploitation/windows-local-enumeration.md" %}
-[windows-local-enumeration.md](executive-pt/post-exploitation/windows-post-exploitation/windows-local-enumeration.md)
+{% content-ref url="executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/windows-local-enumeration.md" %}
+[windows-local-enumeration.md](executive-pt/post-exploitation/windows-post-exploitation/windows-privilege-escalation/windows-local-enumeration.md)
 {% endcontent-ref %}
 
 * WinPeas

@@ -7,12 +7,12 @@ Read very well the RoE for this section
 ## Navigating and Map the WebApplication
 
 * Navigate and explore ALL:&#x20;
-  * Page
-  * Functions
+  * Pages
+  * Variable (URL, POST in request, ect)
+  * Input for view data
+  * Input for store data&#x20;
   * API
   * Form
-  * Input insert
-  * Variable (URL, POST req, ect)
 
 Write them into a Note.
 
