@@ -108,7 +108,7 @@ In search bar insert this payload (search bar change the DOM)
 
 Stored XSS
 
-Use function /saveLodonIP when a user click on Logout funcion and add this header to store the XSS payload in the "Last Logon IP" page.
+Use function /saveLogonIP when a user click on Logout funcion and add this header to store the XSS payload in the "Last Logon IP" page.
 
 ```
 True-Client-IP: <iframe src="javascript:alert(`xss`)">
