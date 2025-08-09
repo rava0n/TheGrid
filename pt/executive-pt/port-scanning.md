@@ -7,12 +7,15 @@
 # TCP
 nmap -T4 -A -p- --min-rate 1000 --open -oN port_scan.txt IP
 
+# UDP 
+nmap -T4 -A -sU --top-ports 200 --max-retries 1 --host-timeout 30m --open -oN udp_scan.txt IP
+
 # UDP Top 1000
 nmap -A -sU --script=*enum* -oN udp_top_1000.txt IP 
 ```
 {% endcode %}
 
-{% code title="" %}
+{% code title="Stealth scan" %}
 ```bash
 nmap -sN IP
 # -sN: Null scan 

@@ -87,7 +87,11 @@ For this vulnerability we have to look these:
 
 * **Password's reset method** (If easy like a trivial question we can try to guess it)
 * Allow us to **perform brute-force**
-*
+* Possible admin boolean parameters in the HTTP request
+
+{% content-ref url="executive-pt/enumeration-exploitation/web/common-web-vuln/broken-access-control.md" %}
+[broken-access-control.md](executive-pt/enumeration-exploitation/web/common-web-vuln/broken-access-control.md)
+{% endcontent-ref %}
 
 {% embed url="https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication.html" %}
 

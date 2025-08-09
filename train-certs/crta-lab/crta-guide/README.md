@@ -1,6 +1,6 @@
 # CRTA Guide
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 | Network         | Description      |
 | --------------- | ---------------- |
@@ -33,7 +33,7 @@ Now sign in to the site and using **Burp Proxy** (HTTP history) navigate through
 
 Then, check the possible Command Execution in the all website input field.
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 First, check the /etc/passwd file for possible clear-text credentials or hash of other priv users.
 

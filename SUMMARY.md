@@ -36,7 +36,6 @@
 ## Bug Hunting
 
 * [OSINT](bug-hunting/osint/README.md)
-  * [Subdomain Enumeration](bug-hunting/osint/subdomain-enumeration.md)
   * [Google Dorking](bug-hunting/osint/google-dorking.md)
   * [Email Discovery](bug-hunting/osint/email-discovery.md)
   * [Passwords Leaked](bug-hunting/osint/passwords-leaked.md)
@@ -50,6 +49,7 @@
 * [Step-by-Step Web Site](pt/step-by-step-web-site.md)
 * [Executive PT](pt/executive-pt/README.md)
   * [Host Discovery](pt/executive-pt/host-discovery.md)
+  * [Subdomain Enumeration](pt/executive-pt/subdomain-enumeration.md)
   * [Port Scanning](pt/executive-pt/port-scanning.md)
   * [Enumeration - Exploitation](pt/executive-pt/enumeration-exploitation/README.md)
     * [WEB](pt/executive-pt/enumeration-exploitation/web/README.md)
@@ -57,6 +57,7 @@
       * [Web Services](pt/executive-pt/enumeration-exploitation/web/web-services.md)
       * [Web Exploitations](pt/executive-pt/enumeration-exploitation/web/web-exploitations.md)
       * [Common Web Vuln](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/README.md)
+        * [Broken Access Control](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/broken-access-control.md)
         * [IDOR](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/idor.md)
         * [File Inclusion - LFI/RFI/Path trav](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/file-inclusion-lfi-rfi-path-trav.md)
         * [SSRF](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/ssrf.md)
