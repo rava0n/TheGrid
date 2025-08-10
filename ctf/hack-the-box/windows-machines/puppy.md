@@ -362,7 +362,7 @@ Extract masterkey using steph.cooper's `SID` and `password`.
 
 We can view in the BloodHound that the user is inside the `Administrators` group.
 
-<figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (28) (1).png" alt=""><figcaption></figcaption></figure>
 
 Access as a `steph.cooper_adm` into DC using `evil-winrm`.
 

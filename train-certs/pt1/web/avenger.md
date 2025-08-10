@@ -243,7 +243,7 @@ We found hugo's credential . With this creds we can logon via RDP and run Powers
 xfreerdp3 /v:10.10.26.184 /u:hugo /p:SurpriseMF123!
 ```
 
-<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

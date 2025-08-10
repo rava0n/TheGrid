@@ -66,7 +66,7 @@ Download the package to link
 http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/
 ```
 
-<figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29) (1).png" alt=""><figcaption></figcaption></figure>
 
 Download the highlighted file on `/tmp` directory.
 

@@ -32,7 +32,7 @@ sudo responder -I eth0 -dwP
 
 When a user sends us his credentials, save into a file.
 
-<figure><img src="../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% code title="hashes.txt" overflow="wrap" %}
 ```

