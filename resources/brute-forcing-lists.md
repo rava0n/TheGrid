@@ -49,6 +49,10 @@ sudo wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Disco
 /usr/share/spiderfoot/spiderfoot/dicts/subdomains-10000.txt
 ```
 
+## Email
+
+{% embed url="https://github.com/nyxgeek/username-lists/blob/master/usernames-top100/usernames_gmail.com.txt" %}
+
 ## Usernames
 
 ```

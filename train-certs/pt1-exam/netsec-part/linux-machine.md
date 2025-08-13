@@ -58,7 +58,7 @@ The /redoc page shows the service which running in the server.
 
 
 
-### Command Injection
+### Service version Outdated
 
 This version is vulnerable to RCE, inject command to establish a Reverse Shell.
 

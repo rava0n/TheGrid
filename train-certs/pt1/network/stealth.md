@@ -66,7 +66,7 @@ PORT      STATE SERVICE       VERSION
 
 ## Web Enumeration
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Try to upload a ps1 with a reverse shell to understand what is blocked and what not.
 
@@ -131,7 +131,7 @@ listeners add -i tun0 -p 13337
 
 We got a shell without anything restrictions
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Looking inside the evader's desktop we can view this file:
 

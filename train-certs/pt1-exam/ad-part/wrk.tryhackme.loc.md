@@ -71,7 +71,7 @@ Nmap done: 1 IP address (1 host up) scanned in 176.06 seconds
 
 ### 8080 - Apache Tomcat
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 The version 8.5.50 doesn't seem vulnerable.
 
@@ -101,7 +101,7 @@ Apache Tomcat Host Manager (web)	xampp	xampp
 
 With the `tomcat : s3cret`  creds we are in.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Craft WAR payload with msfvenom
 
@@ -117,9 +117,9 @@ nc -lvnp 9009
 
 Upload the WAR payload and then open the application from the Management page
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 We dive into this page and a connection has been establish
 
