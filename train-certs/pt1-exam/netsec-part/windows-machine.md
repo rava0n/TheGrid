@@ -206,3 +206,9 @@ more C:\Users\Administrator\root.txt
 
 THM{8697b02c-4577-4781-91ba-107d323e49b0}
 ```
+
+
+
+## For mitigation
+
+{% embed url="https://learn.microsoft.com/en-us/answers/questions/1087721/how-to-disable-seimpersonate-privilege-for-a-user" %}
