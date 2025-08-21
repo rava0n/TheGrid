@@ -1,9 +1,37 @@
 # Subdomain Enumeration
 
-## Utils Tools
+## Utils Tools to Enumerate
 
-* subfinder
+### Assetfinder
+
+Find domains and subdomains potentially related to a given domain.\
+Sources:
+
 * crt.sh
+* certspotter
+* hackertarget
+* threatcrowd
+* wayback machine
+* dns.bufferover.run
+* facebook
+  * Needs `FB_APP_ID` and `FB_APP_SECRET` environment variables set&#x20;
+  * You need to be careful with your app's rate limits
+* virustotal
+  * Needs `VT_API_KEY` environment variable set&#x20;
+* findsubdomains
+  * Needs `SPYSE_API_TOKEN` environment variable set
+
+#### Installation
+
+```bash
+go get -u github.com/tomnomnom/assetfinder
+```
+
+#### Usage
+
+```bash
+assetfinder DOMAIN.com
+```
 
 ### OWASP Amass
 
@@ -21,6 +49,24 @@ The **OWASP Amass Project** performs network mapping of attack surfaces and exte
 
 ```bash
 sublist3r -d example.com
+```
+
+### Subfinder
+
+{% embed url="https://github.com/projectdiscovery/subfinder" %}
+
+`subfinder` is a subdomain discovery tool that returns valid subdomains for websites, using passive online sources. It has a simple, modular architecture and is optimized for speed. `subfinder` is built for doing one thing only - passive subdomain enumeration, and it does that very well.
+
+#### Installation
+
+```bash
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+```
+
+#### Usage
+
+```bash
+subfinder -h
 ```
 
 ### Recon-ng
@@ -68,6 +114,40 @@ site:*.domain.com -site:www.domain.com
 ```
 
 
+
+## Finding Alive Domains
+
+The scope is:
+
+* Filter only the Alive domains from the first subdomain enumeration with the tools below.
+* Then retrive all possible vulnerability active subdomain like dev, admin, test, ...
+
+```bash
+cat alive_subdomains.txt | grep dev
+```
+
+### Httprobe
+
+{% embed url="https://github.com/tomnomnom/httprobe" %}
+
+Take a list of domains and probe for working http and https servers.
+
+#### Installation
+
+```bash
+go install github.com/tomnomnom/httprobe@latest
+```
+
+#### Usage
+
+{% code overflow="wrap" %}
+```bash
+cat discovered_domains.txt | httprobe
+
+# only https 443 alive domains
+cat discovered_domains.txt | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ':443'
+```
+{% endcode %}
 
 ## Certificate Transparency
 
