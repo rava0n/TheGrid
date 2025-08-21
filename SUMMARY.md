@@ -26,12 +26,9 @@
     * [TombWatcher](ctf/hack-the-box/windows-machines/tombwatcher.md)
     * [Voleur](ctf/hack-the-box/windows-machines/voleur.md)
   * [Sherlocks](ctf/hack-the-box/sherlocks.md)
-
-***
-
-* [TryHackMe](tryhackme/README.md)
-  * [Active Directory](tryhackme/active-directory/README.md)
-    * [Attacktive Directory](tryhackme/active-directory/attacktive-directory.md)
+* [TryHackMe](ctf/tryhackme/README.md)
+  * [Active Directory](ctf/tryhackme/active-directory/README.md)
+    * [Attacktive Directory](ctf/tryhackme/active-directory/attacktive-directory.md)
 
 ## Bug Hunting
 
@@ -175,17 +172,14 @@
     * [Dumping the NTDS.dit](pt/active-directory-pt/ad-persistence/dumping-the-ntds.dit.md)
     * [Silver Ticket](pt/active-directory-pt/ad-persistence/silver-ticket.md)
     * [Golden Ticket](pt/active-directory-pt/ad-persistence/golden-ticket.md)
-
-***
-
-* [CVEs PoC](cves-poc/README.md)
-  * [CVE-2023-35001](cves-poc/cve-2023-35001.md)
-  * [CVE-2023-36664](cves-poc/cve-2023-36664.md)
+* [CVEs PoC](pt/cves-poc/README.md)
+  * [CVE-2023-35001](pt/cves-poc/cve-2023-35001.md)
+  * [CVE-2023-36664](pt/cves-poc/cve-2023-36664.md)
 
 ## RED TEAMING
 
-* [Command & Control (C2 / C\&C)](red-teaming/command-and-control-c2-c-and-c/README.md)
-  * [Armitage -Metasploit](red-teaming/command-and-control-c2-c-and-c/armitage-metasploit.md)
+* [Command & Control (C2)](red-teaming/command-and-control-c2/README.md)
+  * [Armitage -Metasploit](red-teaming/command-and-control-c2/armitage-metasploit.md)
 * [Malware Dev](red-teaming/malware-dev/README.md)
   * [DLL Tactics](red-teaming/malware-dev/dll-tactics/README.md)
     * [DLL Hijacking](red-teaming/malware-dev/dll-tactics/dll-hijacking.md)
@@ -197,13 +191,13 @@
 * [Art Of Obfuscation](red-teaming/art-of-obfuscation.md)
 * [AV avasion](red-teaming/av-avasion/README.md)
   * [AMSI Bypass](red-teaming/av-avasion/amsi-bypass.md)
-
-***
-
-* [Wireless Hacking](wireless-hacking.md)
-* [Social Engineering](social-engineering/README.md)
-  * [QRCode Attack vector](social-engineering/qrcode-attack-vector.md)
-* [Boosting Red Team Ops with AI](boosting-red-team-ops-with-ai.md)
+* [Wireless Hacking](red-teaming/wireless-hacking.md)
+* [Social Engineering](red-teaming/social-engineering/README.md)
+  * [Phishing Infrastructure](red-teaming/social-engineering/phishing-infrastructure/README.md)
+    * [Phishing Setups](red-teaming/social-engineering/phishing-infrastructure/phishing-setups.md)
+    * [Bypass Mail Defences](red-teaming/social-engineering/phishing-infrastructure/bypass-mail-defences.md)
+  * [QRCode Attack vector](red-teaming/social-engineering/qrcode-attack-vector.md)
+* [Boosting Red Team Ops with AI](red-teaming/boosting-red-team-ops-with-ai.md)
 
 ## TOOLS
 

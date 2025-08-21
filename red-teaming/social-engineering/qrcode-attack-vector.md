@@ -31,4 +31,4 @@ Enter the URL you want the QRCode to go to (99 to exit): MAL_URL
 The tool will generate a local path where the generated QRCode image is stored. \
 Copy the image and use it responsibly.
 
-<figure><img src="../.gitbook/assets/image (240).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (240).png" alt=""><figcaption></figcaption></figure>

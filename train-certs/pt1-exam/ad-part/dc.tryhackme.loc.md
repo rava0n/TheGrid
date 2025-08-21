@@ -14,7 +14,7 @@ With discovered user in the WRK machine we can authenticate in the DC with SMB.
 proxychains nxc smb 10.200.150.10 -u "svc.callback" -p 'qvBVAj9avM3ykcbf9s'
 ```
 
-<figure><img src="../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -32,7 +32,7 @@ proxychains bloodhound-python -c all -ns 10.200.150.10 -dc DC.TRYHACKME.LOC -d T
 
 Checking the LDAP data in Bloodhound interface, notice that the user `SVC.CALLBACK` has `GenericWrite` privileges to `Domain Admins` group.
 
-<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

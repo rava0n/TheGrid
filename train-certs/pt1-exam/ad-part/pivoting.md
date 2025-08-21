@@ -40,6 +40,6 @@ Try to authenticate to DC.
 proxychains nxc smb 10.200.150.10 -u "gg" -p 'ii'
 ```
 
-<figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
 The pivot works.

