@@ -66,7 +66,7 @@ PORT      STATE SERVICE       VERSION
 
 ## Web Enumeration
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Try to upload a ps1 with a reverse shell to understand what is blocked and what not.
 
@@ -131,7 +131,7 @@ listeners add -i tun0 -p 13337
 
 We got a shell without anything restrictions
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Looking inside the evader's desktop we can view this file:
 
@@ -156,7 +156,7 @@ You can get the flag by visiting the link http://10.10.8.5:8000/asdasdadasdjakjd
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The file is a HoneyPot, try to follow the hint.
 
@@ -169,7 +169,7 @@ rm log.txt
 
 And now refresh the web page.
 
-<figure><img src="../../../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We got the user flag.
 
@@ -183,7 +183,7 @@ WinPEAS was blocked by AV. We can try others script but we not found any interes
 
 Uploading the more stable shell like p0wny shell we notice that we are more privilges
 
-<figure><img src="../../../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

