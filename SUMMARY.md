@@ -163,6 +163,7 @@
       * [Resource-Based Constrained Delegation](pt/active-directory-pt/ad-post-compromise-attacks/abusing-active-directory-acls-aces/resource-based-constrained-delegation.md)
     * [LNK File Attacks](pt/active-directory-pt/ad-post-compromise-attacks/lnk-file-attacks.md)
     * [PrintNightmare (CVE-2021-1675)](pt/active-directory-pt/ad-post-compromise-attacks/printnightmare-cve-2021-1675.md)
+    * [GPO Abuse](pt/active-directory-pt/ad-post-compromise-attacks/gpo-abuse.md)
   * [AD Lateral Movement](pt/active-directory-pt/ad-lateral-movement/README.md)
     * [DCSync](pt/active-directory-pt/ad-lateral-movement/dcsync.md)
     * [Pass-the-Hash](pt/active-directory-pt/ad-lateral-movement/pass-the-hash.md)

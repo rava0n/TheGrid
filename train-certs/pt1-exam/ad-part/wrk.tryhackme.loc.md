@@ -101,7 +101,7 @@ Apache Tomcat Host Manager (web)	xampp	xampp
 
 With the `tomcat : s3cret`  creds we are in.
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Craft WAR payload with msfvenom
 

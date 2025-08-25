@@ -44,13 +44,13 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 The machine has a http service on port 8000 with a service called CodeTwo.
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 The button "Download App" allows a user to download the source code of the application.
 
 The application is a Javascript sandbox where a user can execute a Js scripts in this page once logged in.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Code analyze and Command Injection
 

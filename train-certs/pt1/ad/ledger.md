@@ -240,7 +240,7 @@ Now that we have a LDAP-SHELL we can use the function `change_password` to chang
 change_password BRADLEY_ORTIZ Password123!
 ```
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## RDP as administrator user
 

@@ -246,7 +246,7 @@ bloodhound-python -c all -ns 10.10.82.211 -dc K2Server.k2.thm -d k2.thm --zip -u
 
 We can see that the `IT STAFF 1` group has the `GenericAll` privs to `j.smith` account. It means that we can change the j.smith's password.
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 rpcclient -U K2.thm/j.bold K2Server.k2.thm
