@@ -69,8 +69,8 @@ The imput type could be: Login Page, Search bar,&#x20;
 
 * Command Injection
 
-{% content-ref url="executive-pt/enumeration-exploitation/web/common-web-vuln/command-injection.md" %}
-[command-injection.md](executive-pt/enumeration-exploitation/web/common-web-vuln/command-injection.md)
+{% content-ref url="executive-pt/enumeration-exploitation/web/common-web-vuln/command-injection/" %}
+[command-injection](executive-pt/enumeration-exploitation/web/common-web-vuln/command-injection/)
 {% endcontent-ref %}
 
 * SSTI

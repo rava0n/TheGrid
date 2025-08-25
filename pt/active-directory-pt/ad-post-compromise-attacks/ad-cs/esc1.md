@@ -2,7 +2,7 @@
 
 **ESC1** is a vulnerability where **a low-privileged user** in a Windows domain can **abuse misconfigured certificate templates** to get a certificate that lets them **impersonate another user — even a domain admin**.
 
-<figure><img src="../../../../.gitbook/assets/image (9) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (9) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Get the .pfx cert
 

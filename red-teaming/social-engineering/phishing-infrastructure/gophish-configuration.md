@@ -106,7 +106,7 @@ For the landing page (default is port 80 of the gophish ubuntu server) we create
 
 Create new record A and insert the Gophish public IP in the value field
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -126,7 +126,7 @@ sudo certbot certonly -d <domain> --manual --preferred-challenges dns
 
 Now we have to follow to instruction from certbot output creating new DNS TXT record for the domain with values given in the certbot output.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

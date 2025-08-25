@@ -150,7 +150,7 @@ nano o365.yaml
 
 3. Populate DNS "A records" for all phishlet subdomains (highlights in the next screenshot).
 
-<figure><img src="../../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 4. Restart evilginx2, give to the new phishlet a hostname and enable this new phishlet.
 
