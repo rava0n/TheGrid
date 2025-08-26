@@ -69,6 +69,7 @@
       * [JWT flaw](pt/executive-pt/enumeration-exploitation/web/jwt-flaw.md)
       * [API Testing](pt/executive-pt/enumeration-exploitation/web/api-testing/README.md)
         * [Mass Assignment](pt/executive-pt/enumeration-exploitation/web/api-testing/mass-assignment.md)
+      * [Session LifeCycle](pt/executive-pt/enumeration-exploitation/web/session-lifecycle.md)
       * [CMS](pt/executive-pt/enumeration-exploitation/web/cms.md)
       * [Vuln Scan](pt/executive-pt/enumeration-exploitation/web/vuln-scan.md)
       * [File Upload](pt/executive-pt/enumeration-exploitation/web/file-upload/README.md)
