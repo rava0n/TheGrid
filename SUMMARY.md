@@ -57,7 +57,7 @@
       * [Auth Flaws](pt/executive-pt/enumeration-exploitation/web/auth-flaws/README.md)
         * [Session LifeCycle](pt/executive-pt/enumeration-exploitation/web/auth-flaws/session-lifecycle.md)
         * [JWT flaw](pt/executive-pt/enumeration-exploitation/web/auth-flaws/jwt-flaw.md)
-        * [OAuth Vulnerabilities](pt/executive-pt/enumeration-exploitation/web/auth-flaws/oauth-vulnerabilities.md)
+        * [OAuth Security](pt/executive-pt/enumeration-exploitation/web/auth-flaws/oauth-security.md)
       * [Common Web Vuln](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/README.md)
         * [Broken Access Control](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/broken-access-control.md)
         * [IDOR](pt/executive-pt/enumeration-exploitation/web/common-web-vuln/idor.md)
